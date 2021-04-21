@@ -11,12 +11,13 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTableView>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,8 +26,14 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QLabel *dbStatus_label;
-    QTableView *mlb_tableView;
+    QPushButton *adminButton;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *projectTitle;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *dfsAndBfsButton;
+    QPushButton *tripButton;
+    QPushButton *tableViewButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -34,20 +41,55 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(800, 500);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        dbStatus_label = new QLabel(centralwidget);
-        dbStatus_label->setObjectName(QString::fromUtf8("dbStatus_label"));
-        dbStatus_label->setGeometry(QRect(0, 0, 801, 31));
-        dbStatus_label->setAlignment(Qt::AlignCenter);
-        mlb_tableView = new QTableView(centralwidget);
-        mlb_tableView->setObjectName(QString::fromUtf8("mlb_tableView"));
-        mlb_tableView->setGeometry(QRect(5, 31, 791, 521));
+        adminButton = new QPushButton(centralwidget);
+        adminButton->setObjectName(QString::fromUtf8("adminButton"));
+        adminButton->setGeometry(QRect(630, 10, 151, 27));
+        QFont font;
+        font.setPointSize(12);
+        font.setBold(true);
+        font.setWeight(75);
+        adminButton->setFont(font);
+        widget = new QWidget(centralwidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(210, 160, 381, 201));
+        verticalLayout_2 = new QVBoxLayout(widget);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        projectTitle = new QLabel(widget);
+        projectTitle->setObjectName(QString::fromUtf8("projectTitle"));
+
+        verticalLayout_2->addWidget(projectTitle);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        dfsAndBfsButton = new QPushButton(widget);
+        dfsAndBfsButton->setObjectName(QString::fromUtf8("dfsAndBfsButton"));
+        dfsAndBfsButton->setFont(font);
+
+        horizontalLayout->addWidget(dfsAndBfsButton);
+
+        tripButton = new QPushButton(widget);
+        tripButton->setObjectName(QString::fromUtf8("tripButton"));
+        tripButton->setFont(font);
+
+        horizontalLayout->addWidget(tripButton);
+
+        tableViewButton = new QPushButton(widget);
+        tableViewButton->setObjectName(QString::fromUtf8("tableViewButton"));
+        tableViewButton->setFont(font);
+
+        horizontalLayout->addWidget(tableViewButton);
+
+
+        verticalLayout_2->addLayout(horizontalLayout);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 21));
+        menubar->setGeometry(QRect(0, 0, 800, 20));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -61,7 +103,11 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        dbStatus_label->setText(QCoreApplication::translate("MainWindow", "[+] DB Status", nullptr));
+        adminButton->setText(QCoreApplication::translate("MainWindow", "Admin Access", nullptr));
+        projectTitle->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:600;\">Stadium Tour Project</span></p><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">by Scrum and Coke</span></p></body></html>", nullptr));
+        dfsAndBfsButton->setText(QCoreApplication::translate("MainWindow", "DFS and BFS", nullptr));
+        tripButton->setText(QCoreApplication::translate("MainWindow", "Build Trip", nullptr));
+        tableViewButton->setText(QCoreApplication::translate("MainWindow", "View Data", nullptr));
     } // retranslateUi
 
 };

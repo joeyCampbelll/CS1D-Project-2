@@ -7,38 +7,97 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="dbStatus_label">
+   <widget class="QPushButton" name="adminButton">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>801</width>
-      <height>31</height>
+      <x>630</x>
+      <y>10</y>
+      <width>151</width>
+      <height>27</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
-     <string>[+] DB Status</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <string>Admin Access</string>
     </property>
    </widget>
-   <widget class="QTableView" name="mlb_tableView">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>5</x>
-      <y>31</y>
-      <width>791</width>
-      <height>521</height>
+      <x>210</x>
+      <y>160</y>
+      <width>381</width>
+      <height>201</height>
      </rect>
     </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="projectTitle">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;Stadium Tour Project&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;by Scrum and Coke&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="dfsAndBfsButton">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>DFS and BFS</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tripButton">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Build Trip</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tableViewButton">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>View Data</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -47,7 +106,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
