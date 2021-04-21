@@ -8,14 +8,14 @@ QMAKE_CXX.COMPILER_MACROS = \
     QMAKE_GCC_MINOR_VERSION \
     QMAKE_GCC_PATCH_VERSION
 QMAKE_CXX.INCDIRS = \
-    C:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ \
-    C:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 \
-    C:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward \
-    C:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include \
-    C:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed \
-    C:/Downloads/QT/Tools/mingw810_64/x86_64-w64-mingw32/include
+    C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ \
+    C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 \
+    C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward \
+    C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include \
+    C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed \
+    C:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include
 QMAKE_CXX.LIBDIRS = \
-    C:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0 \
-    C:/Downloads/QT/Tools/mingw810_64/lib/gcc \
-    C:/Downloads/QT/Tools/mingw810_64/x86_64-w64-mingw32/lib \
-    C:/Downloads/QT/Tools/mingw810_64/lib
+    C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0 \
+    C:/Qt/Tools/mingw810_64/lib/gcc \
+    C:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/lib \
+    C:/Qt/Tools/mingw810_64/lib
