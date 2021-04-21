@@ -22,7 +22,6 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-
     QByteArrayData data[6];
     char stringdata0[109];
 };
@@ -82,7 +81,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_actionLogin_2_triggered(); break;
         case 0: _t->on_tableButton_clicked(); break;
         case 1: _t->on_adminButton_clicked(); break;
         case 2: _t->on_buildTripButton_clicked(); break;
