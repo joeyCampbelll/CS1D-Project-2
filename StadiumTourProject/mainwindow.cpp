@@ -48,3 +48,7 @@ MainWindow::~MainWindow()
 //    ui->mlb_tableView->resizeColumnsToContents();
 //}
 
+void MainWindow::on_tableViewButton_3_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}

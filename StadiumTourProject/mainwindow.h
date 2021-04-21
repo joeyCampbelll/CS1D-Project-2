@@ -23,6 +23,10 @@ public:
 //    */
 //    void showMLB();
 
+private slots:
+
+    void on_tableViewButton_3_clicked();
+
 private:
     Ui::MainWindow *ui;
 
