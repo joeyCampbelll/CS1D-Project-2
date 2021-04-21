@@ -32,11 +32,11 @@ public:
     QPushButton *adminButton;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_4;
-    QLabel *projectTitle_3;
+    QLabel *mainTitle;
     QHBoxLayout *horizontalLayout_3;
-    QPushButton *dfsAndBfsButton_3;
-    QPushButton *tripButton_3;
-    QPushButton *tableViewButton_3;
+    QPushButton *dfsBfsButton;
+    QPushButton *buildTripButton;
+    QPushButton *tableButton;
     QWidget *tableViewPage;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -67,30 +67,30 @@ public:
         verticalLayout_4 = new QVBoxLayout(layoutWidget);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        projectTitle_3 = new QLabel(layoutWidget);
-        projectTitle_3->setObjectName(QString::fromUtf8("projectTitle_3"));
+        mainTitle = new QLabel(layoutWidget);
+        mainTitle->setObjectName(QString::fromUtf8("mainTitle"));
 
-        verticalLayout_4->addWidget(projectTitle_3);
+        verticalLayout_4->addWidget(mainTitle);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        dfsAndBfsButton_3 = new QPushButton(layoutWidget);
-        dfsAndBfsButton_3->setObjectName(QString::fromUtf8("dfsAndBfsButton_3"));
-        dfsAndBfsButton_3->setFont(font);
+        dfsBfsButton = new QPushButton(layoutWidget);
+        dfsBfsButton->setObjectName(QString::fromUtf8("dfsBfsButton"));
+        dfsBfsButton->setFont(font);
 
-        horizontalLayout_3->addWidget(dfsAndBfsButton_3);
+        horizontalLayout_3->addWidget(dfsBfsButton);
 
-        tripButton_3 = new QPushButton(layoutWidget);
-        tripButton_3->setObjectName(QString::fromUtf8("tripButton_3"));
-        tripButton_3->setFont(font);
+        buildTripButton = new QPushButton(layoutWidget);
+        buildTripButton->setObjectName(QString::fromUtf8("buildTripButton"));
+        buildTripButton->setFont(font);
 
-        horizontalLayout_3->addWidget(tripButton_3);
+        horizontalLayout_3->addWidget(buildTripButton);
 
-        tableViewButton_3 = new QPushButton(layoutWidget);
-        tableViewButton_3->setObjectName(QString::fromUtf8("tableViewButton_3"));
-        tableViewButton_3->setFont(font);
+        tableButton = new QPushButton(layoutWidget);
+        tableButton->setObjectName(QString::fromUtf8("tableButton"));
+        tableButton->setFont(font);
 
-        horizontalLayout_3->addWidget(tableViewButton_3);
+        horizontalLayout_3->addWidget(tableButton);
 
 
         verticalLayout_4->addLayout(horizontalLayout_3);
@@ -120,10 +120,10 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         adminButton->setText(QCoreApplication::translate("MainWindow", "Admin Access", nullptr));
-        projectTitle_3->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:600;\">Stadium Tour Project</span></p><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">by Scrum and Coke</span></p></body></html>", nullptr));
-        dfsAndBfsButton_3->setText(QCoreApplication::translate("MainWindow", "DFS and BFS", nullptr));
-        tripButton_3->setText(QCoreApplication::translate("MainWindow", "Build Trip", nullptr));
-        tableViewButton_3->setText(QCoreApplication::translate("MainWindow", "View Data", nullptr));
+        mainTitle->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:600;\">Stadium Tour Project</span></p><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">by Scrum and Coke</span></p></body></html>", nullptr));
+        dfsBfsButton->setText(QCoreApplication::translate("MainWindow", "DFS and BFS", nullptr));
+        buildTripButton->setText(QCoreApplication::translate("MainWindow", "Build Trip", nullptr));
+        tableButton->setText(QCoreApplication::translate("MainWindow", "View Data", nullptr));
     } // retranslateUi
 
 };

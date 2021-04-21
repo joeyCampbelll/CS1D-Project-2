@@ -58,7 +58,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QLabel" name="projectTitle_3">
+        <widget class="QLabel" name="mainTitle">
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;Stadium Tour Project&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;by Scrum and Coke&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
@@ -67,7 +67,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QPushButton" name="dfsAndBfsButton_3">
+          <widget class="QPushButton" name="dfsBfsButton">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
@@ -81,7 +81,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="tripButton_3">
+          <widget class="QPushButton" name="buildTripButton">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
@@ -95,7 +95,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="tableViewButton_3">
+          <widget class="QPushButton" name="tableButton">
            <property name="font">
             <font>
              <pointsize>12</pointsize>

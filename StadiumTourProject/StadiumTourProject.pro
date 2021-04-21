@@ -12,17 +12,14 @@ CONFIG += c++11
 SOURCES += \
     database.cpp \
     main.cpp \
-    mainwindow.cpp \
-    tableview.cpp
+    mainwindow.cpp
 
 HEADERS += \
     database.h \
-    mainwindow.h \
-    tableview.h
+    mainwindow.h
 
 FORMS += \
-    mainwindow.ui \
-    tableview.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

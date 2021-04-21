@@ -25,7 +25,13 @@ public:
 
 private slots:
 
-    void on_tableViewButton_3_clicked();
+    void on_tableButton_clicked();
+
+    void on_adminButton_clicked();
+
+    void on_buildTripButton_clicked();
+
+    void on_dfsBfsButton_clicked();
 
 private:
     Ui::MainWindow *ui;

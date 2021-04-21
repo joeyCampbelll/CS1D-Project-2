@@ -48,7 +48,24 @@ MainWindow::~MainWindow()
 //    ui->mlb_tableView->resizeColumnsToContents();
 //}
 
-void MainWindow::on_tableViewButton_3_clicked()
+void MainWindow::on_tableButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    // JAKE AND JOEY - this is where we start implementing a table view
+}
+
+void MainWindow::on_adminButton_clicked()
+{
+    // RYAN AND KATE - this is where you guys are going to switch
+    //   stacked widget indecies
+}
+
+void MainWindow::on_buildTripButton_clicked()
+{
+    //TODO - future build trip code
+}
+
+void MainWindow::on_dfsBfsButton_clicked()
+{
+    //TODO - future dfs/bfs code
 }
