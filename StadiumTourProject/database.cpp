@@ -10,7 +10,6 @@ Database::Database(const QString &path)
     {
         qDebug() << path << Qt::endl;
         qDebug() << "Error: can't connect to database!" << Qt::endl;
-
     }
     else
     {

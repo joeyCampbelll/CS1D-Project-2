@@ -393,7 +393,7 @@ release/moc_mainwindow.cpp: ../StadiumTourProject/mainwindow.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtSql/QSqlQuery \
 		release/moc_predefs.h \
 		../../../../Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Source/Qt/CS1D-Project-2/build-StadiumTourProject-Desktop_Qt_5_15_1_MinGW_64_bit-Release/release/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Source/Qt/CS1D-Project-2/StadiumTourProject -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtQuick -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtQmlModels -IC:/Qt/5.15.1/mingw81_64/include/QtQml -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Downloads/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Downloads/QT/Tools/mingw810_64/x86_64-w64-mingw32/include ..\StadiumTourProject\mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Source/Qt/CS1D-Project-2/build-StadiumTourProject-Desktop_Qt_5_15_1_MinGW_64_bit-Release/release/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Source/Qt/CS1D-Project-2/StadiumTourProject -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtQuick -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtQmlModels -IC:/Qt/5.15.1/mingw81_64/include/QtQml -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\StadiumTourProject\mainwindow.h -o release\moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1248,24 +1248,33 @@ release/mainwindow.o: ../StadiumTourProject/mainwindow.cpp ../StadiumTourProject
 		../../../../Qt/5.15.1/mingw81_64/include/QtSql/QSqlQuery \
 		ui_mainwindow.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QAction \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qaction.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qactiongroup.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtGui/qguiapplication.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtGui/qinputmethod.h \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QHeaderView \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qheaderview.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qlayout.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QLabel \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QMenu \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qmenu.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QMenuBar \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qmenubar.h \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qmenu.h \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qaction.h \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qactiongroup.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QStackedWidget \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qstackedwidget.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QStatusBar \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qstatusbar.h \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QTableView \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qtableview.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QVBoxLayout \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\StadiumTourProject\mainwindow.cpp
 
