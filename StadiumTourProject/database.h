@@ -20,13 +20,6 @@
 
 static const QString PROJECT_PATH = QDir::currentPath();
 
-//static const QDir dir("../CS1D-Project-2/StadiumTourProject");
-
-//jakes path - "C:/Users/jam_m/OneDrive/Documents/CS1D-Project-2/StadiumTourProject"
-
-static const QString PROJECT_PATH = QDir::currentPath();
-
-
 class Database
 {
 public:
