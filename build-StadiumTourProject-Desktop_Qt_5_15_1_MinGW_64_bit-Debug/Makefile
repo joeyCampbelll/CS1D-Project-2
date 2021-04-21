@@ -247,8 +247,13 @@ Makefile: ../StadiumTourProject/StadiumTourProject.pro ../../../../Qt/5.15.1/min
 		../../../../Qt/5.15.1/mingw81_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.15.1/mingw81_64/mkspecs/features/lex.prf \
 		../StadiumTourProject/StadiumTourProject.pro \
+		../../../../Qt/5.15.1/mingw81_64/lib/Qt5Quick.prl \
 		../../../../Qt/5.15.1/mingw81_64/lib/Qt5Widgets.prl \
 		../../../../Qt/5.15.1/mingw81_64/lib/Qt5Gui.prl \
+		../../../../Qt/5.15.1/mingw81_64/lib/Qt5Sql.prl \
+		../../../../Qt/5.15.1/mingw81_64/lib/Qt5QmlModels.prl \
+		../../../../Qt/5.15.1/mingw81_64/lib/Qt5Qml.prl \
+		../../../../Qt/5.15.1/mingw81_64/lib/Qt5Network.prl \
 		../../../../Qt/5.15.1/mingw81_64/lib/Qt5Core.prl \
 		../../../../Qt/5.15.1/mingw81_64/lib/qtmain.prl \
 		.qmake.stash \
@@ -431,8 +436,13 @@ Makefile: ../StadiumTourProject/StadiumTourProject.pro ../../../../Qt/5.15.1/min
 ../../../../Qt/5.15.1/mingw81_64/mkspecs/features/yacc.prf:
 ../../../../Qt/5.15.1/mingw81_64/mkspecs/features/lex.prf:
 ../StadiumTourProject/StadiumTourProject.pro:
+../../../../Qt/5.15.1/mingw81_64/lib/Qt5Quick.prl:
 ../../../../Qt/5.15.1/mingw81_64/lib/Qt5Widgets.prl:
 ../../../../Qt/5.15.1/mingw81_64/lib/Qt5Gui.prl:
+../../../../Qt/5.15.1/mingw81_64/lib/Qt5Sql.prl:
+../../../../Qt/5.15.1/mingw81_64/lib/Qt5QmlModels.prl:
+../../../../Qt/5.15.1/mingw81_64/lib/Qt5Qml.prl:
+../../../../Qt/5.15.1/mingw81_64/lib/Qt5Network.prl:
 ../../../../Qt/5.15.1/mingw81_64/lib/Qt5Core.prl:
 ../../../../Qt/5.15.1/mingw81_64/lib/qtmain.prl:
 .qmake.stash:
