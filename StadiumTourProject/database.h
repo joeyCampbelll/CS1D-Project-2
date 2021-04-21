@@ -13,10 +13,9 @@
 //ryans path - "C:/Users/ryans/OneDrive/Documents/GitHub/CS1D-Project-2/StadiumTourProject/"
 //joeys path -
 //kates path -
-//jakes path -
+//jakes path - "C:/Users/jam_m/OneDrive/Documents/CS1D-Project-2/StadiumTourProject"
 
-static const QString PROJECT_PATH = "C:/Users/ryans/OneDrive/Documents/GitHub/CS1D-Project-2/StadiumTourProject/";
-
+static const QString PROJECT_PATH = QDir::currentPath();
 
 class Database
 {
