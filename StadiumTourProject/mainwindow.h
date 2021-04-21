@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include "database.h"
-#include "login.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,15 +33,7 @@ private slots:
 
     void on_dfsBfsButton_clicked();
 
-    /**
-    * @brief On Action Method to login as administrator
-    *
-    * calls Login constructor
-    * opens login window to login as administrator
-    */
-
-private slots:
-    void on_actionLogin_2_triggered();
+    void on_pushButton_cancel_clicked();
 
 private:
     Ui::MainWindow *ui;

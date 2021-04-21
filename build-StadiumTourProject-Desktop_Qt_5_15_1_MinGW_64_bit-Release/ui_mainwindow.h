@@ -14,9 +14,8 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
@@ -42,8 +41,13 @@ public:
     QPushButton *buildTripButton;
     QPushButton *tableButton;
     QWidget *tableViewPage;
-    QMenuBar *menubar;
-    QMenu *menuAdmin;
+    QWidget *adminLoginPage;
+    QLabel *label_3;
+    QPushButton *pushButton_cancel;
+    QPushButton *pushButton_login;
+    QLabel *label_2;
+    QLineEdit *lineEdit_password;
+    QLabel *label;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -108,25 +112,49 @@ public:
         tableViewPage = new QWidget();
         tableViewPage->setObjectName(QString::fromUtf8("tableViewPage"));
         stackedWidget->addWidget(tableViewPage);
+        adminLoginPage = new QWidget();
+        adminLoginPage->setObjectName(QString::fromUtf8("adminLoginPage"));
+        label_3 = new QLabel(adminLoginPage);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setGeometry(QRect(4, 207, 791, 20));
+        label_3->setFont(font);
+        label_3->setLayoutDirection(Qt::LeftToRight);
+        label_3->setAlignment(Qt::AlignCenter);
+        pushButton_cancel = new QPushButton(adminLoginPage);
+        pushButton_cancel->setObjectName(QString::fromUtf8("pushButton_cancel"));
+        pushButton_cancel->setGeometry(QRect(404, 280, 101, 41));
+        pushButton_login = new QPushButton(adminLoginPage);
+        pushButton_login->setObjectName(QString::fromUtf8("pushButton_login"));
+        pushButton_login->setGeometry(QRect(294, 280, 101, 41));
+        label_2 = new QLabel(adminLoginPage);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(594, 177, 611, 20));
+        label_2->setFont(font);
+        label_2->setLayoutDirection(Qt::LeftToRight);
+        label_2->setAlignment(Qt::AlignCenter);
+        lineEdit_password = new QLineEdit(adminLoginPage);
+        lineEdit_password->setObjectName(QString::fromUtf8("lineEdit_password"));
+        lineEdit_password->setGeometry(QRect(294, 240, 211, 31));
+        lineEdit_password->setEchoMode(QLineEdit::Password);
+        label = new QLabel(adminLoginPage);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(0, 60, 791, 51));
+        QFont font1;
+        font1.setPointSize(22);
+        font1.setBold(true);
+        font1.setWeight(75);
+        font1.setKerning(true);
+        label->setFont(font1);
+        label->setAlignment(Qt::AlignCenter);
+        stackedWidget->addWidget(adminLoginPage);
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 20));
-        menuAdmin = new QMenu(menubar);
-        menuAdmin->setObjectName(QString::fromUtf8("menuAdmin"));
-        MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
 
-        menubar->addAction(menuAdmin->menuAction());
-        menuAdmin->addSeparator();
-        menuAdmin->addSeparator();
-        menuAdmin->addAction(actionLogin_2);
-
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -142,7 +170,13 @@ public:
         dfsBfsButton->setText(QCoreApplication::translate("MainWindow", "DFS and BFS", nullptr));
         buildTripButton->setText(QCoreApplication::translate("MainWindow", "Build Trip", nullptr));
         tableButton->setText(QCoreApplication::translate("MainWindow", "View Data", nullptr));
-        menuAdmin->setTitle(QCoreApplication::translate("MainWindow", "Admin", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Please Enter:", nullptr));
+        pushButton_cancel->setText(QCoreApplication::translate("MainWindow", "Cancel", nullptr));
+        pushButton_login->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Please Enter:", nullptr));
+        lineEdit_password->setText(QString());
+        lineEdit_password->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Administrator Login", nullptr));
     } // retranslateUi
 
 };

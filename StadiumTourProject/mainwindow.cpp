@@ -7,8 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setFixedSize(800, 500);
+    ui->stackedWidget->setCurrentIndex(0);
 
-    //Check if database is open
+//    Check if database is open
 //    if(!myDb.isOpen())
 //    {
 //        ui->dbStatus_label->setText("Failed to open database!");
@@ -57,7 +58,7 @@ void MainWindow::on_tableButton_clicked()
 void MainWindow::on_adminButton_clicked()
 {
     // RYAN AND KATE - this is where you guys are going to switch
-    //   stacked widget indecies
+    ui->stackedWidget->setCurrentIndex(2);
 }
 
 void MainWindow::on_buildTripButton_clicked()
@@ -70,8 +71,7 @@ void MainWindow::on_dfsBfsButton_clicked()
     //TODO - future dfs/bfs code
 }
 
-void MainWindow::on_actionLogin_2_triggered()
+void MainWindow::on_pushButton_cancel_clicked()
 {
-    auto* login = new Login(this);
-    login->show();
+    ui->stackedWidget->setCurrentIndex(0);
 }
