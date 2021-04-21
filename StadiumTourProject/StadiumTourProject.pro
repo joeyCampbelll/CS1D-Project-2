@@ -11,16 +11,19 @@ CONFIG += c++11
 
 SOURCES += \
     database.cpp \
+    login.cpp \
     main.cpp \
     mainwindow.cpp \
     tableview.cpp
 
 HEADERS += \
     database.h \
+    login.h \
     mainwindow.h \
     tableview.h
 
 FORMS += \
+    login.ui \
     mainwindow.ui \
     tableview.ui
 

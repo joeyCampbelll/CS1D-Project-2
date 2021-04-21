@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "database.h"
+#include "login.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,6 +23,16 @@ public:
     * updates query for entire MLB info chart and sets ui Model
     */
     void showMLB();
+
+    /**
+    * @brief On Action Method to login as administrator
+    *
+    * calls Login constructor
+    * opens login window to login as administrator
+    */
+
+private slots:
+    void on_actionLogin_2_triggered();
 
 private:
     Ui::MainWindow *ui;
