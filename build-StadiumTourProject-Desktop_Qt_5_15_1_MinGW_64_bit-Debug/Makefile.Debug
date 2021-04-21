@@ -72,8 +72,7 @@ DIST          =  ..\StadiumTourProject\database.h \
 		..\StadiumTourProject\tableview.h ..\StadiumTourProject\database.cpp \
 		..\StadiumTourProject\login.cpp \
 		..\StadiumTourProject\main.cpp \
-		..\StadiumTourProject\mainwindow.cpp \
-		..\StadiumTourProject\tableview.cpp
+		..\StadiumTourProject\mainwindow.cpp
 QMAKE_TARGET  = StadiumTourProject
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = StadiumTourProject.exe
@@ -1728,9 +1727,6 @@ debug/moc_login.o: debug/moc_login.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_mainwindow.o debug\moc_mainwindow.cpp
-
-debug/moc_tableview.o: debug/moc_tableview.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_tableview.o debug\moc_tableview.cpp
 
 ####### Install
 
