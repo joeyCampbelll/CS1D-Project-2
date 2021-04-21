@@ -10,10 +10,12 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
@@ -26,6 +28,8 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionLogin;
+    QAction *actionLogin_2;
     QWidget *centralwidget;
     QStackedWidget *stackedWidget;
     QWidget *mainPage;
@@ -39,6 +43,7 @@ public:
     QPushButton *tableButton;
     QWidget *tableViewPage;
     QMenuBar *menubar;
+    QMenu *menuAdmin;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -46,6 +51,10 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 500);
+        actionLogin = new QAction(MainWindow);
+        actionLogin->setObjectName(QString::fromUtf8("actionLogin"));
+        actionLogin_2 = new QAction(MainWindow);
+        actionLogin_2->setObjectName(QString::fromUtf8("actionLogin_2"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         stackedWidget = new QStackedWidget(centralwidget);
@@ -103,10 +112,17 @@ public:
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 20));
+        menuAdmin = new QMenu(menubar);
+        menuAdmin->setObjectName(QString::fromUtf8("menuAdmin"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
+
+        menubar->addAction(menuAdmin->menuAction());
+        menuAdmin->addSeparator();
+        menuAdmin->addSeparator();
+        menuAdmin->addAction(actionLogin_2);
 
         retranslateUi(MainWindow);
 
@@ -119,11 +135,14 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionLogin->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
+        actionLogin_2->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         adminButton->setText(QCoreApplication::translate("MainWindow", "Admin Access", nullptr));
         mainTitle->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:600;\">Stadium Tour Project</span></p><p align=\"center\"><span style=\" font-size:16pt; font-weight:600;\">by Scrum and Coke</span></p></body></html>", nullptr));
         dfsBfsButton->setText(QCoreApplication::translate("MainWindow", "DFS and BFS", nullptr));
         buildTripButton->setText(QCoreApplication::translate("MainWindow", "Build Trip", nullptr));
         tableButton->setText(QCoreApplication::translate("MainWindow", "View Data", nullptr));
+        menuAdmin->setTitle(QCoreApplication::translate("MainWindow", "Admin", nullptr));
     } // retranslateUi
 
 };

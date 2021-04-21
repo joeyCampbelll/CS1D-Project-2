@@ -125,8 +125,27 @@
      <height>20</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAdmin">
+    <property name="title">
+     <string>Admin</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionLogin_2"/>
+   </widget>
+   <addaction name="menuAdmin"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLogin">
+   <property name="text">
+    <string>Login</string>
+   </property>
+  </action>
+  <action name="actionLogin_2">
+   <property name="text">
+    <string>Login</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

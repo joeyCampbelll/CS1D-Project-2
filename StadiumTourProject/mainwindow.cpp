@@ -69,3 +69,9 @@ void MainWindow::on_dfsBfsButton_clicked()
 {
     //TODO - future dfs/bfs code
 }
+
+void MainWindow::on_actionLogin_2_triggered()
+{
+    auto* login = new Login(this);
+    login->show();
+}
