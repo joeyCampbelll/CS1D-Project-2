@@ -8,6 +8,7 @@ Database::Database(const QString &path)
 
     if(!myDB.open())
     {
+        qDebug() << path << Qt::endl;
         qDebug() << "Error: can't connect to database!" << Qt::endl;
 
     }

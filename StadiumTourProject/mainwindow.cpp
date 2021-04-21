@@ -47,3 +47,9 @@ void MainWindow::showMLB()
     ui->mlb_tableView->resizeColumnsToContents();
 }
 
+
+void MainWindow::on_actionLogin_2_triggered()
+{
+    auto* login = new Login(this);
+    login->show();
+}
