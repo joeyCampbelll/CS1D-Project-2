@@ -10,15 +10,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->setCurrentIndex(0);
 
 //    Check if database is open
-//    if(!myDb.isOpen())
-//    {
-//        ui->dbStatus_label->setText("Failed to open database!");
-//    }
-//    else
-//    {
-//        ui->dbStatus_label->setText("Connected...");
-//        showMLB();
-//    }
+    if(!myDb.isOpen())
+    {
+        qDebug() << "DATABASE FAILED TO OPEN" << Qt::endl;
+    }
+    else
+    {
+        qDebug() << "DATABASE SUCCESSFULLY CONNECTED" << Qt::endl;
+        showMLB();
+    }
 }
 
 MainWindow::~MainWindow()
@@ -26,28 +26,28 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//void MainWindow::showMLB()
-//{
-//    QSqlQueryModel* model = new QSqlQueryModel();
+void MainWindow::showMLB()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
 
-//    QSqlQuery* qry = new QSqlQuery();
+    QSqlQuery* qry = new QSqlQuery();
 
-//    qry->prepare("SELECT * FROM MLB_Information");
+    qry->prepare("SELECT * FROM MLB_Information");
 
-//    if(qry->exec())
-//    {
-//        qDebug() << "MLB Info updated and displayed to table";
-//    }
-//    else
-//    {
-//        qDebug() << "MLB info failed to display";
-//    }
+    if(qry->exec())
+    {
+        qDebug() << "MLB Info updated and displayed to table";
+    }
+    else
+    {
+        qDebug() << "MLB info failed to display";
+    }
 
-//    model->setQuery(*qry);
+    model->setQuery(*qry);
 
-//    ui->mlb_tableView->setModel(model);
-//    ui->mlb_tableView->resizeColumnsToContents();
-//}
+    ui->mlbTableView->setModel(model);
+    ui->mlbTableView->resizeColumnsToContents();
+}
 
 void MainWindow::on_tableButton_clicked()
 {

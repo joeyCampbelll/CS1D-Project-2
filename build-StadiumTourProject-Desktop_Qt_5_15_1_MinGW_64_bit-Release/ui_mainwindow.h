@@ -13,12 +13,14 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -41,6 +43,7 @@ public:
     QPushButton *buildTripButton;
     QPushButton *tableButton;
     QWidget *tableViewPage;
+    QTableView *mlbTableView;
     QWidget *adminLoginPage;
     QLabel *label_3;
     QPushButton *pushButton_cancel;
@@ -111,6 +114,9 @@ public:
         stackedWidget->addWidget(mainPage);
         tableViewPage = new QWidget();
         tableViewPage->setObjectName(QString::fromUtf8("tableViewPage"));
+        mlbTableView = new QTableView(tableViewPage);
+        mlbTableView->setObjectName(QString::fromUtf8("mlbTableView"));
+        mlbTableView->setGeometry(QRect(10, 90, 781, 371));
         stackedWidget->addWidget(tableViewPage);
         adminLoginPage = new QWidget();
         adminLoginPage->setObjectName(QString::fromUtf8("adminLoginPage"));
@@ -154,7 +160,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

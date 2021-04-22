@@ -1263,10 +1263,12 @@ debug/mainwindow.o: ../StadiumTourProject/mainwindow.cpp ../StadiumTourProject/m
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QLabel \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qlabel.h \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QMenu \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qmenu.h \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QMenuBar \
-		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qmenubar.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
+		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qlineedit.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtGui/qtextcursor.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtGui/qtextformat.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
+		../../../../Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/QPushButton \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \

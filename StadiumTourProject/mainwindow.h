@@ -16,12 +16,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-//    /**
-//    * @brief Class Method to update and show MLB info
-//    *
-//    * updates query for entire MLB info chart and sets ui Model
-//    */
-//    void showMLB();
+    /**
+    * @brief Class Method to update and show MLB info
+    *
+    * updates query for entire MLB info chart and sets ui Model
+    */
+    void showMLB();
 
 private slots:
 
@@ -38,9 +38,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-//    /**
-//    * @brief assigns myDb to predefined PROJECT_PATH constant
-//    */
-//    Database myDb = Database(PROJECT_PATH + "/Database/mlbDatabase.db");
+    /**
+    * @brief assigns myDb to predefined PROJECT_PATH constant
+    */
+    Database myDb = Database(PROJECT_PATH + "/Database/mlbDatabase.db");
 };
 #endif // MAINWINDOW_H
