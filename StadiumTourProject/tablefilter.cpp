@@ -163,6 +163,8 @@ void tablefilter::applyFilters()
 
 void tablefilter::resetFilters()
 {
+    ui->sortByEntry->setCurrentIndex(10);
+    ui->onlyShowEntry->setCurrentIndex(15);
     individualTeamSelected = false;
     sorterSelected = false;
     filterSelected = false;
