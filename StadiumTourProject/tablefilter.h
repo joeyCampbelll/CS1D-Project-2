@@ -26,14 +26,16 @@ private slots:
 
     void on_exitFiltersButton_clicked();
 
+    void applyFilters(QString indiTeam, QString sorter, QString filter);
+
 private:
     QTableView* tableView;
     QSqlQueryModel* model;
     QSqlQuery* qry;
-    bool onlyAmericanLeague = false;
-    bool onlyNationalLeague = false;
+    bool filterSelected;
+    bool sorterSelected;
+    bool individualTeamSelected;
     Ui::tablefilter *ui;
-
 };
 
 #endif // TABLEFILTERS_H

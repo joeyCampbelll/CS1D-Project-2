@@ -12,11 +12,13 @@ tablefilter::tablefilter(QWidget *parent) :
     this->qry = new QSqlQuery();
 
     // Gets each individual team name for combobox
+    ui->individualTeamEntry->setPlaceholderText("NONE");
     this->qry->prepare("SELECT TEAM_NAME FROM MLB_Information");
     this->qry->exec();
     this->model->setQuery(*qry);
     this->ui->individualTeamEntry->setModel(model);
 
+    ui->sortByEntry->setPlaceholderText("NONE");
     ui->sortByEntry->addItem("Team Name");
     ui->sortByEntry->addItem("Stadium Name");
     ui->sortByEntry->addItem("Date Opened");
@@ -28,6 +30,23 @@ tablefilter::tablefilter(QWidget *parent) :
     ui->sortByEntry->addItem("Playing Surface");
     ui->sortByEntry->addItem("Roof Type");
 
+    ui->onlyShowEntry->setPlaceholderText("NONE");
+    ui->onlyShowEntry->addItem("in the American League");
+    ui->onlyShowEntry->addItem("in the National League");
+    ui->onlyShowEntry->addItem("with the max length to CF");
+    ui->onlyShowEntry->addItem("with the shortest length to CF");
+    ui->onlyShowEntry->addItem("with a Retro Modern stadium");
+    ui->onlyShowEntry->addItem("with a Retro Classic stadium");
+    ui->onlyShowEntry->addItem("with a Jewel Box stadium");
+    ui->onlyShowEntry->addItem("with a Modern stadium");
+    ui->onlyShowEntry->addItem("with a Multipurpose stadium");
+    ui->onlyShowEntry->addItem("with an open roof");
+    ui->onlyShowEntry->addItem("with a retractable roof");
+    ui->onlyShowEntry->addItem("with a fixed roof");
+
+    individualTeamSelected = false;
+    sorterSelected = false;
+    filterSelected = false;
 }
 
 tablefilter::~tablefilter()
@@ -42,17 +61,8 @@ void tablefilter::setTableView(QTableView *newTableView)
 
 void tablefilter::on_individualTeamEntry_activated(const QString &arg1)
 {
-    this->model = new QSqlQueryModel();
-
-    this->qry = new QSqlQuery();
-
-    // Gets each individual team name for combobox
-    this->qry->prepare("SELECT * FROM MLB_Information WHERE TEAM_NAME = :teamname");
-    this->qry->bindValue(":teamname", arg1);
-
-    this->qry->exec();
-    this->model->setQuery(*qry);
-    this->tableView->setModel(model);
+    individualTeamSelected = true;
+    applyFilters(arg1, "", "");
 }
 
 void tablefilter::on_exitFiltersButton_clicked()
@@ -60,3 +70,22 @@ void tablefilter::on_exitFiltersButton_clicked()
     this->close();
 }
 
+//void tablefilter::applyFilters(QString indiTeam, QString sorter, QString filter)
+//{
+//    this->model = new QSqlQueryModel();
+//    this->qry = new QSqlQuery();
+
+//    if(individualTeamSelected == false && sorterSelected == false && filterSelected == false)
+//    {
+//        return;
+//    }
+//    else if(individualTeamSelected == true && sorterSelected == false && filterSelected == false)
+//    {
+//        this->qry->prepare("SELECT * FROM MLB_Information WHERE TEAM_NAME = :teamname");
+//        this->qry->bindValue(":teamname", indiTeam);
+//    }
+
+//    this->qry->exec();
+//    this->model->setQuery(*qry);
+//    this->tableView->setModel(model);
+//}

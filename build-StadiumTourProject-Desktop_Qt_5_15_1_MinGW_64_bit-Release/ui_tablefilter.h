@@ -31,7 +31,7 @@ public:
     QLabel *ShapeTypeLabel;
     QComboBox *sortByEntry;
     QLabel *ShapeTypeLabel_2;
-    QComboBox *sortByEntry_2;
+    QComboBox *onlyShowEntry;
     QPushButton *exitFiltersButton;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
@@ -46,7 +46,7 @@ public:
         tablefilter->resize(413, 484);
         layoutWidget = new QWidget(tablefilter);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(30, 50, 354, 82));
+        layoutWidget->setGeometry(QRect(30, 50, 371, 82));
         AddEditGeneralLayout = new QFormLayout(layoutWidget);
         AddEditGeneralLayout->setObjectName(QString::fromUtf8("AddEditGeneralLayout"));
         AddEditGeneralLayout->setContentsMargins(0, 0, 0, 0);
@@ -75,14 +75,14 @@ public:
 
         AddEditGeneralLayout->setWidget(2, QFormLayout::LabelRole, ShapeTypeLabel_2);
 
-        sortByEntry_2 = new QComboBox(layoutWidget);
-        sortByEntry_2->setObjectName(QString::fromUtf8("sortByEntry_2"));
+        onlyShowEntry = new QComboBox(layoutWidget);
+        onlyShowEntry->setObjectName(QString::fromUtf8("onlyShowEntry"));
 
-        AddEditGeneralLayout->setWidget(2, QFormLayout::FieldRole, sortByEntry_2);
+        AddEditGeneralLayout->setWidget(2, QFormLayout::FieldRole, onlyShowEntry);
 
         exitFiltersButton = new QPushButton(tablefilter);
         exitFiltersButton->setObjectName(QString::fromUtf8("exitFiltersButton"));
-        exitFiltersButton->setGeometry(QRect(166, 446, 81, 27));
+        exitFiltersButton->setGeometry(QRect(130, 440, 151, 27));
         QFont font;
         font.setPointSize(12);
         font.setBold(true);
@@ -121,7 +121,7 @@ public:
         ShapesLabel->setText(QCoreApplication::translate("tablefilter", "Individual Team:", nullptr));
         ShapeTypeLabel->setText(QCoreApplication::translate("tablefilter", "Sort By: ", nullptr));
         ShapeTypeLabel_2->setText(QCoreApplication::translate("tablefilter", "Only show teams...", nullptr));
-        exitFiltersButton->setText(QCoreApplication::translate("tablefilter", "Exit", nullptr));
+        exitFiltersButton->setText(QCoreApplication::translate("tablefilter", "Apply and Exit", nullptr));
         radioButton_3->setText(QCoreApplication::translate("tablefilter", "Show both Leagues", nullptr));
         radioButton->setText(QCoreApplication::translate("tablefilter", "Only Show National League", nullptr));
         radioButton_2->setText(QCoreApplication::translate("tablefilter", "Only Show American League", nullptr));
