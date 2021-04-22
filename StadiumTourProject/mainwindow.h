@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "database.h"
+#include "tablefilter.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,7 +22,7 @@ public:
     *
     * updates query for entire MLB info chart and sets ui Model
     */
-    void showMLB();
+    void showAllMLB();
 
 private slots:
 
@@ -35,8 +36,12 @@ private slots:
 
     void on_pushButton_cancel_clicked();
 
+    void on_viewFiltersButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+
+    tablefilter *filter;
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant

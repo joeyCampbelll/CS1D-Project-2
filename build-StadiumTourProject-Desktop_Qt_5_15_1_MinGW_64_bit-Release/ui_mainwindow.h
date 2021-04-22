@@ -44,6 +44,7 @@ public:
     QPushButton *tableButton;
     QWidget *tableViewPage;
     QTableView *mlbTableView;
+    QPushButton *viewFiltersButton;
     QWidget *adminLoginPage;
     QLabel *label_3;
     QPushButton *pushButton_cancel;
@@ -117,6 +118,10 @@ public:
         mlbTableView = new QTableView(tableViewPage);
         mlbTableView->setObjectName(QString::fromUtf8("mlbTableView"));
         mlbTableView->setGeometry(QRect(10, 90, 781, 371));
+        viewFiltersButton = new QPushButton(tableViewPage);
+        viewFiltersButton->setObjectName(QString::fromUtf8("viewFiltersButton"));
+        viewFiltersButton->setGeometry(QRect(335, 50, 131, 27));
+        viewFiltersButton->setFont(font);
         stackedWidget->addWidget(tableViewPage);
         adminLoginPage = new QWidget();
         adminLoginPage->setObjectName(QString::fromUtf8("adminLoginPage"));
@@ -176,6 +181,7 @@ public:
         dfsBfsButton->setText(QCoreApplication::translate("MainWindow", "DFS and BFS", nullptr));
         buildTripButton->setText(QCoreApplication::translate("MainWindow", "Build Trip", nullptr));
         tableButton->setText(QCoreApplication::translate("MainWindow", "View Data", nullptr));
+        viewFiltersButton->setText(QCoreApplication::translate("MainWindow", "View Filters", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Please Enter:", nullptr));
         pushButton_cancel->setText(QCoreApplication::translate("MainWindow", "Cancel", nullptr));
         pushButton_login->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));

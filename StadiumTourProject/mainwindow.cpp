@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     else
     {
         qDebug() << "DATABASE SUCCESSFULLY CONNECTED" << Qt::endl;
-        showMLB();
+        showAllMLB();
     }
 }
 
@@ -26,7 +26,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::showMLB()
+void MainWindow::showAllMLB()
 {
     QSqlQueryModel* model = new QSqlQueryModel();
 
@@ -34,14 +34,15 @@ void MainWindow::showMLB()
 
     qry->prepare("SELECT * FROM MLB_Information");
 
-    if(qry->exec())
-    {
-        qDebug() << "MLB Info updated and displayed to table";
-    }
-    else
-    {
-        qDebug() << "MLB info failed to display";
-    }
+//    if(qry->exec())
+//    {
+//        qDebug() << "MLB Info updated and displayed to table";
+//    }
+//    else
+//    {
+//        qDebug() << "MLB info failed to display";
+//    }
+    qry->exec();
 
     model->setQuery(*qry);
 
@@ -52,6 +53,8 @@ void MainWindow::showMLB()
 void MainWindow::on_tableButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    this->filter = new tablefilter();
+    this->filter->setTableView(ui->mlbTableView);
     // JAKE AND JOEY - this is where we start implementing a table view
 }
 
@@ -74,4 +77,9 @@ void MainWindow::on_dfsBfsButton_clicked()
 void MainWindow::on_pushButton_cancel_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_viewFiltersButton_clicked()
+{
+    filter->show();
 }
