@@ -121,15 +121,19 @@ void tablefilter::applyFilters()
         QString temp;
         if(filterBy == "max")
         {
-            temp = "SELECT MAX(" + filterCol + "), * FROM MLB_Information";
+            temp = "SELECT  * FROM MLB_Information WHERE " + filterCol +
+                    " = (SELECT MAX("+ filterCol +") FROM MLB_Information)";
+
         }
         else if(filterBy == "min")
         {
-            temp = "SELECT MIN(" + filterCol + "), * FROM MLB_Information";
+            temp = "SELECT  * FROM MLB_Information WHERE " + filterCol +
+                    " = (SELECT MIN("+ filterCol +") FROM MLB_Information)";
         }
         else
         {
-            temp = "SELECT * FROM MLB_Information WHERE " + filterCol + " = '" + filterBy + "' ORDER BY " + orderBy;
+            temp = "SELECT * FROM MLB_Information WHERE " + filterCol +
+                    " = '" + filterBy + "' ORDER BY " + orderBy;
         }
         this->qry->prepare(temp);
     }
@@ -141,11 +145,13 @@ void tablefilter::applyFilters()
         QString temp;
         if(filterBy == "max")
         {
-            temp = "SELECT MAX(" + filterCol + "), * FROM MLB_Information";
+            temp = "SELECT  * FROM MLB_Information WHERE " + filterCol +
+                    " = (SELECT MAX("+ filterCol +") FROM MLB_Information)";
         }
         else if(filterBy == "min")
         {
-            temp = "SELECT MIN(" + filterCol + "), * FROM MLB_Information";
+            temp = "SELECT  * FROM MLB_Information WHERE " + filterCol +
+                    " = (SELECT MIN("+ filterCol +") FROM MLB_Information)";
         }
         else
         {
