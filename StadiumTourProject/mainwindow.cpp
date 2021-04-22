@@ -34,14 +34,6 @@ void MainWindow::showAllMLB()
 
     qry->prepare("SELECT * FROM MLB_Information");
 
-//    if(qry->exec())
-//    {
-//        qDebug() << "MLB Info updated and displayed to table";
-//    }
-//    else
-//    {
-//        qDebug() << "MLB info failed to display";
-//    }
     qry->exec();
 
     model->setQuery(*qry);

@@ -16,10 +16,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
+     <x>30</x>
+     <y>50</y>
      <width>354</width>
-     <height>160</height>
+     <height>82</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="AddEditGeneralLayout">
@@ -34,34 +34,24 @@
      <widget class="QComboBox" name="individualTeamEntry"/>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="ShapeIdLabel">
+     <widget class="QLabel" name="ShapeTypeLabel">
       <property name="text">
-       <string>Shape ID:</string>
+       <string>Sort By: </string>
       </property>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QSpinBox" name="ShapeIdEntry"/>
+     <widget class="QComboBox" name="sortByEntry"/>
     </item>
     <item row="2" column="0">
-     <widget class="QLabel" name="ShapeTypeLabel">
+     <widget class="QLabel" name="ShapeTypeLabel_2">
       <property name="text">
-       <string>Shape Type:</string>
+       <string>Only show teams...</string>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QComboBox" name="ShapeTypeEntry"/>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="ShapeDimensionsLabel">
-      <property name="text">
-       <string>Shape Dimensions:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QTextEdit" name="ShapeDimensionsEntry"/>
+     <widget class="QComboBox" name="sortByEntry_2"/>
     </item>
    </layout>
   </widget>
@@ -84,6 +74,39 @@
    <property name="text">
     <string>Exit</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>121</x>
+     <y>190</y>
+     <width>201</width>
+     <height>95</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QRadioButton" name="radioButton_3">
+      <property name="text">
+       <string>Show both Leagues</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QRadioButton" name="radioButton">
+      <property name="text">
+       <string>Only Show National League</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QRadioButton" name="radioButton_2">
+      <property name="text">
+       <string>Only Show American League</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

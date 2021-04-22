@@ -28,7 +28,12 @@ private slots:
 
 private:
     QTableView* tableView;
+    QSqlQueryModel* model;
+    QSqlQuery* qry;
+    bool onlyAmericanLeague = false;
+    bool onlyNationalLeague = false;
     Ui::tablefilter *ui;
+
 };
 
 #endif // TABLEFILTERS_H

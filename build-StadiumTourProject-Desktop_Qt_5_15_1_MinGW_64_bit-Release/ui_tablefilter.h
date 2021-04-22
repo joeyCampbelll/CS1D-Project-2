@@ -13,10 +13,10 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpinBox>
-#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,13 +28,16 @@ public:
     QFormLayout *AddEditGeneralLayout;
     QLabel *ShapesLabel;
     QComboBox *individualTeamEntry;
-    QLabel *ShapeIdLabel;
-    QSpinBox *ShapeIdEntry;
     QLabel *ShapeTypeLabel;
-    QComboBox *ShapeTypeEntry;
-    QLabel *ShapeDimensionsLabel;
-    QTextEdit *ShapeDimensionsEntry;
+    QComboBox *sortByEntry;
+    QLabel *ShapeTypeLabel_2;
+    QComboBox *sortByEntry_2;
     QPushButton *exitFiltersButton;
+    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout;
+    QRadioButton *radioButton_3;
+    QRadioButton *radioButton;
+    QRadioButton *radioButton_2;
 
     void setupUi(QWidget *tablefilter)
     {
@@ -43,7 +46,7 @@ public:
         tablefilter->resize(413, 484);
         layoutWidget = new QWidget(tablefilter);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 20, 354, 160));
+        layoutWidget->setGeometry(QRect(30, 50, 354, 82));
         AddEditGeneralLayout = new QFormLayout(layoutWidget);
         AddEditGeneralLayout->setObjectName(QString::fromUtf8("AddEditGeneralLayout"));
         AddEditGeneralLayout->setContentsMargins(0, 0, 0, 0);
@@ -57,35 +60,25 @@ public:
 
         AddEditGeneralLayout->setWidget(0, QFormLayout::FieldRole, individualTeamEntry);
 
-        ShapeIdLabel = new QLabel(layoutWidget);
-        ShapeIdLabel->setObjectName(QString::fromUtf8("ShapeIdLabel"));
-
-        AddEditGeneralLayout->setWidget(1, QFormLayout::LabelRole, ShapeIdLabel);
-
-        ShapeIdEntry = new QSpinBox(layoutWidget);
-        ShapeIdEntry->setObjectName(QString::fromUtf8("ShapeIdEntry"));
-
-        AddEditGeneralLayout->setWidget(1, QFormLayout::FieldRole, ShapeIdEntry);
-
         ShapeTypeLabel = new QLabel(layoutWidget);
         ShapeTypeLabel->setObjectName(QString::fromUtf8("ShapeTypeLabel"));
 
-        AddEditGeneralLayout->setWidget(2, QFormLayout::LabelRole, ShapeTypeLabel);
+        AddEditGeneralLayout->setWidget(1, QFormLayout::LabelRole, ShapeTypeLabel);
 
-        ShapeTypeEntry = new QComboBox(layoutWidget);
-        ShapeTypeEntry->setObjectName(QString::fromUtf8("ShapeTypeEntry"));
+        sortByEntry = new QComboBox(layoutWidget);
+        sortByEntry->setObjectName(QString::fromUtf8("sortByEntry"));
 
-        AddEditGeneralLayout->setWidget(2, QFormLayout::FieldRole, ShapeTypeEntry);
+        AddEditGeneralLayout->setWidget(1, QFormLayout::FieldRole, sortByEntry);
 
-        ShapeDimensionsLabel = new QLabel(layoutWidget);
-        ShapeDimensionsLabel->setObjectName(QString::fromUtf8("ShapeDimensionsLabel"));
+        ShapeTypeLabel_2 = new QLabel(layoutWidget);
+        ShapeTypeLabel_2->setObjectName(QString::fromUtf8("ShapeTypeLabel_2"));
 
-        AddEditGeneralLayout->setWidget(3, QFormLayout::LabelRole, ShapeDimensionsLabel);
+        AddEditGeneralLayout->setWidget(2, QFormLayout::LabelRole, ShapeTypeLabel_2);
 
-        ShapeDimensionsEntry = new QTextEdit(layoutWidget);
-        ShapeDimensionsEntry->setObjectName(QString::fromUtf8("ShapeDimensionsEntry"));
+        sortByEntry_2 = new QComboBox(layoutWidget);
+        sortByEntry_2->setObjectName(QString::fromUtf8("sortByEntry_2"));
 
-        AddEditGeneralLayout->setWidget(3, QFormLayout::FieldRole, ShapeDimensionsEntry);
+        AddEditGeneralLayout->setWidget(2, QFormLayout::FieldRole, sortByEntry_2);
 
         exitFiltersButton = new QPushButton(tablefilter);
         exitFiltersButton->setObjectName(QString::fromUtf8("exitFiltersButton"));
@@ -95,6 +88,27 @@ public:
         font.setBold(true);
         font.setWeight(75);
         exitFiltersButton->setFont(font);
+        gridLayoutWidget = new QWidget(tablefilter);
+        gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(121, 190, 201, 95));
+        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        radioButton_3 = new QRadioButton(gridLayoutWidget);
+        radioButton_3->setObjectName(QString::fromUtf8("radioButton_3"));
+
+        gridLayout->addWidget(radioButton_3, 0, 0, 1, 1);
+
+        radioButton = new QRadioButton(gridLayoutWidget);
+        radioButton->setObjectName(QString::fromUtf8("radioButton"));
+
+        gridLayout->addWidget(radioButton, 1, 0, 1, 1);
+
+        radioButton_2 = new QRadioButton(gridLayoutWidget);
+        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
+
+        gridLayout->addWidget(radioButton_2, 2, 0, 1, 1);
+
 
         retranslateUi(tablefilter);
 
@@ -105,10 +119,12 @@ public:
     {
         tablefilter->setWindowTitle(QCoreApplication::translate("tablefilter", "Form", nullptr));
         ShapesLabel->setText(QCoreApplication::translate("tablefilter", "Individual Team:", nullptr));
-        ShapeIdLabel->setText(QCoreApplication::translate("tablefilter", "Shape ID:", nullptr));
-        ShapeTypeLabel->setText(QCoreApplication::translate("tablefilter", "Shape Type:", nullptr));
-        ShapeDimensionsLabel->setText(QCoreApplication::translate("tablefilter", "Shape Dimensions:", nullptr));
+        ShapeTypeLabel->setText(QCoreApplication::translate("tablefilter", "Sort By: ", nullptr));
+        ShapeTypeLabel_2->setText(QCoreApplication::translate("tablefilter", "Only show teams...", nullptr));
         exitFiltersButton->setText(QCoreApplication::translate("tablefilter", "Exit", nullptr));
+        radioButton_3->setText(QCoreApplication::translate("tablefilter", "Show both Leagues", nullptr));
+        radioButton->setText(QCoreApplication::translate("tablefilter", "Only Show National League", nullptr));
+        radioButton_2->setText(QCoreApplication::translate("tablefilter", "Only Show American League", nullptr));
     } // retranslateUi
 
 };
