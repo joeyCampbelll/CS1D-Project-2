@@ -20,13 +20,20 @@ public:
 
     void setTableView(QTableView *newTableView);
 
+    void resetFilters();
+
 private slots:
 
     void on_individualTeamEntry_activated(const QString &arg1);
 
     void on_exitFiltersButton_clicked();
 
-    void applyFilters(QString indiTeam, QString sorter, QString filter);
+    void applyFilters();
+
+    void on_sortByEntry_currentIndexChanged(int index);
+
+    void on_onlyShowEntry_currentIndexChanged(int index);
+
 
 private:
     QTableView* tableView;
@@ -35,6 +42,10 @@ private:
     bool filterSelected;
     bool sorterSelected;
     bool individualTeamSelected;
+    QString orderBy;
+    QString filterBy;
+    QString indiTeam;
+    QString filterCol;
     Ui::tablefilter *ui;
 };
 

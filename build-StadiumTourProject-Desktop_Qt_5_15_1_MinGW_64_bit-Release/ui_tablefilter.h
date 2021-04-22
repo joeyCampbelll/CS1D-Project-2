@@ -13,10 +13,8 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFormLayout>
-#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -33,11 +31,6 @@ public:
     QLabel *ShapeTypeLabel_2;
     QComboBox *onlyShowEntry;
     QPushButton *exitFiltersButton;
-    QWidget *gridLayoutWidget;
-    QGridLayout *gridLayout;
-    QRadioButton *radioButton_3;
-    QRadioButton *radioButton;
-    QRadioButton *radioButton_2;
 
     void setupUi(QWidget *tablefilter)
     {
@@ -46,12 +39,17 @@ public:
         tablefilter->resize(413, 484);
         layoutWidget = new QWidget(tablefilter);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(30, 50, 371, 82));
+        layoutWidget->setGeometry(QRect(20, 160, 371, 82));
         AddEditGeneralLayout = new QFormLayout(layoutWidget);
         AddEditGeneralLayout->setObjectName(QString::fromUtf8("AddEditGeneralLayout"));
         AddEditGeneralLayout->setContentsMargins(0, 0, 0, 0);
         ShapesLabel = new QLabel(layoutWidget);
         ShapesLabel->setObjectName(QString::fromUtf8("ShapesLabel"));
+        QFont font;
+        font.setPointSize(9);
+        font.setBold(true);
+        font.setWeight(75);
+        ShapesLabel->setFont(font);
 
         AddEditGeneralLayout->setWidget(0, QFormLayout::LabelRole, ShapesLabel);
 
@@ -62,6 +60,7 @@ public:
 
         ShapeTypeLabel = new QLabel(layoutWidget);
         ShapeTypeLabel->setObjectName(QString::fromUtf8("ShapeTypeLabel"));
+        ShapeTypeLabel->setFont(font);
 
         AddEditGeneralLayout->setWidget(1, QFormLayout::LabelRole, ShapeTypeLabel);
 
@@ -72,6 +71,7 @@ public:
 
         ShapeTypeLabel_2 = new QLabel(layoutWidget);
         ShapeTypeLabel_2->setObjectName(QString::fromUtf8("ShapeTypeLabel_2"));
+        ShapeTypeLabel_2->setFont(font);
 
         AddEditGeneralLayout->setWidget(2, QFormLayout::LabelRole, ShapeTypeLabel_2);
 
@@ -82,33 +82,12 @@ public:
 
         exitFiltersButton = new QPushButton(tablefilter);
         exitFiltersButton->setObjectName(QString::fromUtf8("exitFiltersButton"));
-        exitFiltersButton->setGeometry(QRect(130, 440, 151, 27));
-        QFont font;
-        font.setPointSize(12);
-        font.setBold(true);
-        font.setWeight(75);
-        exitFiltersButton->setFont(font);
-        gridLayoutWidget = new QWidget(tablefilter);
-        gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(121, 190, 201, 95));
-        gridLayout = new QGridLayout(gridLayoutWidget);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
-        radioButton_3 = new QRadioButton(gridLayoutWidget);
-        radioButton_3->setObjectName(QString::fromUtf8("radioButton_3"));
-
-        gridLayout->addWidget(radioButton_3, 0, 0, 1, 1);
-
-        radioButton = new QRadioButton(gridLayoutWidget);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
-
-        gridLayout->addWidget(radioButton, 1, 0, 1, 1);
-
-        radioButton_2 = new QRadioButton(gridLayoutWidget);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
-
-        gridLayout->addWidget(radioButton_2, 2, 0, 1, 1);
-
+        exitFiltersButton->setGeometry(QRect(130, 436, 161, 31));
+        QFont font1;
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setWeight(75);
+        exitFiltersButton->setFont(font1);
 
         retranslateUi(tablefilter);
 
@@ -122,9 +101,6 @@ public:
         ShapeTypeLabel->setText(QCoreApplication::translate("tablefilter", "Sort By: ", nullptr));
         ShapeTypeLabel_2->setText(QCoreApplication::translate("tablefilter", "Only show teams...", nullptr));
         exitFiltersButton->setText(QCoreApplication::translate("tablefilter", "Apply and Exit", nullptr));
-        radioButton_3->setText(QCoreApplication::translate("tablefilter", "Show both Leagues", nullptr));
-        radioButton->setText(QCoreApplication::translate("tablefilter", "Only Show National League", nullptr));
-        radioButton_2->setText(QCoreApplication::translate("tablefilter", "Only Show American League", nullptr));
     } // retranslateUi
 
 };

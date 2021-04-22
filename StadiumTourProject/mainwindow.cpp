@@ -74,6 +74,8 @@ void MainWindow::on_pushButton_cancel_clicked()
 void MainWindow::on_viewFiltersButton_clicked()
 {
     filter->show();
+    filter->resetFilters();
+    on_restoreTableButton_clicked();
 }
 
 void MainWindow::on_exitTableViewButton_clicked()
