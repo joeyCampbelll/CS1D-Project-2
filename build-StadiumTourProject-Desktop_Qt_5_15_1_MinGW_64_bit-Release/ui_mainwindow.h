@@ -45,6 +45,8 @@ public:
     QWidget *tableViewPage;
     QTableView *mlbTableView;
     QPushButton *viewFiltersButton;
+    QPushButton *restoreTableButton;
+    QPushButton *exitTableViewButton;
     QWidget *adminLoginPage;
     QLabel *label_3;
     QPushButton *pushButton_cancel;
@@ -120,8 +122,16 @@ public:
         mlbTableView->setGeometry(QRect(10, 90, 781, 371));
         viewFiltersButton = new QPushButton(tableViewPage);
         viewFiltersButton->setObjectName(QString::fromUtf8("viewFiltersButton"));
-        viewFiltersButton->setGeometry(QRect(335, 50, 131, 27));
+        viewFiltersButton->setGeometry(QRect(255, 50, 131, 27));
         viewFiltersButton->setFont(font);
+        restoreTableButton = new QPushButton(tableViewPage);
+        restoreTableButton->setObjectName(QString::fromUtf8("restoreTableButton"));
+        restoreTableButton->setGeometry(QRect(390, 50, 151, 27));
+        restoreTableButton->setFont(font);
+        exitTableViewButton = new QPushButton(tableViewPage);
+        exitTableViewButton->setObjectName(QString::fromUtf8("exitTableViewButton"));
+        exitTableViewButton->setGeometry(QRect(10, 50, 71, 27));
+        exitTableViewButton->setFont(font);
         stackedWidget->addWidget(tableViewPage);
         adminLoginPage = new QWidget();
         adminLoginPage->setObjectName(QString::fromUtf8("adminLoginPage"));
@@ -182,6 +192,8 @@ public:
         buildTripButton->setText(QCoreApplication::translate("MainWindow", "Build Trip", nullptr));
         tableButton->setText(QCoreApplication::translate("MainWindow", "View Data", nullptr));
         viewFiltersButton->setText(QCoreApplication::translate("MainWindow", "View Filters", nullptr));
+        restoreTableButton->setText(QCoreApplication::translate("MainWindow", "Restore Table", nullptr));
+        exitTableViewButton->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Please Enter:", nullptr));
         pushButton_cancel->setText(QCoreApplication::translate("MainWindow", "Cancel", nullptr));
         pushButton_login->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));

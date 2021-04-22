@@ -21,7 +21,10 @@ public:
     void setTableView(QTableView *newTableView);
 
 private slots:
-    void on_pushButton_clicked();
+
+    void on_individualTeamEntry_activated(const QString &arg1);
+
+    void on_exitFiltersButton_clicked();
 
 private:
     QTableView* tableView;

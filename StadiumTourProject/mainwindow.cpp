@@ -83,3 +83,25 @@ void MainWindow::on_viewFiltersButton_clicked()
 {
     filter->show();
 }
+
+void MainWindow::on_exitTableViewButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    on_restoreTableButton_clicked();
+}
+
+void MainWindow::on_restoreTableButton_clicked()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    QSqlQuery* qry = new QSqlQuery();
+
+    qry->prepare("SELECT * FROM MLB_Information");
+
+    qry->exec();
+
+    model->setQuery(*qry);
+
+    ui->mlbTableView->setModel(model);
+    ui->mlbTableView->resizeColumnsToContents();
+}

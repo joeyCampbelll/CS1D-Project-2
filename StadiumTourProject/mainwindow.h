@@ -38,6 +38,11 @@ private slots:
 
     void on_viewFiltersButton_clicked();
 
+    void on_restoreTableButton_clicked();
+
+    void on_exitTableViewButton_clicked();
+
+
 private:
     Ui::MainWindow *ui;
 

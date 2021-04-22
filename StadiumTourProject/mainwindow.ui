@@ -127,7 +127,7 @@
      <widget class="QPushButton" name="viewFiltersButton">
       <property name="geometry">
        <rect>
-        <x>335</x>
+        <x>255</x>
         <y>50</y>
         <width>131</width>
         <height>27</height>
@@ -142,6 +142,46 @@
       </property>
       <property name="text">
        <string>View Filters</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="restoreTableButton">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>50</y>
+        <width>151</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Restore Table</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="exitTableViewButton">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>71</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Exit</string>
       </property>
      </widget>
     </widget>

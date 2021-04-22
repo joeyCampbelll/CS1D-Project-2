@@ -13,17 +13,76 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>240</y>
-     <width>80</width>
-     <height>25</height>
+     <x>20</x>
+     <y>20</y>
+     <width>354</width>
+     <height>160</height>
     </rect>
    </property>
+   <layout class="QFormLayout" name="AddEditGeneralLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="ShapesLabel">
+      <property name="text">
+       <string>Individual Team:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="individualTeamEntry"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="ShapeIdLabel">
+      <property name="text">
+       <string>Shape ID:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QSpinBox" name="ShapeIdEntry"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="ShapeTypeLabel">
+      <property name="text">
+       <string>Shape Type:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QComboBox" name="ShapeTypeEntry"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="ShapeDimensionsLabel">
+      <property name="text">
+       <string>Shape Dimensions:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QTextEdit" name="ShapeDimensionsEntry"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="exitFiltersButton">
+   <property name="geometry">
+    <rect>
+     <x>166</x>
+     <y>446</y>
+     <width>81</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
-    <string>test</string>
+    <string>Exit</string>
    </property>
   </widget>
  </widget>
