@@ -11,12 +11,14 @@ CONFIG += c++11
 
 SOURCES += \
     database.cpp \
+    graphal.cpp \
     main.cpp \
     mainwindow.cpp \
     tablefilter.cpp
 
 HEADERS += \
     database.h \
+    graphal.h \
     mainwindow.h \
     tablefilter.h
 
