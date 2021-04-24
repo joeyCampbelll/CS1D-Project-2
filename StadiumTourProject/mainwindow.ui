@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>524</height>
+    <height>583</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,14 +17,14 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>-10</x>
-      <y>10</y>
+      <x>0</x>
+      <y>0</y>
       <width>801</width>
-      <height>481</height>
+      <height>551</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="mainPage">
      <widget class="QPushButton" name="adminButton">
@@ -313,7 +313,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>40</y>
+        <y>20</y>
         <width>781</width>
         <height>201</height>
        </rect>
@@ -331,7 +331,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>270</y>
+        <y>250</y>
         <width>781</width>
         <height>171</height>
        </rect>
@@ -343,49 +343,11 @@
        <string notr="true">background-color: rgb(255, 255, 255)</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="addButt">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>450</y>
-        <width>121</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255)</string>
-      </property>
-      <property name="text">
-       <string>Add Colleges</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_cancel_2">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>450</y>
-        <width>121</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255)</string>
-      </property>
-      <property name="text">
-       <string>Cancel</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="ErrorLabel">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>240</y>
+        <y>220</y>
         <width>781</width>
         <height>31</height>
        </rect>
@@ -404,6 +366,62 @@
       <property name="geometry">
        <rect>
         <x>20</x>
+        <y>0</y>
+        <width>781</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Please select a .CSV file below:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="addButt">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>430</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Add Stadium</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_cancel_2">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>430</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="AdminDistancesPage">
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
         <y>10</y>
         <width>781</width>
         <height>20</height>
@@ -414,6 +432,76 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>781</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QTreeView" name="FileSelector"/>
+       </item>
+       <item>
+        <widget class="QListView" name="FileView"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="labelError">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>235</y>
+        <width>781</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="DistanceTableWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>260</y>
+        <width>781</width>
+        <height>171</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_addDistances">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>440</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add Distances</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>440</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cancel</string>
       </property>
      </widget>
     </widget>

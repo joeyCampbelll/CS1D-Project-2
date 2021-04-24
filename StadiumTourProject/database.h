@@ -12,13 +12,10 @@
 
 //ryans path - "C:/Users/ryans/OneDrive/Documents/GitHub/CS1D-Project-2/StadiumTourProject/"
 //joeys path - "C:/Source/Qt/CS1D-Project-2/StadiumTourProject/"
-//kates path -
 
-//jakes path -
+//static const QString PROJECT_PATH = "C:/Users/ryans/OneDrive/Documents/1D-Project-2/StadiumTourProject/";
 
-static const QString PROJECT_PATH = "C:/Users/ryans/OneDrive/Documents/1D-Project-2/StadiumTourProject/";
-
-//static const QString PROJECT_PATH = QDir::currentPath();
+static const QString PROJECT_PATH = QDir::currentPath();
 
 class Database
 {
@@ -58,6 +55,15 @@ public:
     * @param list - list of stadiums to add
     */
     void addNewStadium(QStringList list);
+
+    /**
+    * @brief Method to add new distance
+    *
+    * adds new distance to database
+    *
+    * @param list - list of distances to add
+    */
+    void addNewDistance(QStringList list);
 
 private:
     /**

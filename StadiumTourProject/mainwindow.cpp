@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setFixedSize(800, 500);
+    this->setFixedSize(800, 525);
     ui->stackedWidget->setCurrentIndex(0);
 
 //    Check if database is open
@@ -23,7 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     //used to check if file has been added
-    added = false;
+    addedStadium = false;
+    addedDistance = false;
 
     //hides add button and fileTable
     ui->addButt->hide();
@@ -124,7 +125,7 @@ void MainWindow::on_restoreTableButton_clicked()
 void MainWindow::on_addButt_clicked()
 {
     //parses and added file contents if not yet added
-    if (!added)
+    if (!addedStadium)
     {
         //checks if file can open
         QFile file(pathToFile);
@@ -146,10 +147,9 @@ void MainWindow::on_addButt_clicked()
 
             //confirmation message
             ui->ErrorLabel->setText("New Stadium added to database");
-            added = true;
+            addedStadium = true;
 
-//            admin->updateColleges();
-//            admin->show();
+            showAllMLB();
             ui->stackedWidget->setCurrentIndex(0);
         }
     }
@@ -232,4 +232,100 @@ void MainWindow::on_fileView1_clicked(const QModelIndex &index)
         }
 
     }
+}
+
+void MainWindow::on_FileSelector_clicked(const QModelIndex &index)
+{
+    QString sPath = dirModel->fileInfo(index).absoluteFilePath();
+    ui->fileView1->setRootIndex(fileModel->setRootPath(sPath));
+}
+
+void MainWindow::on_FileView_clicked(const QModelIndex &index)
+{
+        //clear errorLabel
+        ui->labelError->clear();
+
+        //sets up tableWidget
+        ui->DistanceTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->DistanceTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->DistanceTableWidget->setColumnCount(3);
+        QStringList headers;
+        headers << "Start" << "End" << "Distance";
+        ui->DistanceTableWidget->setHorizontalHeaderLabels(headers);
+
+        //sets path
+        QString path = fileModel->fileInfo(index).absoluteFilePath();
+        pathToFile = path;
+        bool correctFileType = path.endsWith(".csv");
+        qDebug() << path;
+        //checks if file is correct
+        if (!correctFileType)
+            ui->labelError->setText("Please select a .csv file");
+        else {
+            QFile file(path);
+            if (!file.open(QIODevice::ReadOnly)) {
+                    qDebug() << file.errorString();
+                }
+            else {
+                qDebug() << "file opened";
+
+                //reads file and outputs info to table
+                while (!file.atEnd())
+                {
+                    QString test = QString(file.readLine());
+                    QStringList toAdd = myDb.parseFile(test);
+
+                    QTableWidgetItem *StartStadium = new QTableWidgetItem(toAdd.at(0));
+                    QTableWidgetItem *EndStadium = new QTableWidgetItem(toAdd.at(1));
+                    QTableWidgetItem *Distance = new QTableWidgetItem(toAdd.at(2));
+
+                    ui->DistanceTableWidget->insertRow(ui->DistanceTableWidget->rowCount());
+                    ui->DistanceTableWidget->setItem(ui->DistanceTableWidget->rowCount() - 1, 0, StartStadium);
+                    ui->DistanceTableWidget->setItem(ui->DistanceTableWidget->rowCount() - 1, 1, EndStadium);
+                    ui->DistanceTableWidget->setItem(ui->DistanceTableWidget->rowCount() - 1, 2, Distance);
+
+                    ui->labelError->setText("Click 'Add' to add the information below to the database");
+                }
+                ui->pushButton_addDistances->show();
+            }
+
+        }
+}
+
+void MainWindow::on_pushButton_addDistances_clicked()
+{
+        //parses and added file contents if not yet added
+        if (!addedDistance)
+        {
+            //checks if file can open
+            QFile file(pathToFile);
+            if (!file.open(QIODevice::ReadOnly))
+            {
+                qDebug() << file.errorString();
+            }
+            else
+            {
+                qDebug() << "File is open";
+
+                //reads each line of the file and parses the contents to DB
+                while (!file.atEnd())
+                {
+                    QString test = QString(file.readLine());
+                    QStringList toAdd = myDb.parseFile(test);
+                    myDb.addNewDistance(toAdd);
+                }
+
+                //confirmation message
+                ui->labelError->setText("New Distances added to database");
+                addedDistance = true;
+
+                showAllMLB();
+                ui->stackedWidget->setCurrentIndex(0);
+            }
+        }
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
 }

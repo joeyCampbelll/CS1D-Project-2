@@ -123,3 +123,23 @@ void Database::addNewStadium(QStringList list) {
         qDebug() << "Query was not executed";
     }
 }
+
+void Database::addNewDistance(QStringList list) {
+    QSqlQuery* query = new QSqlQuery(myDB);
+
+    //adds stadium to Distances Table
+    query->prepare("INSERT INTO Distances (ORIGINATED_STADIUM, DESTINATION_STADIUM, DISTANCE)"
+                   " VALUES (:StartStadium, :EndStadium, :Distance)");
+
+    //binds values
+    query->bindValue(":StartStadium", list.at(0));
+    query->bindValue(":EndStadium", list.at(1));
+    query->bindValue(":Distance", list.at(2));
+
+    //executes query
+    if (query->exec()) {
+        qDebug() << "Query was executed";
+    } else {
+        qDebug() << "Query was not executed";
+    }
+}

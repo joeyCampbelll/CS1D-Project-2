@@ -63,17 +63,27 @@ public:
     QTreeView *treeView1;
     QListView *fileView1;
     QTableWidget *fileTable;
-    QPushButton *addButt;
-    QPushButton *pushButton_cancel_2;
     QLabel *ErrorLabel;
     QLabel *label_4;
+    QPushButton *addButt;
+    QPushButton *pushButton_cancel_2;
+    QWidget *AdminDistancesPage;
+    QLabel *label_5;
+    QWidget *layoutWidget_3;
+    QHBoxLayout *horizontalLayout_2;
+    QTreeView *FileSelector;
+    QListView *FileView;
+    QLabel *labelError;
+    QTableWidget *DistanceTableWidget;
+    QPushButton *pushButton_addDistances;
+    QPushButton *pushButton_2;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 524);
+        MainWindow->resize(800, 583);
         actionLogin = new QAction(MainWindow);
         actionLogin->setObjectName(QString::fromUtf8("actionLogin"));
         actionLogin_2 = new QAction(MainWindow);
@@ -82,7 +92,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        stackedWidget->setGeometry(QRect(-10, 10, 801, 481));
+        stackedWidget->setGeometry(QRect(0, 0, 801, 551));
         mainPage = new QWidget();
         mainPage->setObjectName(QString::fromUtf8("mainPage"));
         adminButton = new QPushButton(mainPage);
@@ -185,7 +195,7 @@ public:
         AdminStadiumsPage->setObjectName(QString::fromUtf8("AdminStadiumsPage"));
         layoutWidget_2 = new QWidget(AdminStadiumsPage);
         layoutWidget_2->setObjectName(QString::fromUtf8("layoutWidget_2"));
-        layoutWidget_2->setGeometry(QRect(10, 40, 781, 201));
+        layoutWidget_2->setGeometry(QRect(10, 20, 781, 201));
         horizontalLayout = new QHBoxLayout(layoutWidget_2);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -201,29 +211,65 @@ public:
 
         fileTable = new QTableWidget(AdminStadiumsPage);
         fileTable->setObjectName(QString::fromUtf8("fileTable"));
-        fileTable->setGeometry(QRect(10, 270, 781, 171));
+        fileTable->setGeometry(QRect(10, 250, 781, 171));
         fileTable->setAutoFillBackground(true);
         fileTable->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255)"));
-        addButt = new QPushButton(AdminStadiumsPage);
-        addButt->setObjectName(QString::fromUtf8("addButt"));
-        addButt->setGeometry(QRect(270, 450, 121, 31));
-        addButt->setAutoFillBackground(false);
-        addButt->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255)"));
-        pushButton_cancel_2 = new QPushButton(AdminStadiumsPage);
-        pushButton_cancel_2->setObjectName(QString::fromUtf8("pushButton_cancel_2"));
-        pushButton_cancel_2->setGeometry(QRect(400, 450, 121, 31));
-        pushButton_cancel_2->setAutoFillBackground(false);
-        pushButton_cancel_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255)"));
         ErrorLabel = new QLabel(AdminStadiumsPage);
         ErrorLabel->setObjectName(QString::fromUtf8("ErrorLabel"));
-        ErrorLabel->setGeometry(QRect(10, 240, 781, 31));
+        ErrorLabel->setGeometry(QRect(10, 220, 781, 31));
         ErrorLabel->setAutoFillBackground(false);
         ErrorLabel->setAlignment(Qt::AlignCenter);
         label_4 = new QLabel(AdminStadiumsPage);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(20, 10, 781, 20));
+        label_4->setGeometry(QRect(20, 0, 781, 20));
         label_4->setAlignment(Qt::AlignCenter);
+        addButt = new QPushButton(AdminStadiumsPage);
+        addButt->setObjectName(QString::fromUtf8("addButt"));
+        addButt->setGeometry(QRect(270, 430, 121, 31));
+        addButt->setAutoFillBackground(false);
+        addButt->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255)"));
+        pushButton_cancel_2 = new QPushButton(AdminStadiumsPage);
+        pushButton_cancel_2->setObjectName(QString::fromUtf8("pushButton_cancel_2"));
+        pushButton_cancel_2->setGeometry(QRect(420, 430, 121, 31));
+        pushButton_cancel_2->setAutoFillBackground(false);
+        pushButton_cancel_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255)"));
         stackedWidget->addWidget(AdminStadiumsPage);
+        AdminDistancesPage = new QWidget();
+        AdminDistancesPage->setObjectName(QString::fromUtf8("AdminDistancesPage"));
+        label_5 = new QLabel(AdminDistancesPage);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setGeometry(QRect(10, 10, 781, 20));
+        label_5->setAlignment(Qt::AlignCenter);
+        layoutWidget_3 = new QWidget(AdminDistancesPage);
+        layoutWidget_3->setObjectName(QString::fromUtf8("layoutWidget_3"));
+        layoutWidget_3->setGeometry(QRect(10, 30, 781, 201));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget_3);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        FileSelector = new QTreeView(layoutWidget_3);
+        FileSelector->setObjectName(QString::fromUtf8("FileSelector"));
+
+        horizontalLayout_2->addWidget(FileSelector);
+
+        FileView = new QListView(layoutWidget_3);
+        FileView->setObjectName(QString::fromUtf8("FileView"));
+
+        horizontalLayout_2->addWidget(FileView);
+
+        labelError = new QLabel(AdminDistancesPage);
+        labelError->setObjectName(QString::fromUtf8("labelError"));
+        labelError->setGeometry(QRect(10, 235, 781, 21));
+        labelError->setAlignment(Qt::AlignCenter);
+        DistanceTableWidget = new QTableWidget(AdminDistancesPage);
+        DistanceTableWidget->setObjectName(QString::fromUtf8("DistanceTableWidget"));
+        DistanceTableWidget->setGeometry(QRect(10, 260, 781, 171));
+        pushButton_addDistances = new QPushButton(AdminDistancesPage);
+        pushButton_addDistances->setObjectName(QString::fromUtf8("pushButton_addDistances"));
+        pushButton_addDistances->setGeometry(QRect(270, 440, 121, 31));
+        pushButton_2 = new QPushButton(AdminDistancesPage);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(410, 440, 111, 31));
+        stackedWidget->addWidget(AdminDistancesPage);
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -231,7 +277,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -257,10 +303,14 @@ public:
         lineEdit_password->setText(QString());
         lineEdit_password->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Administrator Login", nullptr));
-        addButt->setText(QCoreApplication::translate("MainWindow", "Add Colleges", nullptr));
-        pushButton_cancel_2->setText(QCoreApplication::translate("MainWindow", "Cancel", nullptr));
         ErrorLabel->setText(QString());
         label_4->setText(QCoreApplication::translate("MainWindow", "Please select a .CSV file below:", nullptr));
+        addButt->setText(QCoreApplication::translate("MainWindow", "Add Stadium", nullptr));
+        pushButton_cancel_2->setText(QCoreApplication::translate("MainWindow", "Cancel", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "Please select a .CSV file below:", nullptr));
+        labelError->setText(QString());
+        pushButton_addDistances->setText(QCoreApplication::translate("MainWindow", "Add Distances", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Cancel", nullptr));
     } // retranslateUi
 
 };

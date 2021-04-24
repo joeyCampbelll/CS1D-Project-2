@@ -51,6 +51,14 @@ private slots:
 
     void on_fileView1_clicked(const QModelIndex &index);
 
+    void on_FileSelector_clicked(const QModelIndex &index);
+
+    void on_FileView_clicked(const QModelIndex &index);
+
+    void on_pushButton_addDistances_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -74,7 +82,12 @@ private:
     /**
     * @brief used to see if file has already been added
     */
-    bool added;
+    bool addedStadium;
+
+    /**
+    * @brief used to see if file has already been added
+    */
+    bool addedDistance;
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant
