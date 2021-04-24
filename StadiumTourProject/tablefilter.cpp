@@ -68,7 +68,7 @@ void tablefilter::setTableView(QTableView *newTableView)
     this->tableView = newTableView;
 }
 
-void tablefilter::on_individualTeamEntry_activated(const QString &arg1)
+void tablefilter::on_individualTeamEntry_currentTextChanged(const QString &arg1)
 {
     individualTeamSelected = true;
     indiTeam = arg1;
@@ -229,3 +229,4 @@ void tablefilter::on_onlyShowEntry_currentIndexChanged(int index)
     filterSelected = true;
     return;
 }
+
