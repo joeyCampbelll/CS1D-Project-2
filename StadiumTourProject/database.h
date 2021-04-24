@@ -16,9 +16,9 @@
 
 //jakes path -
 
-//static const QString PROJECT_PATH = "C:/Source/Qt/CS1D-Project-2/StadiumTourProject/";
+static const QString PROJECT_PATH = "C:/Users/ryans/OneDrive/Documents/1D-Project-2/StadiumTourProject/";
 
-static const QString PROJECT_PATH = QDir::currentPath();
+//static const QString PROJECT_PATH = QDir::currentPath();
 
 class Database
 {
@@ -40,6 +40,24 @@ public:
     * checks to see if database is open
     */
     bool isOpen() const;
+
+    /**
+    * @brief Method to parse a CSV file
+    *
+    * parses a CSV file and extracts information
+    *
+    * @param &string - string to parse
+    */
+    QStringList parseFile(QString &string);
+
+    /**
+    * @brief Method to add new stadium
+    *
+    * adds new stadium to database
+    *
+    * @param list - list of stadiums to add
+    */
+    void addNewStadium(QStringList list);
 
 private:
     /**

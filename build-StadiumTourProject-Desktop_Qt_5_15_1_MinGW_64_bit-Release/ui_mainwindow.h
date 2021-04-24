@@ -16,11 +16,14 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -54,13 +57,23 @@ public:
     QLabel *label_2;
     QLineEdit *lineEdit_password;
     QLabel *label;
+    QWidget *AdminStadiumsPage;
+    QWidget *layoutWidget_2;
+    QHBoxLayout *horizontalLayout;
+    QTreeView *treeView1;
+    QListView *fileView1;
+    QTableWidget *fileTable;
+    QPushButton *addButt;
+    QPushButton *pushButton_cancel_2;
+    QLabel *ErrorLabel;
+    QLabel *label_4;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 500);
+        MainWindow->resize(800, 524);
         actionLogin = new QAction(MainWindow);
         actionLogin->setObjectName(QString::fromUtf8("actionLogin"));
         actionLogin_2 = new QAction(MainWindow);
@@ -69,7 +82,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        stackedWidget->setGeometry(QRect(0, 0, 801, 481));
+        stackedWidget->setGeometry(QRect(-10, 10, 801, 481));
         mainPage = new QWidget();
         mainPage->setObjectName(QString::fromUtf8("mainPage"));
         adminButton = new QPushButton(mainPage);
@@ -168,6 +181,49 @@ public:
         label->setFont(font1);
         label->setAlignment(Qt::AlignCenter);
         stackedWidget->addWidget(adminLoginPage);
+        AdminStadiumsPage = new QWidget();
+        AdminStadiumsPage->setObjectName(QString::fromUtf8("AdminStadiumsPage"));
+        layoutWidget_2 = new QWidget(AdminStadiumsPage);
+        layoutWidget_2->setObjectName(QString::fromUtf8("layoutWidget_2"));
+        layoutWidget_2->setGeometry(QRect(10, 40, 781, 201));
+        horizontalLayout = new QHBoxLayout(layoutWidget_2);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        treeView1 = new QTreeView(layoutWidget_2);
+        treeView1->setObjectName(QString::fromUtf8("treeView1"));
+
+        horizontalLayout->addWidget(treeView1);
+
+        fileView1 = new QListView(layoutWidget_2);
+        fileView1->setObjectName(QString::fromUtf8("fileView1"));
+
+        horizontalLayout->addWidget(fileView1);
+
+        fileTable = new QTableWidget(AdminStadiumsPage);
+        fileTable->setObjectName(QString::fromUtf8("fileTable"));
+        fileTable->setGeometry(QRect(10, 270, 781, 171));
+        fileTable->setAutoFillBackground(true);
+        fileTable->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255)"));
+        addButt = new QPushButton(AdminStadiumsPage);
+        addButt->setObjectName(QString::fromUtf8("addButt"));
+        addButt->setGeometry(QRect(270, 450, 121, 31));
+        addButt->setAutoFillBackground(false);
+        addButt->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255)"));
+        pushButton_cancel_2 = new QPushButton(AdminStadiumsPage);
+        pushButton_cancel_2->setObjectName(QString::fromUtf8("pushButton_cancel_2"));
+        pushButton_cancel_2->setGeometry(QRect(400, 450, 121, 31));
+        pushButton_cancel_2->setAutoFillBackground(false);
+        pushButton_cancel_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255)"));
+        ErrorLabel = new QLabel(AdminStadiumsPage);
+        ErrorLabel->setObjectName(QString::fromUtf8("ErrorLabel"));
+        ErrorLabel->setGeometry(QRect(10, 240, 781, 31));
+        ErrorLabel->setAutoFillBackground(false);
+        ErrorLabel->setAlignment(Qt::AlignCenter);
+        label_4 = new QLabel(AdminStadiumsPage);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(20, 10, 781, 20));
+        label_4->setAlignment(Qt::AlignCenter);
+        stackedWidget->addWidget(AdminStadiumsPage);
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -175,7 +231,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -201,6 +257,10 @@ public:
         lineEdit_password->setText(QString());
         lineEdit_password->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Administrator Login", nullptr));
+        addButt->setText(QCoreApplication::translate("MainWindow", "Add Colleges", nullptr));
+        pushButton_cancel_2->setText(QCoreApplication::translate("MainWindow", "Cancel", nullptr));
+        ErrorLabel->setText(QString());
+        label_4->setText(QCoreApplication::translate("MainWindow", "Please select a .CSV file below:", nullptr));
     } // retranslateUi
 
 };

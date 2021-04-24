@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileSystemModel>
 #include "database.h"
 #include "tablefilter.h"
 
@@ -42,11 +43,38 @@ private slots:
 
     void on_exitTableViewButton_clicked();
 
+    void on_addButt_clicked();
+
+    void on_pushButton_cancel_2_clicked();
+
+    void on_treeView1_clicked(const QModelIndex &index);
+
+    void on_fileView1_clicked(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;
 
     tablefilter *filter;
+
+    /**
+    * @brief used for file directory
+    */
+    QFileSystemModel *dirModel;
+
+    /**
+    * @brief used for file modal
+    */
+    QFileSystemModel *fileModel;
+
+    /**
+    * @brief used to store path to input file
+    */
+    QString pathToFile;
+
+    /**
+    * @brief used to see if file has already been added
+    */
+    bool added;
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant
