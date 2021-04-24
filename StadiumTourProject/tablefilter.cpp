@@ -17,7 +17,6 @@ tablefilter::tablefilter(QWidget *parent) :
     this->model->setQuery(*qry);
     this->ui->individualTeamEntry->setModel(model);
 
-
     ui->sortByEntry->setPlaceholderText("NONE");
     ui->sortByEntry->addItem("Team Name");
     ui->sortByEntry->addItem("Stadium Name");
