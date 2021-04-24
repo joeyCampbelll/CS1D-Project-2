@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->pushButton_addDistances->hide();
 
     //sets up paths for the folder Trees
-    QString sPath = "";
+    QString sPath = "/Users";
     dirModel  = new QFileSystemModel(this);
     dirModel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
     dirModel->setRootPath(sPath);
@@ -45,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->treeView1->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
 
     //sets up paths for the folder Trees
-    QString rPath = "";
+    QString rPath = "/Users";
     dirModel  = new QFileSystemModel(this);
     dirModel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
     dirModel->setRootPath(rPath);
@@ -181,6 +181,7 @@ void MainWindow::on_treeView1_clicked(const QModelIndex &index)
 {
     QString sPath = dirModel->fileInfo(index).absoluteFilePath();
     ui->fileView1->setRootIndex(fileModel->setRootPath(sPath));
+
 }
 
 void MainWindow::on_fileView1_clicked(const QModelIndex &index)

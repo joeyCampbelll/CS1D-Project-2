@@ -60,6 +60,11 @@ public:
     QWidget *AdminMainPage;
     QLabel *label_6;
     QTableView *Stadium_tableView;
+    QPushButton *SaveChanged_button;
+    QPushButton *AddNewStadium_button;
+    QPushButton *AddNewDistance_button;
+    QPushButton *RemoveStadium_button;
+    QPushButton *exit_button;
     QWidget *AdminStadiumsPage;
     QWidget *layoutWidget_2;
     QHBoxLayout *horizontalLayout;
@@ -207,7 +212,22 @@ public:
         label_6->setAlignment(Qt::AlignCenter);
         Stadium_tableView = new QTableView(AdminMainPage);
         Stadium_tableView->setObjectName(QString::fromUtf8("Stadium_tableView"));
-        Stadium_tableView->setGeometry(QRect(5, 61, 791, 321));
+        Stadium_tableView->setGeometry(QRect(5, 61, 791, 371));
+        SaveChanged_button = new QPushButton(AdminMainPage);
+        SaveChanged_button->setObjectName(QString::fromUtf8("SaveChanged_button"));
+        SaveChanged_button->setGeometry(QRect(10, 450, 161, 41));
+        AddNewStadium_button = new QPushButton(AdminMainPage);
+        AddNewStadium_button->setObjectName(QString::fromUtf8("AddNewStadium_button"));
+        AddNewStadium_button->setGeometry(QRect(370, 450, 131, 41));
+        AddNewDistance_button = new QPushButton(AdminMainPage);
+        AddNewDistance_button->setObjectName(QString::fromUtf8("AddNewDistance_button"));
+        AddNewDistance_button->setGeometry(QRect(520, 450, 131, 41));
+        RemoveStadium_button = new QPushButton(AdminMainPage);
+        RemoveStadium_button->setObjectName(QString::fromUtf8("RemoveStadium_button"));
+        RemoveStadium_button->setGeometry(QRect(190, 450, 161, 41));
+        exit_button = new QPushButton(AdminMainPage);
+        exit_button->setObjectName(QString::fromUtf8("exit_button"));
+        exit_button->setGeometry(QRect(670, 450, 121, 41));
         stackedWidget->addWidget(AdminMainPage);
         AdminStadiumsPage = new QWidget();
         AdminStadiumsPage->setObjectName(QString::fromUtf8("AdminStadiumsPage"));
@@ -295,7 +315,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -322,6 +342,11 @@ public:
         lineEdit_password->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Administrator Login", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "Administrator Window", nullptr));
+        SaveChanged_button->setText(QCoreApplication::translate("MainWindow", "Save Current Changes", nullptr));
+        AddNewStadium_button->setText(QCoreApplication::translate("MainWindow", "Add New Stadium", nullptr));
+        AddNewDistance_button->setText(QCoreApplication::translate("MainWindow", "Add New Distance", nullptr));
+        RemoveStadium_button->setText(QCoreApplication::translate("MainWindow", "Remove Team/Stadium", nullptr));
+        exit_button->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         ErrorLabel->setText(QString());
         label_4->setText(QCoreApplication::translate("MainWindow", "Please select a .CSV file below:", nullptr));
         addButt->setText(QCoreApplication::translate("MainWindow", "Add Stadium", nullptr));
