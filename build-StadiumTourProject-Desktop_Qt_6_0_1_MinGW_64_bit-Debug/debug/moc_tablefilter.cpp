@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_tablefilter_t {
-    const uint offsetsAndSize[18];
-    char stringdata0[180];
+    const uint offsetsAndSize[16];
+    char stringdata0[166];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_tablefilter_t, stringdata0) + ofs), len 
@@ -36,15 +36,13 @@ QT_MOC_LITERAL(42, 12), // "applyFilters"
 QT_MOC_LITERAL(55, 34), // "on_sortByEntry_currentIndexCh..."
 QT_MOC_LITERAL(90, 5), // "index"
 QT_MOC_LITERAL(96, 36), // "on_onlyShowEntry_currentIndex..."
-QT_MOC_LITERAL(133, 41), // "on_individualTeamEntry_curren..."
-QT_MOC_LITERAL(175, 4) // "arg1"
+QT_MOC_LITERAL(133, 32) // "on_individualTeamEntry_activated"
 
     },
     "tablefilter\0on_exitFiltersButton_clicked\0"
     "\0applyFilters\0on_sortByEntry_currentIndexChanged\0"
     "index\0on_onlyShowEntry_currentIndexChanged\0"
-    "on_individualTeamEntry_currentTextChanged\0"
-    "arg1"
+    "on_individualTeamEntry_activated"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,7 +71,7 @@ static const uint qt_meta_data_tablefilter[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    5,
     QMetaType::Void, QMetaType::Int,    5,
-    QMetaType::Void, QMetaType::QString,    8,
+    QMetaType::Void, QMetaType::Int,    5,
 
        0        // eod
 };
@@ -88,7 +86,7 @@ void tablefilter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 1: _t->applyFilters(); break;
         case 2: _t->on_sortByEntry_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 3: _t->on_onlyShowEntry_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 4: _t->on_individualTeamEntry_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 4: _t->on_individualTeamEntry_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -102,7 +100,7 @@ const QMetaObject tablefilter::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_tablefilter_t
 
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
 
 
 >,
