@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //hides add button and fileTable
     ui->addButt->hide();
+    ui->pushButton_addDistances->hide();
 
     //sets up paths for the folder Trees
     QString sPath = "";
@@ -41,6 +42,19 @@ MainWindow::MainWindow(QWidget *parent)
     ui->fileView1->setModel(fileModel);
 
     ui->treeView1->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+
+    //sets up paths for the folder Trees
+    QString rPath = "";
+    dirModel  = new QFileSystemModel(this);
+    dirModel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
+    dirModel->setRootPath(rPath);
+    ui->FileSelector->setModel(dirModel);
+    fileModel = new QFileSystemModel(this);
+    fileModel->setFilter(QDir::NoDotAndDotDot | QDir::Files);
+    fileModel->setRootPath(rPath);
+    ui->FileView->setModel(fileModel);
+
+    ui->FileSelector->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
 }
 
 MainWindow::~MainWindow()
@@ -75,7 +89,7 @@ void MainWindow::on_tableButton_clicked()
 void MainWindow::on_adminButton_clicked()
 {
     // RYAN AND KATE - this is where you guys are going to switch
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(4);
 }
 
 void MainWindow::on_buildTripButton_clicked()
@@ -237,7 +251,7 @@ void MainWindow::on_fileView1_clicked(const QModelIndex &index)
 void MainWindow::on_FileSelector_clicked(const QModelIndex &index)
 {
     QString sPath = dirModel->fileInfo(index).absoluteFilePath();
-    ui->fileView1->setRootIndex(fileModel->setRootPath(sPath));
+    ui->FileView->setRootIndex(fileModel->setRootPath(sPath));
 }
 
 void MainWindow::on_FileView_clicked(const QModelIndex &index)
