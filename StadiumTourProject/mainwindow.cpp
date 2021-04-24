@@ -167,14 +167,14 @@ void MainWindow::on_addButt_clicked()
             addedStadium = true;
 
             showAllMLB();
-            ui->stackedWidget->setCurrentIndex(0);
+             ui->stackedWidget->setCurrentIndex(3);
         }
     }
 }
 
 void MainWindow::on_pushButton_cancel_2_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+     ui->stackedWidget->setCurrentIndex(3);
 }
 
 void MainWindow::on_treeView1_clicked(const QModelIndex &index)
@@ -337,14 +337,14 @@ void MainWindow::on_pushButton_addDistances_clicked()
                 addedDistance = true;
 
                 showAllMLB();
-                ui->stackedWidget->setCurrentIndex(0);
+                ui->stackedWidget->setCurrentIndex(3);
             }
         }
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+     ui->stackedWidget->setCurrentIndex(3);
 }
 
 void MainWindow::on_pushButton_login_clicked()
@@ -357,4 +357,29 @@ void MainWindow::on_pushButton_login_clicked()
     {
         QMessageBox::information(this, "Login", "Incorrect Password");
     }
+}
+
+void MainWindow::on_exit_button_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_AddNewDistance_button_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+}
+
+void MainWindow::on_AddNewStadium_button_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+}
+
+void MainWindow::on_RemoveStadium_button_clicked()
+{
+
+}
+
+void MainWindow::on_SaveChanged_button_clicked()
+{
+
 }

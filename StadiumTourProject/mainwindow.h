@@ -61,6 +61,16 @@ private slots:
 
     void on_pushButton_login_clicked();
 
+    void on_exit_button_clicked();
+
+    void on_AddNewDistance_button_clicked();
+
+    void on_AddNewStadium_button_clicked();
+
+    void on_RemoveStadium_button_clicked();
+
+    void on_SaveChanged_button_clicked();
+
 private:
     Ui::MainWindow *ui;
 
