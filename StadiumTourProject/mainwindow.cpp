@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QFileInfo>
 #include <QDir>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -76,6 +77,8 @@ void MainWindow::showAllMLB()
 
     ui->mlbTableView->setModel(model);
     ui->mlbTableView->resizeColumnsToContents();
+    ui->Stadium_tableView->setModel(model);
+    ui->Stadium_tableView->resizeColumnsToContents();
 }
 
 void MainWindow::on_tableButton_clicked()
@@ -89,7 +92,7 @@ void MainWindow::on_tableButton_clicked()
 void MainWindow::on_adminButton_clicked()
 {
     // RYAN AND KATE - this is where you guys are going to switch
-    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentIndex(2);
 }
 
 void MainWindow::on_buildTripButton_clicked()
@@ -342,4 +345,16 @@ void MainWindow::on_pushButton_addDistances_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_login_clicked()
+{
+    if(ui->lineEdit_password->text() == "admin")
+    {
+        ui->stackedWidget->setCurrentIndex(3);
+    }
+    else
+    {
+        QMessageBox::information(this, "Login", "Incorrect Password");
+    }
 }

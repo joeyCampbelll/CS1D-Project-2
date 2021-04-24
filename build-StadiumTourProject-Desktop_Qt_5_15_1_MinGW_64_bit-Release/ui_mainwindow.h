@@ -57,6 +57,9 @@ public:
     QLabel *label_2;
     QLineEdit *lineEdit_password;
     QLabel *label;
+    QWidget *AdminMainPage;
+    QLabel *label_6;
+    QTableView *Stadium_tableView;
     QWidget *AdminStadiumsPage;
     QWidget *layoutWidget_2;
     QHBoxLayout *horizontalLayout;
@@ -191,6 +194,21 @@ public:
         label->setFont(font1);
         label->setAlignment(Qt::AlignCenter);
         stackedWidget->addWidget(adminLoginPage);
+        AdminMainPage = new QWidget();
+        AdminMainPage->setObjectName(QString::fromUtf8("AdminMainPage"));
+        label_6 = new QLabel(AdminMainPage);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setGeometry(QRect(10, 5, 781, 61));
+        QFont font2;
+        font2.setPointSize(20);
+        font2.setBold(true);
+        font2.setWeight(75);
+        label_6->setFont(font2);
+        label_6->setAlignment(Qt::AlignCenter);
+        Stadium_tableView = new QTableView(AdminMainPage);
+        Stadium_tableView->setObjectName(QString::fromUtf8("Stadium_tableView"));
+        Stadium_tableView->setGeometry(QRect(5, 61, 791, 321));
+        stackedWidget->addWidget(AdminMainPage);
         AdminStadiumsPage = new QWidget();
         AdminStadiumsPage->setObjectName(QString::fromUtf8("AdminStadiumsPage"));
         layoutWidget_2 = new QWidget(AdminStadiumsPage);
@@ -277,7 +295,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -303,6 +321,7 @@ public:
         lineEdit_password->setText(QString());
         lineEdit_password->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Administrator Login", nullptr));
+        label_6->setText(QCoreApplication::translate("MainWindow", "Administrator Window", nullptr));
         ErrorLabel->setText(QString());
         label_4->setText(QCoreApplication::translate("MainWindow", "Please select a .CSV file below:", nullptr));
         addButt->setText(QCoreApplication::translate("MainWindow", "Add Stadium", nullptr));
