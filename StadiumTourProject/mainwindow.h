@@ -24,6 +24,9 @@ public:
     */
     void showAllMLB();
 
+    void fillTeamComboBox();
+    void fillSouvenirComboBox();
+    void editSouvenir(QString, QString);
 private slots:
 
     void on_tableButton_clicked();
@@ -42,6 +45,17 @@ private slots:
 
     void on_exitTableViewButton_clicked();
 
+    void on_editSouvenirsButton_clicked();
+
+    void on_deleteSouvenirButton_clicked();
+
+    void on_addSouvenirButton_clicked();
+
+    void on_editSouvenirButton_clicked();
+
+    void on_selectTeamBox_currentIndexChanged(const QString &arg1);
+
+    void on_cancelEditButton_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -10,17 +10,7 @@
 #include "QSqlQuery"
 #include "QDebug"
 
-<<<<<<< Updated upstream
-//ryans path - "C:/Users/ryans/OneDrive/Documents/GitHub/CS1D-Project-2/StadiumTourProject/"
-//joeys path - "C:/Source/Qt/CS1D-Project-2/StadiumTourProject/"
-//kates path -
 
-//jakes path -
-
-//static const QString PROJECT_PATH = "C:/Source/Qt/CS1D-Project-2/StadiumTourProject/";
-
-=======
->>>>>>> Stashed changes
 static const QString PROJECT_PATH = QDir::currentPath();
 
 class Database
@@ -43,6 +33,14 @@ public:
     * checks to see if database is open
     */
     bool isOpen() const;
+
+    /**
+     * @brief Method to check if souvenir exists
+     * @param souvenirName
+     * @param teamName
+     * @return true if exists, false if not
+     */
+    bool souvenirExists(const QString &souvenirName, const QString &teamName);
 
 private:
     /**
