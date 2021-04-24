@@ -42,6 +42,10 @@ public:
      */
     bool souvenirExists(const QString &souvenirName, const QString &teamName);
 
+    void editSouvenir(const QString &souvenirName, const QString &teamName, const QString &price, const QString &newSouvenirName);
+    void deleteSouvenir(const QString &souvenirName, const QString &teamName);
+    void addSouvenir(const QString &souvenirName, const QString &teamName, const QString &price);
+
 private:
     /**
     * @brief declaree database object

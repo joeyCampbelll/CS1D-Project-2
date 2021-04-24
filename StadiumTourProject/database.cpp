@@ -34,75 +34,75 @@ bool Database::isOpen() const
     return myDB.isOpen();
 }
 
-//void Database::removeSouvenir(const QString &souvenirName, const QString &college)
-//{
-//    QSqlQuery *query = new QSqlQuery(myDB);
+void Database::deleteSouvenir(const QString &souvenirName, const QString &teamName)
+{
+    QSqlQuery *query = new QSqlQuery(myDB);
 
-//    if(souvenirExists(souvenirName, college))
-//    {
-//        if(myDB.open())
-//        {
-//            query->prepare("DELETE FROM souvenirs WHERE (souvenirs) = (:souvenirs)");
-//            query->bindValue(":souvenirs", souvenirName);
+    if(souvenirExists(souvenirName, teamName))
+    {
+        if(myDB.open())
+        {
+            query->prepare("DELETE FROM souvenirs WHERE (SOUVENIR_NAME) = (:souvenirname)");
+            query->bindValue(":souvenirname", souvenirName);
 
-//            if(query->exec())
-//                qDebug() << "souvenir delete success!";
-//            else
-//                qDebug() << "souvenir delete failed!";
-//        }
-//    }
+            if(query->exec())
+                qDebug() << "souvenir delete success!";
+            else
+                qDebug() << "souvenir delete failed!";
+        }
+    }
 
-//}
+}
 
-//void Database::addSouvenir(const QString &teamName, const QString &souvenirName, const QString &price)
-//{
-//    QSqlQuery *query = new QSqlQuery(myDB);
+void Database::addSouvenir(const QString &souvenirName, const QString &teamName, const QString &price)
+{
+    QSqlQuery *query = new QSqlQuery(myDB);
 
-//    if(!souvenirExists(souvenirName, teamName))
-//    {
-//        if(myDB.open())
-//        {
-//            query->prepare("INSERT INTO souvenirs(TEAM_NAME, SOUVENIR_NAME, PRICE) VALUES(:college, :souvenirs, :cost)");
-//            query->bindValue(":teamname", teamName);
-//            query->bindValue(":souvenirname", souvenirName);
-//            query->bindValue(":price", price);
+    if(!souvenirExists(souvenirName, teamName))
+    {
+        if(myDB.open())
+        {
+            query->prepare("INSERT INTO souvenirs(TEAM_NAME, SOUVENIR_NAME, SOUVENIR_PRICE) VALUES(:teamname, :souvenirname, :price)");
+            query->bindValue(":teamname", teamName);
+            query->bindValue(":souvenirname", souvenirName);
+            query->bindValue(":price", "$ " + price);
 
-//            if(query->exec())
-//                qDebug() << "souvenir add success!";
-//            else
-//                qDebug() << "souvenir add failed!";
-//        }
-//    }
-//    else
-//    {
-//        qDebug() << "name exists!";
-//    }
-//}
+            if(query->exec())
+                qDebug() << "souvenir add success!";
+            else
+                qDebug() << "souvenir add failed!";
+        }
+    }
+    else
+    {
+        qDebug() << "name exists!";
+    }
+}
 
-//void Database::updateSouvenir(const QString &souvenirName, const QString &teamName, const QString &price, const QString &newsouvenir)
-//{
-//    QSqlQuery *query = new QSqlQuery(myDB);
+void Database::editSouvenir(const QString &souvenirName, const QString &teamName, const QString &price, const QString &newSouvenirName)
+{
+    QSqlQuery *query = new QSqlQuery(myDB);
 
 
-//    if(myDB.open())
-//    {
-//        query->prepare("UPDATE souvenirs SET (souvenirs, cost) = (:newsouvenirName, :cost) "
-//                       "WHERE (college, souvenirs) = (:college, :souvenirs)");
-//        query->bindValue(":newsouvenirName", newsouvenir);
-//        query->bindValue(":college", college);
-//        query->bindValue(":souvenirs", souvenirName);
-//        query->bindValue(":cost", spin);
+    if(myDB.open())
+    {
+        query->prepare("UPDATE SOUVENIRS SET (SOUVENIR_NAME, SOUVENIR_PRICE) = (:newsouvenirname, :price) "
+                       "WHERE (TEAM_NAME, SOUVENIR_NAME) = (:teamname, :souvenirname)");
+        query->bindValue(":newsouvenirname", newSouvenirName);
+        query->bindValue(":teamname", teamName);
+        query->bindValue(":souvenirname", souvenirName);
+        query->bindValue(":price", "$ " +  price);
 
-//        if(query->exec())
-//        {
-//            qDebug() << "UPDATE WORKED" << Qt::endl;
-//        }
-//        else
-//        {
-//            qDebug() << "UPDATE failed: " << query->lastError() << Qt::endl;
-//        }
-//    }
-//}
+        if(query->exec())
+        {
+            qDebug() << "UPDATE WORKED" << Qt::endl;
+        }
+        else
+        {
+            qDebug() << "UPDATE failed: " << query->lastError() << Qt::endl;
+        }
+    }
+}
 
 
 bool Database::souvenirExists(const QString &souvenirName, const QString &teamName)

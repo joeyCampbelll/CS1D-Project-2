@@ -26,7 +26,8 @@ public:
 
     void fillTeamComboBox();
     void fillSouvenirComboBox();
-    void editSouvenir(QString, QString);
+    void updateSouvenirTableView();
+
 private slots:
 
     void on_tableButton_clicked();
@@ -57,10 +58,19 @@ private slots:
 
     void on_cancelEditButton_clicked();
 
+    void on_enterEditButton_clicked();
+
+    void on_exitEditButton_clicked();
+
+    void on_cancelAddButton_clicked();
+
+    void on_enterAddButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     tablefilter *filter;
+    QString originalName;
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant
