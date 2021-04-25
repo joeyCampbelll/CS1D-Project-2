@@ -13,6 +13,7 @@ SOURCES += \
     database.cpp \
     main.cpp \
     mainwindow.cpp \
+    souveniredit.cpp \
     tablefilter.cpp
 
 HEADERS += \
