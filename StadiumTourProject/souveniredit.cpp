@@ -47,9 +47,6 @@ void MainWindow::on_deleteSouvenirButton_clicked()
     if(ret == QMessageBox::Yes)
     {
         myDb.deleteSouvenir(souvenirName, teamName);
-        QMessageBox msgBox2;
-        msgBox2.setText(souvenirName + " deleted from " + teamName + '.');
-        msgBox2.exec();
         updateSouvenirTableView();
     }
 }

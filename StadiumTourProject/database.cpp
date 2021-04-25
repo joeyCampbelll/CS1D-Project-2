@@ -42,8 +42,9 @@ void Database::deleteSouvenir(const QString &souvenirName, const QString &teamNa
     {
         if(myDB.open())
         {
-            query->prepare("DELETE FROM souvenirs WHERE (SOUVENIR_NAME) = (:souvenirname)");
+            query->prepare("DELETE FROM Souvenirs WHERE (SOUVENIR_NAME, TEAM_NAME) = (:souvenirname, :teamname)");
             query->bindValue(":souvenirname", souvenirName);
+            query->bindValue(":teamname", teamName);
 
             if(query->exec())
                 qDebug() << "souvenir delete success!";
@@ -62,7 +63,7 @@ void Database::addSouvenir(const QString &souvenirName, const QString &teamName,
     {
         if(myDB.open())
         {
-            query->prepare("INSERT INTO souvenirs(TEAM_NAME, SOUVENIR_NAME, SOUVENIR_PRICE) VALUES(:teamname, :souvenirname, :price)");
+            query->prepare("INSERT INTO Souvenirs(TEAM_NAME, SOUVENIR_NAME, SOUVENIR_PRICE) VALUES(:teamname, :souvenirname, :price)");
             query->bindValue(":teamname", teamName);
             query->bindValue(":souvenirname", souvenirName);
             query->bindValue(":price", "$ " + price);
