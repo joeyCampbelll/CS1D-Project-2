@@ -17,7 +17,6 @@ tablefilter::tablefilter(QWidget *parent) :
     this->model->setQuery(*qry);
     this->ui->individualTeamEntry->setModel(model);
 
-
     ui->sortByEntry->setPlaceholderText("NONE");
     ui->sortByEntry->addItem("Team Name");
     ui->sortByEntry->addItem("Stadium Name");
@@ -68,10 +67,10 @@ void tablefilter::setTableView(QTableView *newTableView)
     this->tableView = newTableView;
 }
 
-void tablefilter::on_individualTeamEntry_activated(const QString &arg1)
+void tablefilter::on_individualTeamEntry_activated(int index)
 {
     individualTeamSelected = true;
-    indiTeam = arg1;
+    indiTeam = ui->individualTeamEntry->currentText();
 }
 
 void tablefilter::on_exitFiltersButton_clicked()
@@ -92,7 +91,7 @@ void tablefilter::applyFilters()
             (individualTeamSelected == true && sorterSelected == true && filterSelected == true)   ||
             (individualTeamSelected == true && sorterSelected == false && filterSelected == true)  )
     {
-        qDebug() << "1";
+
         this->qry->prepare("SELECT * FROM MLB_Information WHERE TEAM_NAME = :teamname");
         this->qry->bindValue(":teamname", indiTeam);
     }
@@ -101,14 +100,12 @@ void tablefilter::applyFilters()
        (filterBy == "NONE" && orderBy == "NONE"))
 
     {
-        qDebug() << "2";
 
         this->qry->prepare("SELECT * FROM MLB_Information");
     }
     // only a sorter is selected
     else if(individualTeamSelected == false && sorterSelected == true && filterSelected == false)
     {
-        qDebug() << "3";
 
         QString temp = "SELECT * FROM MLB_Information ORDER BY " + orderBy;
         this->qry->prepare(temp);
@@ -116,7 +113,6 @@ void tablefilter::applyFilters()
     // sorter and filter are selected
     else if(individualTeamSelected == false && sorterSelected == true && filterSelected == true)
     {
-        qDebug() << "4";
 
         QString temp;
         if(filterBy == "max")
@@ -140,7 +136,6 @@ void tablefilter::applyFilters()
     // only filtering
     else if(individualTeamSelected == false && sorterSelected == false && filterSelected == true)
     {
-        qDebug() << "5";
 
         QString temp;
         if(filterBy == "max")
@@ -229,3 +224,7 @@ void tablefilter::on_onlyShowEntry_currentIndexChanged(int index)
     filterSelected = true;
     return;
 }
+
+
+
+
