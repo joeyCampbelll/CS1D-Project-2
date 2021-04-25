@@ -358,6 +358,7 @@ void MainWindow::on_pushButton_login_clicked()
     {
         QMessageBox::information(this, "Login", "Incorrect Password");
     }
+    ui->lineEdit_password->clear();
 }
 
 void MainWindow::on_exit_button_clicked()
