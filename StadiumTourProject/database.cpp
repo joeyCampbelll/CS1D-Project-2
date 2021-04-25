@@ -158,7 +158,7 @@ void Database::removeTeam(const QString &stadiumName, const QString &teamName)
         else
            qDebug() << "team1 delete failed!";
 
-        query->prepare("DELETE FROM Distances WHERE (ORIGINATED_STADIUM) = (:stadiumName) AND (DESTINATION_STADIUM) = (:stadiumName)");
+        query->prepare("DELETE FROM Distances WHERE (ORIGINATED_STADIUM) = (:stadiumName) OR (DESTINATION_STADIUM) = (:stadiumName)");
         query->bindValue(":stadiumName", stadiumName);
 
         if(query->exec())
