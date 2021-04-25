@@ -36,10 +36,10 @@ public:
     {
         if (tablefilter->objectName().isEmpty())
             tablefilter->setObjectName(QString::fromUtf8("tablefilter"));
-        tablefilter->resize(435, 592);
+        tablefilter->resize(413, 484);
         layoutWidget = new QWidget(tablefilter);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 160, 371, 87));
+        layoutWidget->setGeometry(QRect(20, 160, 371, 82));
         AddEditGeneralLayout = new QFormLayout(layoutWidget);
         AddEditGeneralLayout->setObjectName(QString::fromUtf8("AddEditGeneralLayout"));
         AddEditGeneralLayout->setContentsMargins(0, 0, 0, 0);

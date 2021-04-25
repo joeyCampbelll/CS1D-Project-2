@@ -24,6 +24,8 @@ public:
 
 private slots:
 
+    void on_individualTeamEntry_activated(const QString &arg1);
+
     void on_exitFiltersButton_clicked();
 
     void applyFilters();
@@ -31,8 +33,6 @@ private slots:
     void on_sortByEntry_currentIndexChanged(int index);
 
     void on_onlyShowEntry_currentIndexChanged(int index);
-
-    void on_individualTeamEntry_activated(int index);
 
 
 private:
