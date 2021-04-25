@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="mainPage">
      <widget class="QPushButton" name="adminButton">
@@ -282,6 +282,9 @@
       <property name="placeholderText">
        <string>Password</string>
       </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLabel" name="label">
       <property name="geometry">
@@ -491,7 +494,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255)</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Add Stadium</string>
@@ -510,7 +513,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255)</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Cancel</string>
