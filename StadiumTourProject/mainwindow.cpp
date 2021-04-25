@@ -167,7 +167,8 @@ void MainWindow::on_addButt_clicked()
             addedStadium = true;
 
             showAllMLB();
-             ui->stackedWidget->setCurrentIndex(3);
+            ui->fileTable->clearContents();
+            ui->stackedWidget->setCurrentIndex(3);
         }
     }
 }
@@ -379,6 +380,7 @@ void MainWindow::on_AddNewStadium_button_clicked()
 void MainWindow::on_RemoveStadium_button_clicked()
 {
     myDb.removeTeam(tempStadiumName, tempTeamName);
+    addedStadium = false;
     showAllMLB();
 }
 
