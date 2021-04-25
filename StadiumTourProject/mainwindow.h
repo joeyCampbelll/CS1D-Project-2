@@ -86,11 +86,13 @@ private:
     * @brief used for file directory
     */
     QFileSystemModel *dirModel;
+    QFileSystemModel *dirModel2;
 
     /**
     * @brief used for file modal
     */
     QFileSystemModel *fileModel;
+    QFileSystemModel *fileModel2;
 
     /**
     * @brief used to store path to input file

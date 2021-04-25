@@ -46,14 +46,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     //sets up paths for the folder Trees
     QString rPath = "/Users";
-    dirModel  = new QFileSystemModel(this);
-    dirModel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
-    dirModel->setRootPath(rPath);
-    ui->FileSelector->setModel(dirModel);
-    fileModel = new QFileSystemModel(this);
-    fileModel->setFilter(QDir::NoDotAndDotDot | QDir::Files);
-    fileModel->setRootPath(rPath);
-    ui->FileView->setModel(fileModel);
+    dirModel2  = new QFileSystemModel(this);
+    dirModel2->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
+    dirModel2->setRootPath(rPath);
+    ui->FileSelector->setModel(dirModel2);
+    fileModel2 = new QFileSystemModel(this);
+    fileModel2->setFilter(QDir::NoDotAndDotDot | QDir::Files);
+    fileModel2->setRootPath(rPath);
+    ui->FileView->setModel(fileModel2);
 
     ui->FileSelector->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
 }
@@ -194,9 +194,9 @@ void MainWindow::on_fileView1_clicked(const QModelIndex &index)
     ui->fileTable->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->fileTable->setColumnCount(10);
     QStringList headers;
-    headers << "TeamName" << "StadiumName" << "SeatingCapacity" << "Location"
-            << "PlayingSurface" << "League" << "DateOpened" << "DistanceToCenterField"
-            << "BallParkTypology" << "RoofType";
+    headers << "Team" << "Stadium" << "Capacity" << "Location"
+            << "Surface" << "League" << "Date" << "Distance"
+            << "Typology" << "Roof";
     ui->fileTable->setHorizontalHeaderLabels(headers);
 
     //sets path
@@ -391,7 +391,7 @@ void MainWindow::on_Stadium_tableView_clicked(const QModelIndex &index)
         tempStadiumName = index.sibling(row, 1).data().toString();
         tempLocation = index.sibling(row, 2).data().toString();
         tempLeague = index.sibling(row, 3).data().toString();
-        tempSeatingCapacity = index.sibling(row, 4).data().toInt();
+        tempSeatingCapacity = index.sibling(row, 4).data().toString().replace(",", "").toInt();
         tempDateOpened = index.sibling(row, 5).data().toInt();
         tempPlayingSurface = index.sibling(row, 6).data().toString();
         tempRoofType = index.sibling(row, 7).data().toString();
