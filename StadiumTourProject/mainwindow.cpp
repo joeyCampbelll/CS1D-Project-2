@@ -381,11 +381,6 @@ void MainWindow::on_RemoveStadium_button_clicked()
     showAllMLB();
 }
 
-void MainWindow::on_SaveChanged_button_clicked()
-{
-
-}
-
 void MainWindow::on_Stadium_tableView_clicked(const QModelIndex &index)
 {
     if(index.isValid())
@@ -402,4 +397,44 @@ void MainWindow::on_Stadium_tableView_clicked(const QModelIndex &index)
         tempDistToCenterField = index.sibling(row, 8).data().toString();
         tempTypology = index.sibling(row, 9).data().toString();
     }
+}
+
+void MainWindow::on_editTeamInfo_button_clicked()
+{
+    ui->label_teamName->setText(tempTeamName);
+    ui->lineEdit_stadiumName->setText(tempStadiumName);
+    ui->lineEdit_location->setText(tempLocation);
+    ui->lineEdit_league->setText(tempLeague);
+    ui->spinBox_seatingCapacity->setValue(tempSeatingCapacity);
+    ui->spinBox_dateOpened->setValue(tempDateOpened);
+    ui->lineEdit_playingSurface->setText(tempPlayingSurface);
+    ui->lineEdit_roofType->setText(tempRoofType);
+    ui->lineEdit_distanceToCenterField->setText(tempDistToCenterField);
+    ui->lineEdit_typology->setText(tempTypology);
+
+    ui->stackedWidget->setCurrentIndex(6);
+}
+
+void MainWindow::on_pushButton_saveChanges_clicked()
+{
+    tempStadiumName = ui->lineEdit_stadiumName->text();
+    tempLocation = ui->lineEdit_location->text();
+    tempLeague = ui->lineEdit_league->text();
+    tempSeatingCapacity = ui->spinBox_seatingCapacity->value();
+    tempDateOpened = ui->spinBox_dateOpened->value();
+    tempPlayingSurface = ui->lineEdit_playingSurface->text();
+    tempRoofType = ui->lineEdit_roofType->text();
+    tempDistToCenterField = ui->lineEdit_distanceToCenterField->text();
+    tempTypology = ui->lineEdit_typology->text();
+
+    myDb.updateStadiumInfo(tempTeamName, tempStadiumName, tempLocation, tempLeague,
+                           tempSeatingCapacity, tempDateOpened, tempPlayingSurface,
+                           tempRoofType, tempDistToCenterField, tempTypology);
+    showAllMLB();
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_pushButton_cancelChanges_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
 }

@@ -186,10 +186,11 @@ void Database::updateStadiumInfo(const QString &teamName, const QString &stadium
 
     if(myDB.open())
     {
-        query->prepare("UPDATE MLB_Information SET (STADIUM_NAME, LOCATION, LEAGUE, SEATING_CAPACITY, DATE_OPENED, "
-                       "PLAYING_SURFACE, ROOF_TYPE, DISTANCE_TO_CENTER_FIELD, BALLPARK_TYPOLOGY) = (:stadium, :location, "
-                       ":league, :capacity, :date, :surface, :roof, :distance, :typology) "
-                       "WHERE (TEAM_NAME) = (:teamName)");
+        query->prepare("UPDATE MLB_Information "
+                       "SET STADIUM_NAME = :stadium, LOCATION = :location, LEAGUE = :league, "
+                       "SEATING_CAPACITY = :capacity, DATE_OPENED = :date, PLAYING_SURFACE = :surface, "
+                       "ROOF_TYPE = :roof, DISTANCE_TO_CENTER_FIELD = :distance, BALLPARK_TYPOLOGY = :typology "
+                       "WHERE TEAM_NAME = :teamName");
         query->bindValue(":teamName", teamName);
         query->bindValue(":stadium", stadiumName);
         query->bindValue(":location", location);

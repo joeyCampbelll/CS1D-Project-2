@@ -69,9 +69,13 @@ private slots:
 
     void on_RemoveStadium_button_clicked();
 
-    void on_SaveChanged_button_clicked();
-
     void on_Stadium_tableView_clicked(const QModelIndex &index);
+
+    void on_editTeamInfo_button_clicked();
+
+    void on_pushButton_saveChanges_clicked();
+
+    void on_pushButton_cancelChanges_clicked();
 
 private:
     Ui::MainWindow *ui;
