@@ -100,6 +100,7 @@ private slots:
 
     void on_pushButton_cancelChanges_clicked();
 
+
 private:
     Ui::MainWindow *ui;
 

@@ -80,7 +80,30 @@ void Database::addSouvenir(const QString &souvenirName, const QString &teamName,
     }
 }
 
-void Database::editSouvenir(const QString &souvenirName, const QString &teamName, const QString &price, const QString &newSouvenirName)
+void Database::editSouvenir(const QString &souvenirName, const QString &teamName, const QString &price, const QString &newSouvenirName) {
+    QSqlQuery *query = new QSqlQuery(myDB);
+
+
+    if(myDB.open())
+    {
+        query->prepare("UPDATE SOUVENIRS SET (SOUVENIR_NAME, SOUVENIR_PRICE) = (:newsouvenirname, :price) "
+                       "WHERE (TEAM_NAME, SOUVENIR_NAME) = (:teamname, :souvenirname)");
+        query->bindValue(":newsouvenirname", newSouvenirName);
+        query->bindValue(":teamname", teamName);
+        query->bindValue(":souvenirname", souvenirName);
+        query->bindValue(":price", "$ " +  price);
+
+        if(query->exec())
+        {
+            qDebug() << "UPDATE WORKED" << Qt::endl;
+        }
+        else
+        {
+            qDebug() << "UPDATE failed: " << query->lastError() << Qt::endl;
+        }
+    }
+}
+
 QStringList Database::parseFile(QString &string) {
     enum State {Normal, Quote} state = Normal;
     QStringList fields;
@@ -233,12 +256,6 @@ void Database::updateStadiumInfo(const QString &teamName, const QString &stadium
 
     if(myDB.open())
     {
-        query->prepare("UPDATE SOUVENIRS SET (SOUVENIR_NAME, SOUVENIR_PRICE) = (:newsouvenirname, :price) "
-                       "WHERE (TEAM_NAME, SOUVENIR_NAME) = (:teamname, :souvenirname)");
-        query->bindValue(":newsouvenirname", newSouvenirName);
-        query->bindValue(":teamname", teamName);
-        query->bindValue(":souvenirname", souvenirName);
-        query->bindValue(":price", "$ " +  price);
         query->prepare("UPDATE MLB_Information "
                        "SET STADIUM_NAME = :stadium, LOCATION = :location, LEAGUE = :league, "
                        "SEATING_CAPACITY = :capacity, DATE_OPENED = :date, PLAYING_SURFACE = :surface, "

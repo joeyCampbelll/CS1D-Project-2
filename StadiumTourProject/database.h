@@ -49,6 +49,7 @@ public:
     void editSouvenir(const QString &souvenirName, const QString &teamName, const QString &price, const QString &newSouvenirName);
     void deleteSouvenir(const QString &souvenirName, const QString &teamName);
     void addSouvenir(const QString &souvenirName, const QString &teamName, const QString &price);
+    /**
     * @brief Method to parse a CSV file
     *
     * parses a CSV file and extracts information

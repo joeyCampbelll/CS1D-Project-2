@@ -24,14 +24,14 @@ void MainWindow::fillTeamComboBox()
 
 void MainWindow::on_editSouvenirsButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(7);
     ui->souvenirTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     fillTeamComboBox();
 }
 
 void MainWindow::on_exitEditButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(3);
 }
 
 
@@ -55,7 +55,7 @@ void MainWindow::on_addSouvenirButton_clicked()
 {
     QString teamName =  ui->selectTeamBox->currentText();
     QString souvenirName = ui->selectSouvenirBox->currentText();
-    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentIndex(8);
     ui->updateTeamLabel_3->setText(teamName);
 }
 
@@ -63,7 +63,7 @@ void MainWindow::on_editSouvenirButton_clicked()
 {
     QString teamName =  ui->selectTeamBox->currentText();
     QString souvenirName = ui->selectSouvenirBox->currentText();
-    ui->stackedWidget->setCurrentIndex(5);
+    ui->stackedWidget->setCurrentIndex(9);
     ui->updateTeamLabel->setText(teamName);
     originalName = souvenirName;
     ui->enterNameBox->setText(souvenirName);
@@ -126,7 +126,7 @@ void MainWindow::updateSouvenirTableView() {
 
 void MainWindow::on_cancelEditButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(7);
 }
 
 void MainWindow::on_enterEditButton_clicked()
@@ -152,7 +152,7 @@ void MainWindow::on_enterEditButton_clicked()
         myDb.editSouvenir(originalName, teamName, price, newSouvenirName);
 
         // return to souvenir editor
-        ui->stackedWidget->setCurrentIndex(3);
+        ui->stackedWidget->setCurrentIndex(7);
 
         // clear fields
         ui->enterNameBox->clear();
@@ -166,7 +166,7 @@ void MainWindow::on_enterEditButton_clicked()
 
 void MainWindow::on_cancelAddButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(7);
 }
 
 void MainWindow::on_enterAddButton_clicked()
@@ -194,7 +194,7 @@ void MainWindow::on_enterAddButton_clicked()
         myDb.addSouvenir(souvenirName, teamName, price);
 
         // return to souvenir editor screen
-        ui->stackedWidget->setCurrentIndex(3);
+        ui->stackedWidget->setCurrentIndex(7);
 
         // clear all fields
         ui->enterNameBox_3->clear();
