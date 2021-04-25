@@ -114,7 +114,7 @@ void Database::addNewStadium(QStringList list) {
     query->bindValue(":DateOpened", list.at(6));
     query->bindValue(":DistanceToCenterField", list.at(7));
     query->bindValue(":BallParkTypology", list.at(8));
-    query->bindValue(":RoofType", list.at(9));
+    query->bindValue(":RoofType", list.at(9).trimmed());
 
     //executes query
     if (query->exec()) {
