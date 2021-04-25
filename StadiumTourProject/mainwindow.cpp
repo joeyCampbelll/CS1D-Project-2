@@ -393,5 +393,13 @@ void MainWindow::on_Stadium_tableView_clicked(const QModelIndex &index)
         int row = index.row();
         tempTeamName = index.sibling(row, 0).data().toString();
         tempStadiumName = index.sibling(row, 1).data().toString();
+        tempLocation = index.sibling(row, 2).data().toString();
+        tempLeague = index.sibling(row, 3).data().toString();
+        tempSeatingCapacity = index.sibling(row, 4).data().toInt();
+        tempDateOpened = index.sibling(row, 5).data().toInt();
+        tempPlayingSurface = index.sibling(row, 6).data().toString();
+        tempRoofType = index.sibling(row, 7).data().toString();
+        tempDistToCenterField = index.sibling(row, 8).data().toString();
+        tempTypology = index.sibling(row, 9).data().toString();
     }
 }

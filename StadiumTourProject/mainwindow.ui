@@ -352,7 +352,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Save Current Changes</string>
+       <string>Edit Selected Team Info</string>
       </property>
      </widget>
      <widget class="QPushButton" name="AddNewStadium_button">
@@ -391,7 +391,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Remove Team/Stadium</string>
+       <string>Remove Selected Team</string>
       </property>
      </widget>
      <widget class="QPushButton" name="exit_button">

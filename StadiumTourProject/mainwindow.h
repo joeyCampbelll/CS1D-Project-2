@@ -103,15 +103,17 @@ private:
     */
     bool addedDistance;
 
-    /**
-    * @brief used to store temporary team name
-    */
+    //Used for storing data from tableView(used for editing college info)
     QString tempTeamName;
-
-    /**
-    * @brief used to store temporary stadium name
-    */
     QString tempStadiumName;
+    QString tempLocation;
+    QString tempLeague;
+    int tempSeatingCapacity;
+    int tempDateOpened;
+    QString tempPlayingSurface;
+    QString tempRoofType;
+    QString tempDistToCenterField;
+    QString tempTypology;
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant

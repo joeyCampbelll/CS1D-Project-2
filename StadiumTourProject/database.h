@@ -75,6 +75,19 @@ public:
     */
     void removeTeam(const QString &stadiumName, const QString &teamName);
 
+    /**
+    * @brief Method to edit a team's info
+    *
+    * edits team's info from database
+    *
+    * @param teamName - name of team to be edited
+    * @param stadiumName - name of stadium to be edited
+    */
+    void updateStadiumInfo(const QString &teamName, const QString &stadiumName,
+                           const QString &location, const QString &league,
+                           const int &capacity, const int &date, const QString &surface,
+                           const QString &roof, const QString &distanceCenter, const QString &typology);
+
 private:
     /**
     * @brief declaree database object

@@ -174,6 +174,40 @@ void Database::removeTeam(const QString &stadiumName, const QString &teamName)
         else
            qDebug() << "team3 delete failed!";
     }
+}
+
+void Database::updateStadiumInfo(const QString &teamName, const QString &stadiumName,
+                                 const QString &location, const QString &league,
+                                 const int &capacity, const int &date, const QString &surface,
+                                 const QString &roof, const QString &distanceCenter, const QString &typology)
+{
+    QSqlQuery *query = new QSqlQuery(myDB);
 
 
+    if(myDB.open())
+    {
+        query->prepare("UPDATE MLB_Information SET (STADIUM_NAME, LOCATION, LEAGUE, SEATING_CAPACITY, DATE_OPENED, "
+                       "PLAYING_SURFACE, ROOF_TYPE, DISTANCE_TO_CENTER_FIELD, BALLPARK_TYPOLOGY) = (:stadium, :location, "
+                       ":league, :capacity, :date, :surface, :roof, :distance, :typology) "
+                       "WHERE (TEAM_NAME) = (:teamName)");
+        query->bindValue(":teamName", teamName);
+        query->bindValue(":stadium", stadiumName);
+        query->bindValue(":location", location);
+        query->bindValue(":league", league);
+        query->bindValue(":capacity", capacity);
+        query->bindValue(":date", date);
+        query->bindValue(":surface", surface);
+        query->bindValue(":roof", roof);
+        query->bindValue(":distance", distanceCenter);
+        query->bindValue(":typology", typology);
+
+        if(query->exec())
+        {
+            qDebug() << "UPDATE WORKED" << Qt::endl;
+        }
+        else
+        {
+            qDebug() << "UPDATE failed: " << query->lastError() << Qt::endl;
+        }
+    }
 }
