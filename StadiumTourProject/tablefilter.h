@@ -24,8 +24,6 @@ public:
 
 private slots:
 
-    void on_individualTeamEntry_activated(const QString &arg1);
-
     void on_exitFiltersButton_clicked();
 
     void applyFilters();
@@ -34,6 +32,7 @@ private slots:
 
     void on_onlyShowEntry_currentIndexChanged(int index);
 
+    void on_individualTeamEntry_currentTextChanged(const QString &arg1);
 
 private:
     QTableView* tableView;
