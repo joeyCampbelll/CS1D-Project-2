@@ -254,8 +254,8 @@ void MainWindow::on_fileView1_clicked(const QModelIndex &index)
 
 void MainWindow::on_FileSelector_clicked(const QModelIndex &index)
 {
-    QString sPath = dirModel->fileInfo(index).absoluteFilePath();
-    ui->FileView->setRootIndex(fileModel->setRootPath(sPath));
+    QString sPath = dirModel2->fileInfo(index).absoluteFilePath();
+    ui->FileView->setRootIndex(fileModel2->setRootPath(sPath));
 }
 
 void MainWindow::on_FileView_clicked(const QModelIndex &index)
@@ -272,7 +272,7 @@ void MainWindow::on_FileView_clicked(const QModelIndex &index)
         ui->DistanceTableWidget->setHorizontalHeaderLabels(headers);
 
         //sets path
-        QString path = fileModel->fileInfo(index).absoluteFilePath();
+        QString path = fileModel2->fileInfo(index).absoluteFilePath();
         pathToFile = path;
         bool correctFileType = path.endsWith(".csv");
         qDebug() << path;
