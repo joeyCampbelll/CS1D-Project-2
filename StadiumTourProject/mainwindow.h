@@ -71,6 +71,8 @@ private slots:
 
     void on_SaveChanged_button_clicked();
 
+    void on_Stadium_tableView_clicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
 
@@ -100,6 +102,16 @@ private:
     * @brief used to see if file has already been added
     */
     bool addedDistance;
+
+    /**
+    * @brief used to store temporary team name
+    */
+    QString tempTeamName;
+
+    /**
+    * @brief used to store temporary stadium name
+    */
+    QString tempStadiumName;
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant

@@ -377,10 +377,21 @@ void MainWindow::on_AddNewStadium_button_clicked()
 
 void MainWindow::on_RemoveStadium_button_clicked()
 {
-
+    myDb.removeTeam(tempStadiumName, tempTeamName);
+    showAllMLB();
 }
 
 void MainWindow::on_SaveChanged_button_clicked()
 {
 
+}
+
+void MainWindow::on_Stadium_tableView_clicked(const QModelIndex &index)
+{
+    if(index.isValid())
+    {
+        int row = index.row();
+        tempTeamName = index.sibling(row, 0).data().toString();
+        tempStadiumName = index.sibling(row, 1).data().toString();
+    }
 }

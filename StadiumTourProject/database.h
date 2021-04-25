@@ -65,6 +65,16 @@ public:
     */
     void addNewDistance(QStringList list);
 
+    /**
+    * @brief Method to remove a team
+    *
+    * removes team from database
+    *
+    * @param teamName - name of team to be deleted
+    * @param stadiumName - name of stadium to be deleted
+    */
+    void removeTeam(const QString &stadiumName, const QString &teamName);
+
 private:
     /**
     * @brief declaree database object

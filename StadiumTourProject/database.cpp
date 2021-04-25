@@ -143,3 +143,37 @@ void Database::addNewDistance(QStringList list) {
         qDebug() << "Query was not executed";
     }
 }
+
+void Database::removeTeam(const QString &stadiumName, const QString &teamName)
+{
+    QSqlQuery *query = new QSqlQuery(myDB);
+
+    if(myDB.open())
+    {
+        query->prepare("DELETE FROM MLB_Information WHERE (STADIUM_NAME) = (:stadiumName)");
+        query->bindValue(":stadiumName", stadiumName);
+
+        if(query->exec())
+           qDebug() << "team1 delete success!";
+        else
+           qDebug() << "team1 delete failed!";
+
+        query->prepare("DELETE FROM Distances WHERE (ORIGINATED_STADIUM) = (:stadiumName) AND (DESTINATION_STADIUM) = (:stadiumName)");
+        query->bindValue(":stadiumName", stadiumName);
+
+        if(query->exec())
+           qDebug() << "team2 delete success!";
+        else
+           qDebug() << "team2 delete failed!";
+
+        query->prepare("DELETE FROM Souvenirs WHERE (TEAM_NAME) = (:teamName)");
+        query->bindValue(":teamName", teamName);
+
+        if(query->exec())
+           qDebug() << "team3 delete success!";
+        else
+           qDebug() << "team3 delete failed!";
+    }
+
+
+}
