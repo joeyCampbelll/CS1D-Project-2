@@ -103,6 +103,10 @@ private slots:
 
     void on_pushButton_resetTeamInfo_clicked();
 
+    void on_pushButton_quickAddStadium_clicked();
+
+    void on_pushButton_quickAddDistances_clicked();
+
 private:
     Ui::MainWindow *ui;
 

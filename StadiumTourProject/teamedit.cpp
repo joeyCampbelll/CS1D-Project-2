@@ -204,6 +204,7 @@ void MainWindow::on_pushButton_addDistances_clicked()
                 addedDistance = true;
 
                 showAllMLB();
+                ui->DistanceTableWidget->clearContents();
                 ui->stackedWidget->setCurrentIndex(3);
             }
         }
@@ -246,6 +247,7 @@ void MainWindow::on_RemoveStadium_button_clicked()
 {
     myDb.removeTeam(tempStadiumName, tempTeamName);
     addedStadium = false;
+    addedDistance = false;
     showAllMLB();
 }
 
@@ -312,5 +314,17 @@ void MainWindow::on_pushButton_resetTeamInfo_clicked()
     myDb.clearMLBInfo();
     pathToFile = PROJECT_PATH + "/.CSV Files/MLB Information.csv";
     on_addButt_clicked();
+    addedStadium = false;
 }
 
+void MainWindow::on_pushButton_quickAddStadium_clicked()
+{
+    pathToFile = PROJECT_PATH + "/.CSV Files/Add New Stadium.csv";
+    on_addButt_clicked();
+}
+
+void MainWindow::on_pushButton_quickAddDistances_clicked()
+{
+    pathToFile = PROJECT_PATH + "/.CSV Files/Add New Distances.csv";
+    on_pushButton_addDistances_clicked();
+}
