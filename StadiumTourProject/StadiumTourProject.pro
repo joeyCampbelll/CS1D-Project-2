@@ -14,7 +14,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     souveniredit.cpp \
-    tablefilter.cpp
+    tablefilter.cpp \
+    teamedit.cpp
 
 HEADERS += \
     database.h \

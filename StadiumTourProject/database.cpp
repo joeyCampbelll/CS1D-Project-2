@@ -186,12 +186,7 @@ void Database::addNewStadium(QStringList list) {
     query->bindValue(":BallParkTypology", list.at(8));
     query->bindValue(":RoofType", list.at(9).trimmed());
 
-    //executes query
-    if (query->exec()) {
-        qDebug() << "Query was executed";
-    } else {
-        qDebug() << "Query was not executed";
-    }
+    query->exec();
 }
 
 void Database::addNewDistance(QStringList list) {
@@ -236,13 +231,13 @@ void Database::removeTeam(const QString &stadiumName, const QString &teamName)
         else
            qDebug() << "team2 delete failed!";
 
-        query->prepare("DELETE FROM Souvenirs WHERE (TEAM_NAME) = (:teamName)");
-        query->bindValue(":teamName", teamName);
+//        query->prepare("DELETE FROM Souvenirs WHERE (TEAM_NAME) = (:teamName)");
+//        query->bindValue(":teamName", teamName);
 
-        if(query->exec())
-           qDebug() << "team3 delete success!";
-        else
-           qDebug() << "team3 delete failed!";
+//        if(query->exec())
+//           qDebug() << "team3 delete success!";
+//        else
+//           qDebug() << "team3 delete failed!";
     }
 }
 
@@ -311,4 +306,42 @@ bool Database::souvenirExists(const QString &souvenirName, const QString &teamNa
     }
 
     return exists;
+}
+
+void Database::clearMLBInfo()
+{
+    QSqlQuery *query = new QSqlQuery(myDB);
+
+    query->prepare("DELETE FROM MLB_Information");
+
+    if(query->exec())
+    {
+        qDebug() << "MLB info Cleared" << Qt::endl;
+    }
+    else
+    {
+        qDebug() << "ERROR - MLB info NOT Cleared" << Qt::endl;
+    }
+
+    query->prepare("DELETE FROM Distances");
+
+    if(query->exec())
+    {
+        qDebug() << "Distances Cleared" << Qt::endl;
+    }
+    else
+    {
+        qDebug() << "ERROR - Distances NOT Cleared" << Qt::endl;
+    }
+
+//    query->prepare("DELETE FROM Souvenirs");
+
+//    if(query->exec())
+//    {
+//        qDebug() << "Souvenirs Cleared" << Qt::endl;
+//    }
+//    else
+//    {
+//        qDebug() << "ERROR - Souvenirs NOT Cleared" << Qt::endl;
+//    }
 }

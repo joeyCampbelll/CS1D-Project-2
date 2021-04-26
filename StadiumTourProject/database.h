@@ -99,6 +99,14 @@ public:
                            const int &capacity, const int &date, const QString &surface,
                            const QString &roof, const QString &distanceCenter, const QString &typology);
 
+    /**
+    * @brief Method to clear team database info
+    *
+    * clears team database info
+    *
+    */
+    void clearMLBInfo();
+
 private:
     /**
     * @brief declaree database object

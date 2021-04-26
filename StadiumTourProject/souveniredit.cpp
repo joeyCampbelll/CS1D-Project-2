@@ -8,8 +8,8 @@ void MainWindow::fillTeamComboBox()
 
     QSqlQuery* qry = new QSqlQuery();
 
-    qry->prepare("SELECT DISTINCT TEAM_NAME FROM SOUVENIRS");
-
+    qry->prepare("SELECT TEAM_NAME FROM MLB_Information");
+//    qry->prepare("SELECT DISTINCT TEAM_NAME FROM Souvenirs");
     if(qry->exec())
     {
         qDebug() << "college table updated";
