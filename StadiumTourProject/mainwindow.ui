@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>9</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="mainPage">
      <widget class="QPushButton" name="adminButton">
@@ -350,7 +350,7 @@
        <rect>
         <x>10</x>
         <y>450</y>
-        <width>161</width>
+        <width>151</width>
         <height>41</height>
        </rect>
       </property>
@@ -361,9 +361,9 @@
      <widget class="QPushButton" name="AddNewStadium_button">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>330</x>
         <y>450</y>
-        <width>131</width>
+        <width>111</width>
         <height>41</height>
        </rect>
       </property>
@@ -374,9 +374,9 @@
      <widget class="QPushButton" name="AddNewDistance_button">
       <property name="geometry">
        <rect>
-        <x>520</x>
+        <x>450</x>
         <y>450</y>
-        <width>131</width>
+        <width>111</width>
         <height>41</height>
        </rect>
       </property>
@@ -387,9 +387,9 @@
      <widget class="QPushButton" name="RemoveStadium_button">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>170</x>
         <y>450</y>
-        <width>161</width>
+        <width>151</width>
         <height>41</height>
        </rect>
       </property>
@@ -413,14 +413,27 @@
      <widget class="QPushButton" name="editSouvenirsButton">
       <property name="geometry">
        <rect>
-        <x>669</x>
+        <x>570</x>
         <y>450</y>
-        <width>121</width>
+        <width>101</width>
         <height>41</height>
        </rect>
       </property>
       <property name="text">
        <string>Edit Souvenirs</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_resetTeamInfo">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>450</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reset Team Info</string>
       </property>
      </widget>
     </widget>

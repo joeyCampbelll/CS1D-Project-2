@@ -307,3 +307,10 @@ void MainWindow::on_pushButton_cancelChanges_clicked()
     ui->stackedWidget->setCurrentIndex(3);
 }
 
+void MainWindow::on_pushButton_resetTeamInfo_clicked()
+{
+    myDb.clearMLBInfo();
+    pathToFile = PROJECT_PATH + "/.CSV Files/MLB Information.csv";
+    on_addButt_clicked();
+}
+

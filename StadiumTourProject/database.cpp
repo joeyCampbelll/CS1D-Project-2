@@ -312,3 +312,19 @@ bool Database::souvenirExists(const QString &souvenirName, const QString &teamNa
 
     return exists;
 }
+
+void Database::clearMLBInfo()
+{
+    QSqlQuery *query = new QSqlQuery(myDB);
+
+    query->prepare("DELETE FROM MLB_Information");
+
+    if(query->exec())
+    {
+        qDebug() << "MLB info Cleared" << Qt::endl;
+    }
+    else
+    {
+        qDebug() << "ERROR - MLB info NOT Cleared" << Qt::endl;
+    }
+}
