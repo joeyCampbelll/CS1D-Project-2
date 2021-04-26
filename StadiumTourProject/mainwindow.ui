@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="mainPage">
      <widget class="QPushButton" name="adminButton">
@@ -1367,7 +1367,7 @@
        <string>Cancel</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_17">
+     <widget class="QLabel" name="label_19">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -1496,7 +1496,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="label_18">
+     <widget class="QLabel" name="label_20">
       <property name="geometry">
        <rect>
         <x>290</x>
