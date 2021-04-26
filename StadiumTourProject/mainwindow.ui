@@ -24,11 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-<<<<<<< HEAD
-     <number>5</number>
-=======
-     <number>9</number>
->>>>>>> main
+     <number>7</number>
     </property>
     <widget class="QWidget" name="mainPage">
      <widget class="QPushButton" name="adminButton">
@@ -1189,7 +1185,7 @@
         <x>0</x>
         <y>0</y>
         <width>211</width>
-        <height>21</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
@@ -1210,9 +1206,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>70</y>
+        <y>60</y>
         <width>101</width>
-        <height>21</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
@@ -1233,9 +1229,9 @@
       <property name="geometry">
        <rect>
         <x>520</x>
-        <y>190</y>
+        <y>180</y>
         <width>121</width>
-        <height>21</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -1263,7 +1259,7 @@
         <x>340</x>
         <y>200</y>
         <width>47</width>
-        <height>14</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -1288,7 +1284,7 @@
        <rect>
         <x>310</x>
         <y>140</y>
-        <width>71</width>
+        <width>81</width>
         <height>20</height>
        </rect>
       </property>
@@ -1314,7 +1310,7 @@
        <rect>
         <x>280</x>
         <y>170</y>
-        <width>101</width>
+        <width>111</width>
         <height>20</height>
        </rect>
       </property>
@@ -1340,7 +1336,7 @@
        <rect>
         <x>400</x>
         <y>170</y>
-        <width>113</width>
+        <width>161</width>
         <height>21</height>
        </rect>
       </property>
@@ -1377,7 +1373,7 @@
         <x>310</x>
         <y>60</y>
         <width>211</width>
-        <height>21</height>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
@@ -1418,7 +1414,7 @@
         <x>320</x>
         <y>190</y>
         <width>47</width>
-        <height>14</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -1430,8 +1426,8 @@
        <rect>
         <x>260</x>
         <y>160</y>
-        <width>101</width>
-        <height>20</height>
+        <width>111</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -1456,7 +1452,7 @@
        <rect>
         <x>290</x>
         <y>130</y>
-        <width>71</width>
+        <width>81</width>
         <height>20</height>
        </rect>
       </property>
@@ -1493,9 +1489,9 @@
      <widget class="QLineEdit" name="enterNameBox">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>370</x>
         <y>160</y>
-        <width>113</width>
+        <width>161</width>
         <height>21</height>
        </rect>
       </property>
@@ -1503,10 +1499,10 @@
      <widget class="QLabel" name="label_18">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>290</x>
         <y>60</y>
-        <width>211</width>
-        <height>21</height>
+        <width>221</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
