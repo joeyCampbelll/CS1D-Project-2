@@ -34,6 +34,76 @@ bool Database::isOpen() const
     return myDB.isOpen();
 }
 
+void Database::deleteSouvenir(const QString &souvenirName, const QString &teamName)
+{
+    QSqlQuery *query = new QSqlQuery(myDB);
+
+    if(souvenirExists(souvenirName, teamName))
+    {
+        if(myDB.open())
+        {
+            query->prepare("DELETE FROM Souvenirs WHERE (SOUVENIR_NAME, TEAM_NAME) = (:souvenirname, :teamname)");
+            query->bindValue(":souvenirname", souvenirName);
+            query->bindValue(":teamname", teamName);
+
+            if(query->exec())
+                qDebug() << "souvenir delete success!";
+            else
+                qDebug() << "souvenir delete failed!";
+        }
+    }
+
+}
+
+void Database::addSouvenir(const QString &souvenirName, const QString &teamName, const QString &price)
+{
+    QSqlQuery *query = new QSqlQuery(myDB);
+
+    if(!souvenirExists(souvenirName, teamName))
+    {
+        if(myDB.open())
+        {
+            query->prepare("INSERT INTO Souvenirs(TEAM_NAME, SOUVENIR_NAME, SOUVENIR_PRICE) VALUES(:teamname, :souvenirname, :price)");
+            query->bindValue(":teamname", teamName);
+            query->bindValue(":souvenirname", souvenirName);
+            query->bindValue(":price", "$ " + price);
+
+            if(query->exec())
+                qDebug() << "souvenir add success!";
+            else
+                qDebug() << "souvenir add failed!";
+        }
+    }
+    else
+    {
+        qDebug() << "name exists!";
+    }
+}
+
+void Database::editSouvenir(const QString &souvenirName, const QString &teamName, const QString &price, const QString &newSouvenirName) {
+    QSqlQuery *query = new QSqlQuery(myDB);
+
+
+    if(myDB.open())
+    {
+        query->prepare("UPDATE SOUVENIRS SET (SOUVENIR_NAME, SOUVENIR_PRICE) = (:newsouvenirname, :price) "
+                       "WHERE (TEAM_NAME, SOUVENIR_NAME) = (:teamname, :souvenirname)");
+        query->bindValue(":newsouvenirname", newSouvenirName);
+        query->bindValue(":teamname", teamName);
+        query->bindValue(":souvenirname", souvenirName);
+        query->bindValue(":price", "$ " +  price);
+
+        if(query->exec())
+        {
+            qDebug() << "UPDATE WORKED" << Qt::endl;
+        }
+        else
+        {
+            qDebug() << "UPDATE failed: " << query->lastError() << Qt::endl;
+        }
+    }
+}
+
 QStringList Database::parseFile(QString &string) {
     enum State {Normal, Quote} state = Normal;
     QStringList fields;
@@ -116,12 +186,7 @@ void Database::addNewStadium(QStringList list) {
     query->bindValue(":BallParkTypology", list.at(8));
     query->bindValue(":RoofType", list.at(9).trimmed());
 
-    //executes query
-    if (query->exec()) {
-        qDebug() << "Query was executed";
-    } else {
-        qDebug() << "Query was not executed";
-    }
+    query->exec();
 }
 
 void Database::addNewDistance(QStringList list) {
@@ -166,13 +231,13 @@ void Database::removeTeam(const QString &stadiumName, const QString &teamName)
         else
            qDebug() << "team2 delete failed!";
 
-        query->prepare("DELETE FROM Souvenirs WHERE (TEAM_NAME) = (:teamName)");
-        query->bindValue(":teamName", teamName);
+//        query->prepare("DELETE FROM Souvenirs WHERE (TEAM_NAME) = (:teamName)");
+//        query->bindValue(":teamName", teamName);
 
-        if(query->exec())
-           qDebug() << "team3 delete success!";
-        else
-           qDebug() << "team3 delete failed!";
+//        if(query->exec())
+//           qDebug() << "team3 delete success!";
+//        else
+//           qDebug() << "team3 delete failed!";
     }
 }
 
@@ -211,4 +276,72 @@ void Database::updateStadiumInfo(const QString &teamName, const QString &stadium
             qDebug() << "UPDATE failed: " << query->lastError() << Qt::endl;
         }
     }
+}
+
+
+bool Database::souvenirExists(const QString &souvenirName, const QString &teamName)
+{
+    bool exists = false;
+
+    QSqlQuery *checkQuery = new QSqlQuery(myDB);
+
+    checkQuery->prepare("SELECT SOUVENIR_NAME FROM SOUVENIRS WHERE (TEAM_NAME, SOUVENIR_NAME) = (:teamname, :souvenirname)");
+    checkQuery->bindValue(":teamname", teamName);
+    checkQuery->bindValue(":souvenirname", souvenirName);
+
+
+    if(checkQuery->exec())
+    {
+        if(checkQuery->next())
+        {
+            exists = true;
+            QString souvenir = checkQuery->value("teamname").toString();
+            QString team = checkQuery->value("souvenirname").toString();
+            qDebug() << souvenir << " " << team;
+        }
+    }
+    else
+    {
+        qDebug() << "souvenir exists failed: " << checkQuery->lastError();
+    }
+
+    return exists;
+}
+
+void Database::clearMLBInfo()
+{
+    QSqlQuery *query = new QSqlQuery(myDB);
+
+    query->prepare("DELETE FROM MLB_Information");
+
+    if(query->exec())
+    {
+        qDebug() << "MLB info Cleared" << Qt::endl;
+    }
+    else
+    {
+        qDebug() << "ERROR - MLB info NOT Cleared" << Qt::endl;
+    }
+
+    query->prepare("DELETE FROM Distances");
+
+    if(query->exec())
+    {
+        qDebug() << "Distances Cleared" << Qt::endl;
+    }
+    else
+    {
+        qDebug() << "ERROR - Distances NOT Cleared" << Qt::endl;
+    }
+
+//    query->prepare("DELETE FROM Souvenirs");
+
+//    if(query->exec())
+//    {
+//        qDebug() << "Souvenirs Cleared" << Qt::endl;
+//    }
+//    else
+//    {
+//        qDebug() << "ERROR - Souvenirs NOT Cleared" << Qt::endl;
+//    }
 }

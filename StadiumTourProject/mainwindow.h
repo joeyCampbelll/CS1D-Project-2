@@ -25,6 +25,10 @@ public:
     */
     void showAllMLB();
 
+    void fillTeamComboBox();
+    void fillSouvenirComboBox();
+    void updateSouvenirTableView();
+
 private slots:
 
     void on_tableButton_clicked();
@@ -43,6 +47,25 @@ private slots:
 
     void on_exitTableViewButton_clicked();
 
+    void on_editSouvenirsButton_clicked();
+
+    void on_deleteSouvenirButton_clicked();
+
+    void on_addSouvenirButton_clicked();
+
+    void on_editSouvenirButton_clicked();
+
+    void on_selectTeamBox_currentIndexChanged(const QString &arg1);
+
+    void on_cancelEditButton_clicked();
+
+    void on_enterEditButton_clicked();
+
+    void on_exitEditButton_clicked();
+
+    void on_cancelAddButton_clicked();
+
+    void on_enterAddButton_clicked();
     void on_addButt_clicked();
 
     void on_pushButton_cancel_2_clicked();
@@ -77,10 +100,18 @@ private slots:
 
     void on_pushButton_cancelChanges_clicked();
 
+
+    void on_pushButton_resetTeamInfo_clicked();
+
+    void on_pushButton_quickAddStadium_clicked();
+
+    void on_pushButton_quickAddDistances_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     tablefilter *filter;
+    QString originalName;
 
     /**
     * @brief used for file directory
