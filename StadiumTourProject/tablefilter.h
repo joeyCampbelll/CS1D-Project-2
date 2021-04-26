@@ -32,7 +32,8 @@ private slots:
 
     void on_onlyShowEntry_currentIndexChanged(int index);
 
-    void on_individualTeamEntry_currentTextChanged(const QString &arg1);
+    void on_individualTeamEntry_activated(int index);
+
 
 private:
     QTableView* tableView;
