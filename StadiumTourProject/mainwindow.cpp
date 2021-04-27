@@ -1,12 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFileInfo>
+#include <QDir>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setFixedSize(800, 500);
+    this->setFixedSize(800, 525);
     ui->stackedWidget->setCurrentIndex(0);
 
 //    Check if database is open
@@ -19,6 +22,40 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << "DATABASE SUCCESSFULLY CONNECTED" << Qt::endl;
         showAllMLB();
     }
+
+    //used to check if file has been added
+    addedStadium = false;
+    addedDistance = false;
+
+    //hides add button and fileTable
+    ui->addButt->hide();
+    ui->pushButton_addDistances->hide();
+
+    //sets up paths for the folder Trees
+    QString sPath = "/Users";
+    dirModel  = new QFileSystemModel(this);
+    dirModel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
+    dirModel->setRootPath(sPath);
+    ui->treeView1->setModel(dirModel);
+    fileModel = new QFileSystemModel(this);
+    fileModel->setFilter(QDir::NoDotAndDotDot | QDir::Files);
+    fileModel->setRootPath(sPath);
+    ui->fileView1->setModel(fileModel);
+
+    ui->treeView1->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+
+    //sets up paths for the folder Trees
+    QString rPath = "/Users";
+    dirModel2  = new QFileSystemModel(this);
+    dirModel2->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
+    dirModel2->setRootPath(rPath);
+    ui->FileSelector->setModel(dirModel2);
+    fileModel2 = new QFileSystemModel(this);
+    fileModel2->setFilter(QDir::NoDotAndDotDot | QDir::Files);
+    fileModel2->setRootPath(rPath);
+    ui->FileView->setModel(fileModel2);
+
+    ui->FileSelector->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
 }
 
 MainWindow::~MainWindow()
@@ -40,6 +77,8 @@ void MainWindow::showAllMLB()
 
     ui->mlbTableView->setModel(model);
     ui->mlbTableView->resizeColumnsToContents();
+    ui->Stadium_tableView->setModel(model);
+    ui->Stadium_tableView->resizeColumnsToContents();
 }
 
 void MainWindow::on_tableButton_clicked()
