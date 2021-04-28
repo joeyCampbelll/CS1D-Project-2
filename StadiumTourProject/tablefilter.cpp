@@ -6,6 +6,7 @@ tablefilter::tablefilter(QWidget *parent) :
     ui(new Ui::tablefilter)
 {
     ui->setupUi(this);
+    this->setFixedHeight(525);
 
     // assigns the classes model and query objects
     this->model = new QSqlQueryModel();
@@ -14,8 +15,13 @@ tablefilter::tablefilter(QWidget *parent) :
     // Gets each individual team name for combobox
     this->qry->prepare("SELECT TEAM_NAME FROM MLB_Information");
     this->qry->exec();
-    this->model->setQuery(*qry);
-    this->ui->individualTeamEntry->setModel(model);
+
+    ui->individualTeamEntry->addItem("NONE");
+
+    while (qry->next())
+    {
+        ui->individualTeamEntry->addItem(qry->value(0).toString());
+    }
 
     ui->sortByEntry->setPlaceholderText("NONE");
     ui->sortByEntry->addItem("Team Name");
@@ -166,6 +172,7 @@ void tablefilter::resetFilters()
 {
     ui->sortByEntry->setCurrentIndex(10);
     ui->onlyShowEntry->setCurrentIndex(15);
+    ui->individualTeamEntry->setCurrentIndex(0);
     individualTeamSelected = false;
     sorterSelected = false;
     filterSelected = false;
@@ -176,8 +183,13 @@ void tablefilter::resetFilters()
     // resets individual team selection
     this->qry->prepare("SELECT TEAM_NAME FROM MLB_Information");
     this->qry->exec();
-    this->model->setQuery(*qry);
-    this->ui->individualTeamEntry->setModel(model);
+
+    ui->individualTeamEntry->addItem("NONE");
+
+    while (qry->next())
+    {
+        ui->individualTeamEntry->addItem(qry->value(0).toString());
+    }
 }
 
 void tablefilter::on_sortByEntry_currentIndexChanged(int index)
