@@ -91,16 +91,17 @@ void MainWindow::initializeList()
     else
     {
         startTeamName = ui->comboBox_startingTeamChooseTeams->currentText();
+        teamNamesVector.push_back(startTeamName);
 
         while(query->next())
         {
             if(startTeamName != query->value(0).toString())
             {
                 QCheckBox* checkBox = new QCheckBox(query->value(0).toString());
-                QString tempTeam = (query->value(0).toString());
+                QString collegeName = (query->value(0).toString());
                 checkBox->setCheckState(Qt::CheckState::Unchecked);
                 checkBoxVector.push_back(checkBox);
-                tempTeamNamesVector.push_back(tempTeam);
+                tempTeamNamesVector.push_back(collegeName);
             }
         }
 
@@ -151,23 +152,4 @@ void MainWindow::CheckboxChanged()
 void MainWindow::on_comboBox_startingTeamChooseTeams_activated()
 {
     initializeList();
-}
-
-void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
-{
-    ui->textBrowser_ChooseTeams->clear();
-    teamNamesVector.clear();
-    startTeamName = ui->comboBox_startingTeamChooseTeams->currentText();
-    teamNamesVector.push_back(startTeamName);
-
-    CheckboxChanged();
-    //CALL DIJKSTRAS ALGO HERE
-
-    for(int i = 0; i < teamNamesVector.size(); i++)
-    {
-        ui->textBrowser_ChooseTeams->append(teamNamesVector.at(i));
-    }
-
-    //ui->pushButton_generateRouteChooseTeams->hide();
-    ui->pushButton_startTripChooseTeams->show();
 }

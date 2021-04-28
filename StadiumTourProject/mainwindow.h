@@ -123,8 +123,6 @@ private slots:
 
     void on_comboBox_startingTeamChooseTeams_activated();
 
-    void on_pushButton_generateRouteChooseTeams_clicked();
-
 private:
     Ui::MainWindow *ui;
 
