@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>10</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="mainPage">
      <widget class="QPushButton" name="adminButton">
@@ -221,13 +221,6 @@
         <height>41</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
       <property name="text">
        <string>Cancel</string>
       </property>
@@ -240,13 +233,6 @@
         <width>101</width>
         <height>41</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Login</string>
@@ -368,12 +354,6 @@
         <height>41</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <weight>50</weight>
-        <bold>false</bold>
-       </font>
-      </property>
       <property name="text">
        <string>Edit Selected Team Info</string>
       </property>
@@ -469,14 +449,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QTreeView" name="treeView1">
-         <property name="font">
-          <font>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-        </widget>
+        <widget class="QTreeView" name="treeView1"/>
        </item>
        <item>
         <widget class="QListView" name="fileView1"/>
@@ -522,17 +495,10 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>59</y>
+        <y>60</y>
         <width>781</width>
-        <height>21</height>
+        <height>20</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Please select a .CSV file below:</string>
@@ -549,13 +515,6 @@
         <width>121</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -575,13 +534,6 @@
         <width>121</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -620,17 +572,10 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>510</y>
-        <width>281</width>
+        <y>450</y>
+        <width>201</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Quick Add Las Vegas Gamblers</string>
@@ -646,12 +591,6 @@
         <width>781</width>
         <height>20</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Please select a .CSV file below:</string>
@@ -707,18 +646,11 @@
      <widget class="QPushButton" name="pushButton_addDistances">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>270</x>
         <y>470</y>
-        <width>141</width>
+        <width>121</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Add Distances</string>
@@ -729,16 +661,9 @@
        <rect>
         <x>410</x>
         <y>470</y>
-        <width>131</width>
+        <width>111</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Cancel</string>
@@ -771,17 +696,10 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>510</y>
-        <width>311</width>
+        <y>470</y>
+        <width>211</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Quick Add Distances for Gamblers</string>
@@ -1253,16 +1171,9 @@
        <rect>
         <x>530</x>
         <y>140</y>
-        <width>151</width>
+        <width>111</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Add Souvenir +</string>
@@ -1273,16 +1184,9 @@
        <rect>
         <x>530</x>
         <y>240</y>
-        <width>161</width>
+        <width>111</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Delete Souvenir</string>
@@ -1293,16 +1197,9 @@
        <rect>
         <x>530</x>
         <y>280</y>
-        <width>161</width>
+        <width>111</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Edit Souvenir</string>
@@ -1337,35 +1234,21 @@
      <widget class="QComboBox" name="selectTeamBox">
       <property name="geometry">
        <rect>
-        <x>160</x>
-        <y>61</y>
-        <width>261</width>
-        <height>31</height>
+        <x>110</x>
+        <y>70</y>
+        <width>211</width>
+        <height>22</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
      </widget>
      <widget class="QLabel" name="selectTeamTitle">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>50</y>
-        <width>161</width>
+        <y>60</y>
+        <width>101</width>
         <height>41</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SELECT TEAM &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1386,16 +1269,9 @@
        <rect>
         <x>520</x>
         <y>180</y>
-        <width>211</width>
+        <width>121</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SELECT SOUVENIR&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1404,18 +1280,11 @@
      <widget class="QPushButton" name="exitEditButton">
       <property name="geometry">
        <rect>
-        <x>560</x>
+        <x>630</x>
         <y>430</y>
         <width>111</width>
         <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Exit</string>
@@ -1426,18 +1295,11 @@
      <widget class="QLabel" name="priceTitle_3">
       <property name="geometry">
        <rect>
-        <x>326</x>
+        <x>340</x>
         <y>200</y>
-        <width>61</width>
+        <width>47</width>
         <height>21</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;PRICE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1448,14 +1310,9 @@
        <rect>
         <x>400</x>
         <y>200</y>
-        <width>81</width>
+        <width>62</width>
         <height>22</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
       </property>
       <property name="maximum">
        <double>1000.000000000000000</double>
@@ -1464,18 +1321,11 @@
      <widget class="QLabel" name="teamNameTitle_3">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>129</y>
-        <width>111</width>
-        <height>31</height>
+        <x>310</x>
+        <y>140</y>
+        <width>81</width>
+        <height>20</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;TEAM NAME&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1485,17 +1335,10 @@
       <property name="geometry">
        <rect>
         <x>400</x>
-        <y>135</y>
+        <y>140</y>
         <width>171</width>
-        <height>21</height>
+        <height>16</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>TEAM_NAME</string>
@@ -1504,18 +1347,11 @@
      <widget class="QLabel" name="souvenirTitle_5">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>169</y>
-        <width>151</width>
-        <height>21</height>
+        <x>280</x>
+        <y>170</y>
+        <width>111</width>
+        <height>20</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SOUVENIR NAME&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1527,15 +1363,8 @@
         <x>400</x>
         <y>290</y>
         <width>80</width>
-        <height>31</height>
+        <height>22</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Enter</string>
@@ -1549,13 +1378,6 @@
         <width>161</width>
         <height>21</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
-       </font>
       </property>
      </widget>
      <widget class="Line" name="line_3">
@@ -1577,15 +1399,8 @@
         <x>300</x>
         <y>290</y>
         <width>80</width>
-        <height>31</height>
+        <height>22</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Cancel</string>
@@ -1612,15 +1427,8 @@
         <x>380</x>
         <y>280</y>
         <width>80</width>
-        <height>31</height>
+        <height>22</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Enter</string>
@@ -1632,15 +1440,8 @@
         <x>280</x>
         <y>280</y>
         <width>80</width>
-        <height>31</height>
+        <height>22</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>Cancel</string>
@@ -1649,18 +1450,11 @@
      <widget class="QLabel" name="priceTitle">
       <property name="geometry">
        <rect>
-        <x>306</x>
+        <x>320</x>
         <y>190</y>
-        <width>61</width>
+        <width>47</width>
         <height>21</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;PRICE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1669,18 +1463,11 @@
      <widget class="QLabel" name="souvenirTitle_2">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>260</x>
         <y>160</y>
-        <width>151</width>
+        <width>111</width>
         <height>21</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SOUVENIR NAME&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1702,18 +1489,11 @@
      <widget class="QLabel" name="teamNameTitle">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>290</x>
         <y>130</y>
-        <width>111</width>
+        <width>81</width>
         <height>20</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;TEAM NAME&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1728,13 +1508,6 @@
         <height>16</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
       <property name="text">
        <string>TEAM_NAME</string>
       </property>
@@ -1744,14 +1517,9 @@
        <rect>
         <x>380</x>
         <y>190</y>
-        <width>71</width>
+        <width>62</width>
         <height>22</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
       </property>
       <property name="maximum">
        <double>1000.000000000000000</double>
@@ -1766,11 +1534,6 @@
         <height>21</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
      </widget>
      <widget class="QLabel" name="label_20">
       <property name="geometry">
@@ -1783,240 +1546,6 @@
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;EDIT SOUVENIR&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_2">
-     <widget class="QTabWidget" name="tabWidget_tripPlanner">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>60</y>
-        <width>801</width>
-        <height>491</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="tabShape">
-       <enum>QTabWidget::Rounded</enum>
-      </property>
-      <property name="currentIndex">
-       <number>2</number>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>16</width>
-        <height>16</height>
-       </size>
-      </property>
-      <property name="elideMode">
-       <enum>Qt::ElideLeft</enum>
-      </property>
-      <widget class="QWidget" name="ChooseOrder">
-       <attribute name="title">
-        <string>Choose Trip Order</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="CustomTrip">
-       <attribute name="title">
-        <string>Choose Teams(Not Order)</string>
-       </attribute>
-       <widget class="QScrollArea" name="scrollArea_displayAllStadiumsSSR">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>66</y>
-          <width>261</width>
-          <height>341</height>
-         </rect>
-        </property>
-        <property name="widgetResizable">
-         <bool>true</bool>
-        </property>
-        <widget class="QWidget" name="scrollAreaWidgetContents">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>259</width>
-           <height>339</height>
-          </rect>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QComboBox" name="comboBox_startingTeamChooseTeams">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>20</y>
-          <width>261</width>
-          <height>31</height>
-         </rect>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="SingleRoute">
-       <attribute name="title">
-        <string>Single Stadium Route</string>
-       </attribute>
-       <widget class="QLabel" name="label_22">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>10</y>
-          <width>791</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Pick Your Starting Team:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboBox_startingTeam">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>50</y>
-          <width>331</width>
-          <height>31</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_23">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>90</y>
-          <width>791</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Pick Your Ending Team:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboBox_endingTeam">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>130</y>
-          <width>331</width>
-          <height>31</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_SSRstart">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>180</y>
-          <width>131</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Start Trip</string>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_SSR">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>260</y>
-          <width>321</width>
-          <height>141</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="autoFormatting">
-         <set>QTextEdit::AutoNone</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_tripRouteSSR">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>230</y>
-          <width>321</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Your Trip Route:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </widget>
-     </widget>
-     <widget class="QLabel" name="label_21">
-      <property name="geometry">
-       <rect>
-        <x>4</x>
-        <y>0</y>
-        <width>791</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>22</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Stadium Trip Planner</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>

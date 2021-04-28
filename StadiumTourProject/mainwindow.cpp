@@ -56,9 +56,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->FileView->setModel(fileModel2);
 
     ui->FileSelector->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-
-    fillStartTeam();
-    initializeList();
 }
 
 MainWindow::~MainWindow()
@@ -100,10 +97,7 @@ void MainWindow::on_adminButton_clicked()
 
 void MainWindow::on_buildTripButton_clicked()
 {
-    ui->label_tripRouteSSR->hide();
-    ui->textBrowser_SSR->hide();
-    ui->tabWidget_tripPlanner->setCurrentIndex(0);
-    ui->stackedWidget->setCurrentIndex(10);
+    //TODO - future build trip code
 }
 
 void MainWindow::on_dfsBfsButton_clicked()
