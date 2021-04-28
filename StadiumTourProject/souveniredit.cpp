@@ -12,7 +12,7 @@ void MainWindow::fillTeamComboBox()
 //    qry->prepare("SELECT DISTINCT TEAM_NAME FROM Souvenirs");
     if(qry->exec())
     {
-        qDebug() << "college table updated";
+        qDebug() << "stadium table updated";
     }
     else
         qDebug() << "failed";

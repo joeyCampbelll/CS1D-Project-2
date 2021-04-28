@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include <QFileSystemModel>
+#include <QVBoxLayout>
+#include <QWidget>
+#include <QSqlQueryModel>
+#include <QCheckBox>
 #include "database.h"
 #include "tablefilter.h"
 
@@ -28,6 +32,9 @@ public:
     void fillTeamComboBox();
     void fillSouvenirComboBox();
     void updateSouvenirTableView();
+
+    //For trip planner
+    void fillStartTeam();
 
 private slots:
 
@@ -100,12 +107,21 @@ private slots:
 
     void on_pushButton_cancelChanges_clicked();
 
-
     void on_pushButton_resetTeamInfo_clicked();
 
     void on_pushButton_quickAddStadium_clicked();
 
     void on_pushButton_quickAddDistances_clicked();
+
+    void on_comboBox_startingTeam_activated(const QString &startingTeam);
+
+    void on_pushButton_SSRstart_clicked();
+
+    void initializeList();
+
+    void CheckboxChanged();
+
+    void on_comboBox_startingTeamChooseTeams_activated();
 
 private:
     Ui::MainWindow *ui;
@@ -151,6 +167,34 @@ private:
     QString tempRoofType;
     QString tempDistToCenterField;
     QString tempTypology;
+
+    //Vector to store input stadium/team names
+    QVector<QString> inputValues;
+
+    /**
+    * @brief vector for check box elements
+    */
+    QVector<QCheckBox*> checkBoxVector;
+
+    /**
+    * @brief vector for selected team names
+    */
+    QVector<QString> teamNamesVector;
+
+    /**
+    * @brief vector for all team names
+    */
+    QVector<QString> tempTeamNamesVector;
+
+    /**
+    * @brief name for current campus
+    */
+    QString startTeamName;
+
+    //Total distance of trip
+    int totalDistance;
+    //Check if SSR start button has been clicked
+    bool SSRstartClicked = false;
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant
