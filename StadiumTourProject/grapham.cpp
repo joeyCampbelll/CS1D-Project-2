@@ -117,8 +117,8 @@ void graphAM::breadthFirstSearch(QString start)
 
     breadthFirstHelper(start);
 
-    qDebug() << route;
-    qDebug() << travelDistance;
+    //qDebug() << route;
+    //qDebug() << travelDistance;
 }
 
 void graphAM::breadthFirstHelper(QString start)

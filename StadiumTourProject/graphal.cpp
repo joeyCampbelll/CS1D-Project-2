@@ -95,8 +95,8 @@ void graphAL::depthFirstSearch(QString start)
 
     depthFirstHelper(start);
 
-    qDebug() << dfsRoute;
-    qDebug() << travelDistance;
+    //qDebug() << dfsRoute;
+    //qDebug() << travelDistance;
 }
 
 void graphAL::depthFirstHelper(QString currentVertex)
