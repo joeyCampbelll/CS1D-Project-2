@@ -60,16 +60,6 @@ void graphAM::loadGraphFromDB()
         addEdge((qryOS->value(0).toString()), (qryDS->value(0).toString()), (qryD->value(0).toInt()));
     }
     // --------------------------------------------
-
-//    QSqlQuery* qryTemp = new QSqlQuery();
-
-//    qryTemp->prepare("SELECT DISTINCT DISTANCE FROM Distances");
-//    qryTemp->exec();
-//    while(qryTemp->next())
-//    {
-//        qDebug() << qryTemp->value(0).toInt();
-//    }
-
 }
 
 void graphAM::addEdge(QString city1, QString city2, int weight)
@@ -90,18 +80,11 @@ void graphAM::addEdge(QString city1, QString city2, int weight)
         }
     }
     bool foundDodgers = false;
-    //qDebug() << getWeightBetween(vertices[7], vertices[17]);
 
-//    if(weight == 50)
-//    {
-//        qDebug() << city1 << "  " << city2;
-//    }
     adjMatrix[start][end] = weight;
 
     Edge edgeForward = { city1, city2, weight };
     vertices[start].edges.push_back(edgeForward);
-
-//    vertices[end].edges.push_back(edgeForward);
 }
 
 void graphAM::printGraph()
@@ -136,21 +119,6 @@ void graphAM::breadthFirstSearch(QString start)
 
     qDebug() << route;
     qDebug() << travelDistance;
-    int total = 0;
-    for (int i = 0; i < vertexCount; i++)
-    {
-        QList<Edge> temp = vertices[i].edges;
-
-        for (int j = 0; j < temp.size(); j++)
-        {
-            if (temp[j].eTag == DISCOVERY_EDGE)
-            {
-                total += getWeightBetween(vertices[getLocationOf(temp[j].start)], vertices[getLocationOf(temp[j].end)]);
-//                qDebug() << temp[j].start << " (" << getWeightBetween(vertices[getLocationOf(temp[j].start)], vertices[getLocationOf(temp[j].end)]) << " )" << temp[j].end;
-            }
-        }
-    }
-    qDebug() << total;
 }
 
 void graphAM::breadthFirstHelper(QString start)
@@ -242,19 +210,7 @@ Vertex graphAM::findClosestVertex(Vertex vertex)
 
 int graphAM::getWeightBetween(Vertex vertex1, Vertex vertex2) // YES
 {
-//    QList<Edge> temp1 = vertex1.edges;
-//    QList<Edge> temp2 = vertex2.edges;
-//    for (int i = 0; i < temp1.size(); i++)
-//    {
-//        for (int j = 0; j < temp2.size(); j++)
-//        {
-//            if (temp1[i].weight == temp2[j].weight)
-//            {
-//                return temp1[i].weight;
-//            }
-//        }
-//    }
-//    return -999;
+
     QList<Edge> temp1 = vertex1.edges;
     //QList<Edge> temp2 = vertex2.edges;
     for (int i = 0; i < temp1.size(); i++)
