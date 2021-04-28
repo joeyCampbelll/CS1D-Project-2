@@ -1807,7 +1807,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1830,10 +1830,10 @@
        <widget class="QScrollArea" name="scrollArea_displayAllStadiumsSSR">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>66</y>
-          <width>261</width>
-          <height>341</height>
+          <x>60</x>
+          <y>50</y>
+          <width>301</width>
+          <height>301</height>
          </rect>
         </property>
         <property name="widgetResizable">
@@ -1844,8 +1844,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>259</width>
-           <height>339</height>
+           <width>299</width>
+           <height>299</height>
           </rect>
          </property>
         </widget>
@@ -1853,11 +1853,63 @@
        <widget class="QComboBox" name="comboBox_startingTeamChooseTeams">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>20</y>
-          <width>261</width>
+          <x>60</x>
+          <y>10</y>
+          <width>301</width>
           <height>31</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QTextBrowser" name="textBrowser_ChooseTeams">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>40</y>
+          <width>321</width>
+          <height>311</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_generateRouteChooseTeams">
+        <property name="geometry">
+         <rect>
+          <x>122</x>
+          <y>360</y>
+          <width>171</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Generate Route</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_startTripChooseTeams">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>360</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Start Trip</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_24">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>10</y>
+          <width>321</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Route:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </widget>

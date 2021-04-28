@@ -102,6 +102,7 @@ void MainWindow::on_buildTripButton_clicked()
 {
     ui->label_tripRouteSSR->hide();
     ui->textBrowser_SSR->hide();
+    ui->pushButton_startTripChooseTeams->hide();
     ui->tabWidget_tripPlanner->setCurrentIndex(0);
     ui->stackedWidget->setCurrentIndex(10);
 }
