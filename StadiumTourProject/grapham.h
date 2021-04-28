@@ -51,15 +51,20 @@ public:
 
     void printGraph();
 
+    QList<QString> getRoute();
+    int getDistance();
+
 
 private:
     int vertexCount;
     int edgeCount;
     int** adjMatrix;
     Vertex* vertices;
-//    QList<Vertex> vertices;
     int travelDistance;
     QString route;
+
+    QList<QString> routeAM;
+
 };
 
 #endif // GRAPHAM_H

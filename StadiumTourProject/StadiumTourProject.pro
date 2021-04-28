@@ -11,6 +11,7 @@ CONFIG += c++11
 
 SOURCES += \
     database.cpp \
+    dfsBfsMst.cpp \
     graphal.cpp \
     grapham.cpp \
     main.cpp \

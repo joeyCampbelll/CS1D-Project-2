@@ -142,6 +142,7 @@ void graphAM::breadthFirstHelper(QString start)
     {
         currentVertex = vertexContainer[0];
 
+        routeAM.push_back(vertexContainer[0].vertex);
         route += vertexContainer[0].vertex + "  ";
 
         vertexContainer.erase(vertexContainer.begin());
@@ -233,4 +234,14 @@ int graphAM::unvisitedSiblings(Vertex vertex)
             count++;
 
     return count;
+}
+
+QList<QString> graphAM::getRoute()
+{
+    return routeAM;
+}
+
+int graphAM::getDistance()
+{
+    return travelDistance;
 }

@@ -6,6 +6,7 @@ tablefilter::tablefilter(QWidget *parent) :
     ui(new Ui::tablefilter)
 {
     ui->setupUi(this);
+    this->setFixedHeight(525);
 
     // assigns the classes model and query objects
     this->model = new QSqlQueryModel();
