@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+#include "graphal.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -9,20 +9,18 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
+    graphAL test;
+//    QVector<QString> test;
 
-    QVector<QString> test;
+//    QSqlQuery* qry = new QSqlQuery();
 
-    QSqlQueryModel* model = new QSqlQueryModel();
+//    qry->prepare("SELECT DESTINATION_STADIUM FROM Distances");
+//    qry->exec();
 
-    QSqlQuery* qry = new QSqlQuery();
-
-    qry->prepare("SELECT ORIGINATED_STADIUM FROM Distances");
-    qry->exec();
-
-    while(qry->next())
-    {
-        qDebug() << (qry->value(0).toString());
-    }
+//    while(qry->next())
+//    {
+//        qDebug() << (qry->value(0).toString());
+//    }
 
     return a.exec();
 
