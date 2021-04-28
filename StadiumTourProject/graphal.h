@@ -15,10 +15,6 @@ struct EdgeAL
     }
 };
 
-//EdgeAL buildNode(QString vertex, int weight)
-//{
-//    return EdgeAL(vertex, weight);
-//}
 
 class graphAL
 {
