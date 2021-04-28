@@ -138,3 +138,4 @@ void MainWindow::on_restoreTableButton_clicked()
     ui->mlbTableView->setModel(model);
     ui->mlbTableView->resizeColumnsToContents();
 }
+
