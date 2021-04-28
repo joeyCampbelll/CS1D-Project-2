@@ -29,6 +29,8 @@ public:
     void fillSouvenirComboBox();
     void updateSouvenirTableView();
 
+    void updateSouvenirShopTableView();
+
 private slots:
 
     void on_tableButton_clicked();
@@ -107,6 +109,14 @@ private slots:
 
     void on_pushButton_quickAddDistances_clicked();
 
+    void on_souvenirShopButton_clicked();
+
+    void on_nextStadiumButton_clicked();
+
+    void on_souvenirShopTableView_clicked(const QModelIndex &index);
+
+    void on_buyButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -151,6 +161,17 @@ private:
     QString tempRoofType;
     QString tempDistToCenterField;
     QString tempTypology;
+
+    //Used for souvenir shop
+    QVector<QString> stadiumList;
+    double runningTotal;
+    double currentTotal;
+    int quantity;
+    int stadiumCount;
+    QString tempSouvenir;
+    double price;
+    bool cellClicked;
+
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant

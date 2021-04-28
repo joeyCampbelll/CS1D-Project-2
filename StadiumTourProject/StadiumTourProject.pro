@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     souveniredit.cpp \
+    souvenirshop.cpp \
     tablefilter.cpp \
     teamedit.cpp
 
