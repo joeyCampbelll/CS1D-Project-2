@@ -102,6 +102,7 @@ void graphAL::depthFirstSearch(QString start)
 void graphAL::depthFirstHelper(QString currentVertex)
 {
     dfsRoute += currentVertex + "  ";
+    routeAL.push_back(currentVertex);
 
     isVisitedMap[currentVertex] = true;
 
@@ -116,4 +117,14 @@ void graphAL::depthFirstHelper(QString currentVertex)
         }
         itr1++;
     }
+}
+
+QList<QString> graphAL::getRoute()
+{
+    return routeAL;
+}
+
+int graphAL::getDistance()
+{
+    return travelDistance;
 }

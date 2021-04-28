@@ -100,11 +100,6 @@ void MainWindow::on_buildTripButton_clicked()
     //TODO - future build trip code
 }
 
-void MainWindow::on_dfsBfsButton_clicked()
-{
-    //TODO - future dfs/bfs code
-}
-
 void MainWindow::on_pushButton_cancel_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
@@ -137,4 +132,70 @@ void MainWindow::on_restoreTableButton_clicked()
 
     ui->mlbTableView->setModel(model);
     ui->mlbTableView->resizeColumnsToContents();
+}
+
+
+
+
+void MainWindow::on_dfsBfsButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(10);
+    ui->stadiumSelector->clear();
+
+    // Gets each individual stadium name for combobox
+    QSqlQuery* qryStadiums = new QSqlQuery();
+    qryStadiums->prepare("SELECT DISTINCT ORIGINATED_STADIUM FROM Distances");
+    qryStadiums->exec();
+
+    ui->stadiumSelector->addItem("NONE");
+
+    // iterates through the querys
+    while (qryStadiums->next())
+    {
+        ui->stadiumSelector->addItem(qryStadiums->value(0).toString());
+    }
+}
+
+void MainWindow::on_generateMST_clicked()
+{
+
+}
+
+void MainWindow::on_generateBFS_clicked()
+{
+    if (selectedStadium != "NONE")
+    {
+        graphAdjMatr = new graphAM();
+        graphAdjMatr->breadthFirstSearch(selectedStadium);
+    }
+}
+
+void MainWindow::on_generateDFS_clicked()
+{
+    if (selectedStadium != "NONE")
+    {
+        graphAdjList = new graphAL();
+        graphAdjList->depthFirstSearch(selectedStadium);
+        QList<QString> temp = graphAdjList->getRoute();
+        ui->displayRoute->append("DISTANCE: " + QString::number(graphAdjList->getDistance()));
+        ui->displayRoute->append("\n");
+
+        for(int i = 0; i < temp.length(); i++)
+        {
+            QString tempS = QString::number(i + 1) + ". ";
+            ui->displayRoute->append(tempS + temp[i]);
+//            ui->displayRoute->append(temp[i]);
+
+        }
+    }
+}
+
+void MainWindow::on_stadiumSelector_activated(const QString &arg1)
+{
+    selectedStadium = arg1;
+}
+
+void MainWindow::on_exitDfsBfsMstPage_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
 }

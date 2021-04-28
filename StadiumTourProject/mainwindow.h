@@ -5,6 +5,8 @@
 #include <QFileSystemModel>
 #include "database.h"
 #include "tablefilter.h"
+#include "graphal.h"
+#include "grapham.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -107,6 +109,16 @@ private slots:
 
     void on_pushButton_quickAddDistances_clicked();
 
+    void on_generateMST_clicked();
+
+    void on_generateBFS_clicked();
+
+    void on_generateDFS_clicked();
+
+    void on_stadiumSelector_activated(const QString &arg1);
+
+    void on_exitDfsBfsMstPage_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -151,6 +163,14 @@ private:
     QString tempRoofType;
     QString tempDistToCenterField;
     QString tempTypology;
+
+    // ======= DFS/BFS/MST Related =======
+
+    QString selectedStadium;
+    graphAL* graphAdjList;
+    graphAM* graphAdjMatr;
+
+    // ===================================
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant

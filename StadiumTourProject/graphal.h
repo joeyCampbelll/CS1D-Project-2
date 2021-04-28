@@ -38,9 +38,14 @@ public:
     void depthFirstSearch(QString start);
 
     void depthFirstHelper(QString currentVertex);
+
+    QList<QString> getRoute();
+
+    int getDistance();
 private:
     QMap<QString, QList<EdgeAL>> adjList;
     QMap<QString, bool> isVisitedMap;
+    QList<QString> routeAL;
 
 };
 
