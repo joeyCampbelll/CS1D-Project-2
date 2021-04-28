@@ -100,11 +100,6 @@ void MainWindow::on_buildTripButton_clicked()
     //TODO - future build trip code
 }
 
-void MainWindow::on_dfsBfsButton_clicked()
-{
-    //TODO - future dfs/bfs code
-}
-
 void MainWindow::on_pushButton_cancel_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
@@ -138,3 +133,4 @@ void MainWindow::on_restoreTableButton_clicked()
     ui->mlbTableView->setModel(model);
     ui->mlbTableView->resizeColumnsToContents();
 }
+

@@ -11,6 +11,9 @@ CONFIG += c++11
 
 SOURCES += \
     database.cpp \
+    dfsBfsMst.cpp \
+    graphal.cpp \
+    grapham.cpp \
     main.cpp \
     mainwindow.cpp \
     souveniredit.cpp \
@@ -19,6 +22,8 @@ SOURCES += \
 
 HEADERS += \
     database.h \
+    graphal.h \
+    grapham.h \
     mainwindow.h \
     tablefilter.h
 
