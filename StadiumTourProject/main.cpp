@@ -10,18 +10,7 @@ int main(int argc, char *argv[])
     w.show();
 
     graphAL test;
-//    QVector<QString> test;
-
-//    QSqlQuery* qry = new QSqlQuery();
-
-//    qry->prepare("SELECT DESTINATION_STADIUM FROM Distances");
-//    qry->exec();
-
-//    while(qry->next())
-//    {
-//        qDebug() << (qry->value(0).toString());
-//    }
-
+//    test.printGraph();
+    test.depthFirstSearch("Oracle Park");
     return a.exec();
-
 }
