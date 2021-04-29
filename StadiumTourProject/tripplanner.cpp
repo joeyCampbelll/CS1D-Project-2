@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QTextBrowser>
 
 void MainWindow::fillStartTeam()
 {
@@ -69,8 +70,11 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
 
     for(int i = 0; i < inputValues.size(); i++)
     {
-        ui->textBrowser_SSR->append(inputValues.at(i));
+        ui->textBrowser_SSR->append(QString::number(i + 1) + ". " + inputValues.at(i));
     }
+
+    ui->textBrowser_SSR->selectAll();
+    ui->textBrowser_SSR->setAlignment(Qt::AlignCenter);
 
     ui->label_tripRouteSSR->show();
     ui->textBrowser_SSR->show();
@@ -121,7 +125,6 @@ void MainWindow::initializeList()
         for(int i = 0; i < checkBoxVector.size(); i++)
         {
             vBoxLayout->addWidget(checkBoxVector[i]);
-
         }
     }
 }
@@ -179,7 +182,7 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
 
     for(int i = 0; i < teamNamesVector.size(); i++)
     {
-        ui->textBrowser_ChooseTeams->append(teamNamesVector.at(i));
+        ui->textBrowser_ChooseTeams->append(QString::number(i + 1) + ". " + teamNamesVector.at(i));
     }
 
     ui->pushButton_startTripChooseTeams->show();
@@ -201,6 +204,7 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
         ui->textBrowser_MiamiMarlins->append(tempS + temp[i]);
     }
     ui->startTripButton_MiamiMarlins->show();
+
 }
 
 void MainWindow::on_startTripButton_MiamiMarlins_clicked()
