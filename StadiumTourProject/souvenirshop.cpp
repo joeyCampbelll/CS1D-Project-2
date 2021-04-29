@@ -34,9 +34,7 @@ void MainWindow::on_souvenirShopButton_clicked()
 
      ui->souvenirShopTableView->setModel(model);
 
-//     ui->updatePriceLabel->setText(currentTotal);
-//     ui->updateTotalLabel->setText(total);
-
+     updatePrices();
 
      stadiumCount++;
 
@@ -50,6 +48,26 @@ void MainWindow::on_nextStadiumButton_clicked()
     }
     else {
         updateSouvenirShopTableView();
+    }
+}
+
+void MainWindow::updatePrices() {
+    if(currentTotal == 0.00)
+    {
+         ui->updatePriceLabel->setText(QString::number(currentTotal) + ".00");
+    }
+    else {
+         ui->updatePriceLabel->setText(QString::number(currentTotal));
+    }
+
+    if(runningTotal == 0.00)
+    {
+        ui->updateTotalLabel->setText(QString::number(runningTotal) + ".00");
+    }
+    else
+    {
+
+        ui->updateTotalLabel->setText(QString::number(runningTotal));
     }
 }
 
@@ -72,8 +90,7 @@ void MainWindow::updateSouvenirShopTableView() {
 
      ui->souvenirShopTableView->setModel(model);
 
-//     ui->updatePriceLabel->setText(currentTotal);
-//     ui->updateTotalLabel->setText(runningTotal);
+    updatePrices();
 
      stadiumCount++;
 }

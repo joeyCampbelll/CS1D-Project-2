@@ -117,6 +117,8 @@ private slots:
 
     void on_buyButton_clicked();
 
+    void updatePrices();
+
 private:
     Ui::MainWindow *ui;
 
