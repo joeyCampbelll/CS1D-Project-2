@@ -56,9 +56,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->FileView->setModel(fileModel2);
 
     ui->FileSelector->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-
-    fillStartTeam();
-    initializeList();
 }
 
 MainWindow::~MainWindow()
@@ -100,8 +97,17 @@ void MainWindow::on_adminButton_clicked()
 
 void MainWindow::on_buildTripButton_clicked()
 {
+    fillStartTeam();
+    initializeList();
+
+    ui->textBrowser_ChooseTeams->clear();
+    ui->textBrowser_MiamiMarlins->clear();
+    ui->textBrowser_SSR->clear();
+    ui->comboBox_endingTeam->setDisabled(true);
     ui->label_tripRouteSSR->hide();
     ui->textBrowser_SSR->hide();
+    ui->pushButton_SSRstartTrip->hide();
+    ui->startTripButton_MiamiMarlins->hide();
     ui->tabWidget_tripPlanner->setCurrentIndex(0);
     ui->stackedWidget->setCurrentIndex(11);
 }
@@ -139,4 +145,3 @@ void MainWindow::on_restoreTableButton_clicked()
     ui->mlbTableView->setModel(model);
     ui->mlbTableView->resizeColumnsToContents();
 }
-

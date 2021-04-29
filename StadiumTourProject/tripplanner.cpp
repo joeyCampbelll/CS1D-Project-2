@@ -22,6 +22,11 @@ void MainWindow::fillStartTeam()
     ui->comboBox_startingTeamChooseTeams->setModel(model);
 }
 
+void MainWindow::on_backButton_tripPlanner_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
 void MainWindow::on_comboBox_startingTeam_activated(const QString &startingTeam)
 {
     QSqlQueryModel* model=new QSqlQueryModel();
@@ -42,6 +47,7 @@ void MainWindow::on_comboBox_startingTeam_activated(const QString &startingTeam)
 
     model->setQuery(*qry);
 
+    ui->comboBox_endingTeam->setDisabled(false);
     ui->comboBox_endingTeam->setModel(model);
 
     if(SSRstartClicked == true)
@@ -53,8 +59,10 @@ void MainWindow::on_comboBox_startingTeam_activated(const QString &startingTeam)
 }
 
 //Start Single Stadium Route(SSR) trip
-void MainWindow::on_pushButton_SSRstart_clicked()
+void MainWindow::on_pushButton_SSRplanTrip_clicked()
 {
+    inputValues.clear();
+    ui->textBrowser_SSR->clear();
     SSRstartClicked = true;
     inputValues.push_back(ui->comboBox_startingTeam->currentText());
     inputValues.push_back(ui->comboBox_endingTeam->currentText());
@@ -66,6 +74,12 @@ void MainWindow::on_pushButton_SSRstart_clicked()
 
     ui->label_tripRouteSSR->show();
     ui->textBrowser_SSR->show();
+    ui->pushButton_SSRstartTrip->show();
+}
+
+void MainWindow::on_pushButton_SSRstartTrip_clicked()
+{
+    //TO-DO connect with souvenir shop
 }
 
 void MainWindow::initializeList()
@@ -168,6 +182,28 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
         ui->textBrowser_ChooseTeams->append(teamNamesVector.at(i));
     }
 
-    //ui->pushButton_generateRouteChooseTeams->hide();
     ui->pushButton_startTripChooseTeams->show();
+}
+
+void MainWindow::on_planTripButton_MiamiMarlins_clicked()
+{
+    teamNamesVector.clear();
+
+    marlinsParkDFS = new graphAL();
+    marlinsParkDFS->depthFirstSearch("Marlins Park");
+    QList<QString> temp = marlinsParkDFS->getRoute();
+    ui->textBrowser_MiamiMarlins->append("DISTANCE: " + QString::number(marlinsParkDFS->getDistance()));
+    ui->textBrowser_MiamiMarlins->append("\n");
+
+    for(int i = 0; i < temp.length(); i++)
+    {
+        QString tempS = QString::number(i + 1) + ". ";
+        ui->textBrowser_MiamiMarlins->append(tempS + temp[i]);
+    }
+    ui->startTripButton_MiamiMarlins->show();
+}
+
+void MainWindow::on_startTripButton_MiamiMarlins_clicked()
+{
+    //TO-DO connect trip planner with souvenir shop
 }

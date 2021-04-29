@@ -103,7 +103,9 @@ private slots:
 
     void on_pushButton_cancelChanges_clicked();
 
-    void on_pushButton_SSRstart_clicked();
+    void on_pushButton_SSRplanTrip_clicked();
+
+    void on_pushButton_SSRstartTrip_clicked();
 
     void fillStartTeam();
 
@@ -133,6 +135,12 @@ private slots:
     void on_stadiumSelector_activated(const QString &arg1);
 
     void on_exitDfsBfsMstPage_clicked();
+
+    void on_planTripButton_MiamiMarlins_clicked();
+
+    void on_startTripButton_MiamiMarlins_clicked();
+
+    void on_backButton_tripPlanner_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -178,6 +186,9 @@ private:
     QString tempRoofType;
     QString tempDistToCenterField;
     QString tempTypology;
+
+    //For marlins park dfs route
+    graphAL* marlinsParkDFS;
 
     // ======= DFS/BFS/MST Related =======
 

@@ -1728,7 +1728,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1904,7 +1904,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_SSRstart">
+       <widget class="QPushButton" name="pushButton_SSRplanTrip">
         <property name="geometry">
          <rect>
           <x>330</x>
@@ -1921,7 +1921,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Start Trip</string>
+         <string>Plan Trip</string>
         </property>
        </widget>
        <widget class="QTextBrowser" name="textBrowser_SSR">
@@ -1930,7 +1930,7 @@
           <x>240</x>
           <y>260</y>
           <width>321</width>
-          <height>141</height>
+          <height>71</height>
          </rect>
         </property>
         <property name="font">
@@ -1967,6 +1967,26 @@
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
+       <widget class="QPushButton" name="pushButton_SSRstartTrip">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>350</y>
+          <width>141</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Start Trip</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -1991,8 +2011,8 @@
        <widget class="QPushButton" name="planTripButton_MiamiMarlins">
         <property name="geometry">
          <rect>
-          <x>320</x>
-          <y>60</y>
+          <x>80</x>
+          <y>160</y>
           <width>131</width>
           <height>41</height>
          </rect>
@@ -2004,8 +2024,8 @@
        <widget class="QPushButton" name="startTripButton_MiamiMarlins">
         <property name="geometry">
          <rect>
-          <x>320</x>
-          <y>400</y>
+          <x>80</x>
+          <y>230</y>
           <width>131</width>
           <height>41</height>
          </rect>
@@ -2017,14 +2037,34 @@
        <widget class="QTextBrowser" name="textBrowser_MiamiMarlins">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>110</y>
+          <x>300</x>
+          <y>60</y>
           <width>441</width>
-          <height>271</height>
+          <height>341</height>
          </rect>
         </property>
        </widget>
       </widget>
+     </widget>
+     <widget class="QPushButton" name="backButton_tripPlanner">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
      </widget>
     </widget>
    </widget>
