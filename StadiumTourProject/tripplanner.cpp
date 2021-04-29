@@ -171,8 +171,3 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
     //ui->pushButton_generateRouteChooseTeams->hide();
     ui->pushButton_startTripChooseTeams->show();
 }
-
-
-//HERE
-
-

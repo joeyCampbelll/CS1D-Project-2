@@ -1684,7 +1684,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_2">
+    <widget class="QWidget" name="tripPlanner">
      <widget class="QLabel" name="label_21">
       <property name="geometry">
        <rect>
@@ -1728,7 +1728,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1965,6 +1965,63 @@
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Marlins Park</string>
+       </attribute>
+       <widget class="QLabel" name="label_25">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>10</y>
+          <width>791</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Start at Marlins Park Stadium and visit all the teams in the shortest order!</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="planTripButton_MiamiMarlins">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>60</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Plan Trip</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="startTripButton_MiamiMarlins">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>400</y>
+          <width>131</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Start Trip</string>
+        </property>
+       </widget>
+       <widget class="QTextBrowser" name="textBrowser_MiamiMarlins">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>110</y>
+          <width>441</width>
+          <height>271</height>
+         </rect>
         </property>
        </widget>
       </widget>
