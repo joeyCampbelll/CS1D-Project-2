@@ -21,10 +21,12 @@ SOURCES += \
 HEADERS += \
     database.h \
     mainwindow.h \
+    souvenirshop.h \
     tablefilter.h
 
 FORMS += \
     mainwindow.ui \
+    souvenirshop.ui \
     tablefilter.ui
 
 # Default rules for deployment.

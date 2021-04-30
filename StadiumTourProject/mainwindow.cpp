@@ -138,3 +138,9 @@ void MainWindow::on_restoreTableButton_clicked()
     ui->mlbTableView->setModel(model);
     ui->mlbTableView->resizeColumnsToContents();
 }
+
+void MainWindow::on_souvenirShopButton_clicked()
+{
+    souvenirshop *shop = new souvenirshop();
+    shop->show();
+}
