@@ -16,8 +16,7 @@ SOURCES += \
     souveniredit.cpp \
     souvenirshop.cpp \
     tablefilter.cpp \
-    teamedit.cpp \
-    tripplanner.cpp
+    teamedit.cpp
 
 HEADERS += \
     database.h \
