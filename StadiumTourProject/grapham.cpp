@@ -266,10 +266,7 @@ QVector<QString> graphAM::dijkstraAll(QString start)
         sptSet[i] = false;
     }
 
-    qDebug() << "Vertex size: " << vertexCount << Qt::endl;
-    qDebug() << "START: " << start << Qt::endl;
     startIndex = getLocationOf(start);
-    qDebug() << "START INDEX: " << startIndex << Qt::endl;
 
     dist[startIndex] = 0;
 
@@ -291,7 +288,8 @@ QVector<QString> graphAM::dijkstraAll(QString start)
     }
 
     printSolution(dist, parent);
-    return dijkstraRoute;
+    QVector<QString> temp = dijkstraRoute;
+    return temp;
 }
 
 QVector<QString> graphAM::dijkstra1to1(QString start, QString end)
@@ -303,10 +301,8 @@ QVector<QString> graphAM::dijkstra1to1(QString start, QString end)
     bool sptSet[vertexCount];
     int parent[vertexCount];
 
-    qDebug() << "in dijkstras" << Qt::endl;
     for (int i = 0; i < vertexCount; i++)
     {
-        //parent[0] = -1;
         parent[i] = -1;
         dist[i] = infinity;
         sptSet[i] = false;
