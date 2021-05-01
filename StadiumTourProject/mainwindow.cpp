@@ -104,8 +104,6 @@ void MainWindow::on_buildTripButton_clicked()
     ui->textBrowser_MiamiMarlins->clear();
     ui->textBrowser_SSR->clear();
     ui->comboBox_endingTeam->setDisabled(true);
-    ui->label_tripRouteSSR->hide();
-    ui->textBrowser_SSR->hide();
     ui->pushButton_SSRstartTrip->hide();
     ui->startTripButton_MiamiMarlins->hide();
     ui->tabWidget_tripPlanner->setCurrentIndex(0);

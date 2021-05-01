@@ -68,16 +68,23 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
     inputValues.push_back(ui->comboBox_startingTeam->currentText());
     inputValues.push_back(ui->comboBox_endingTeam->currentText());
 
-    for(int i = 0; i < inputValues.size(); i++)
+    dijkstras = new graphAM();
+    fastestRoute = dijkstras->dijkstra1to1(inputValues[0], inputValues[1]);
+
+    for(int i = 0; i < fastestRoute.size(); i++)
     {
-        ui->textBrowser_SSR->append(QString::number(i + 1) + ". " + inputValues.at(i));
+        if(i > 0)
+        {
+            ui->textBrowser_SSR->append(QString::number(i) + ". " + fastestRoute.at(i) + '\n');
+        }
+        else
+        {
+            ui->textBrowser_SSR->append("Distance: " + fastestRoute.at(i) + '\n');
+        }
     }
 
     ui->textBrowser_SSR->selectAll();
     ui->textBrowser_SSR->setAlignment(Qt::AlignCenter);
-
-    ui->label_tripRouteSSR->show();
-    ui->textBrowser_SSR->show();
     ui->pushButton_SSRstartTrip->show();
 }
 

@@ -198,6 +198,13 @@ private:
 
     // ===================================
 
+    //==========DIJKSTRAS=================
+
+    graphAM* dijkstras;
+    QVector<QString> fastestRoute;
+
+    //====================================
+
     //Vector to store input stadium/team names
     QVector<QString> inputValues;
 

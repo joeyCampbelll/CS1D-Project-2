@@ -1842,8 +1842,8 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>10</y>
-          <width>791</width>
+          <y>70</y>
+          <width>311</width>
           <height>31</height>
          </rect>
         </property>
@@ -1864,9 +1864,9 @@
        <widget class="QComboBox" name="comboBox_startingTeam">
         <property name="geometry">
          <rect>
-          <x>230</x>
-          <y>50</y>
-          <width>331</width>
+          <x>10</x>
+          <y>110</y>
+          <width>291</width>
           <height>31</height>
          </rect>
         </property>
@@ -1874,9 +1874,9 @@
        <widget class="QLabel" name="label_23">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>90</y>
-          <width>791</width>
+          <x>-10</x>
+          <y>170</y>
+          <width>301</width>
           <height>31</height>
          </rect>
         </property>
@@ -1897,9 +1897,9 @@
        <widget class="QComboBox" name="comboBox_endingTeam">
         <property name="geometry">
          <rect>
-          <x>230</x>
-          <y>130</y>
-          <width>331</width>
+          <x>10</x>
+          <y>220</y>
+          <width>291</width>
           <height>31</height>
          </rect>
         </property>
@@ -1907,8 +1907,8 @@
        <widget class="QPushButton" name="pushButton_SSRplanTrip">
         <property name="geometry">
          <rect>
-          <x>330</x>
-          <y>180</y>
+          <x>90</x>
+          <y>280</y>
           <width>131</width>
           <height>41</height>
          </rect>
@@ -1927,10 +1927,10 @@
        <widget class="QTextBrowser" name="textBrowser_SSR">
         <property name="geometry">
          <rect>
-          <x>240</x>
-          <y>260</y>
-          <width>321</width>
-          <height>71</height>
+          <x>320</x>
+          <y>40</y>
+          <width>461</width>
+          <height>391</height>
          </rect>
         </property>
         <property name="font">
@@ -1947,9 +1947,9 @@
        <widget class="QLabel" name="label_tripRouteSSR">
         <property name="geometry">
          <rect>
-          <x>240</x>
-          <y>230</y>
-          <width>321</width>
+          <x>320</x>
+          <y>10</y>
+          <width>461</width>
           <height>31</height>
          </rect>
         </property>
@@ -1970,10 +1970,10 @@
        <widget class="QPushButton" name="pushButton_SSRstartTrip">
         <property name="geometry">
          <rect>
-          <x>330</x>
-          <y>350</y>
-          <width>141</width>
-          <height>51</height>
+          <x>90</x>
+          <y>340</y>
+          <width>131</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="font">

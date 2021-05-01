@@ -54,6 +54,15 @@ public:
     QList<QString> getRoute();
     int getDistance();
 
+    QVector<QString> dijkstraAll(QString start);
+    QVector<QString> dijkstra1to1(QString start, QString end);
+    int minDistance(int dist[], bool sptSet[]);
+    void printPath(int parent[], int j);
+    void printSolution(int dist[], int parent[]);
+    void print1to1(int dist[], int parent[], QString start, QString end);
+    QString teamToStadium(QString teamName);
+    QString stadiumToTeam(QString stadiumName);
+
 
 private:
     int vertexCount;
@@ -62,8 +71,12 @@ private:
     Vertex* vertices;
     int travelDistance;
     QString route;
+    int startIndex;
+    int endIndex;
+    int infinity = 99999;
 
     QList<QString> routeAM;
+    QVector<QString> dijkstraRoute;
 
 };
 

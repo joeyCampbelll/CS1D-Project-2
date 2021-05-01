@@ -166,12 +166,16 @@ void graphAM::breadthFirstHelper(QString start)
     }
 }
 
-int graphAM::getLocationOf(QString vertex) // YES
+int graphAM::getLocationOf(QString vertex)
 {
     for (int i = 0; i < vertexCount; i++)
+    {
+        qDebug() << "HERE: " << vertices[i].vertex << Qt::endl;
         if (vertex == vertices[i].vertex)
+        {
             return i;
-
+        }
+    }
 }
 
 Vertex graphAM::findClosestVertex(Vertex vertex)
@@ -244,4 +248,199 @@ QList<QString> graphAM::getRoute()
 int graphAM::getDistance()
 {
     return travelDistance;
+}
+
+//-----------------Dijkastras-----------------//
+QVector<QString> graphAM::dijkstraAll(QString start)
+{
+    start = teamToStadium(start);
+    dijkstraRoute.clear();
+    int dist[vertexCount];
+    bool sptSet[vertexCount];
+    int parent[vertexCount];
+
+    for (int i = 0; i < vertexCount; i++)
+    {
+        parent[i] = -1;
+        dist[i] = infinity;
+        sptSet[i] = false;
+    }
+
+    qDebug() << "Vertex size: " << vertexCount << Qt::endl;
+    qDebug() << "START: " << start << Qt::endl;
+    startIndex = getLocationOf(start);
+    qDebug() << "START INDEX: " << startIndex << Qt::endl;
+
+    dist[startIndex] = 0;
+
+    for (int i = 0; i < vertexCount - 1; i++)
+    {
+        int u = minDistance(dist, sptSet);
+
+        sptSet[u] = true;
+
+        for (int v = 0; v < vertexCount; v++)
+        {
+            if (!sptSet[v] && adjMatrix[u][v] &&
+                dist[u] + adjMatrix[u][v] < dist[v])
+            {
+                parent[v] = u;
+                dist[v] = dist[u] + adjMatrix[u][v];
+            }
+        }
+    }
+
+    printSolution(dist, parent);
+    return dijkstraRoute;
+}
+
+QVector<QString> graphAM::dijkstra1to1(QString start, QString end)
+{
+    start = teamToStadium(start);
+    end = teamToStadium(end);
+    dijkstraRoute.clear();
+    int dist[vertexCount];
+    bool sptSet[vertexCount];
+    int parent[vertexCount];
+
+    qDebug() << "in dijkstras" << Qt::endl;
+    for (int i = 0; i < vertexCount; i++)
+    {
+        //parent[0] = -1;
+        parent[i] = -1;
+        dist[i] = infinity;
+        sptSet[i] = false;
+    }
+
+    startIndex = getLocationOf(start);
+
+    dist[startIndex] = 0;
+
+    for (int i = 0; i < vertexCount - 1; i++)
+    {
+        int u = minDistance(dist, sptSet);
+
+        sptSet[u] = true;
+
+        for (int v = 0; v < vertexCount; v++)
+        {
+            if (!sptSet[v] && adjMatrix[u][v] &&
+                dist[u] + adjMatrix[u][v] < dist[v])
+            {
+                parent[v] = u;
+                dist[v] = dist[u] + adjMatrix[u][v];
+            }
+        }
+    }
+
+    print1to1(dist, parent, start, end);
+    QVector<QString> temp = dijkstraRoute;
+    return temp;
+}
+
+int graphAM::minDistance(int dist[], bool sptSet[])
+{
+    int min = infinity;
+    int minIndex = -1;
+
+    for (int v = 0; v < vertexCount; v++)
+    {
+        if(sptSet[v] == false && dist[v] <= min)
+        {
+            min = dist[v];
+            minIndex = v;
+        }
+    }
+    return minIndex;
+}
+
+void graphAM::printPath(int parent[], int j)
+{
+    if (parent[j] == - 1)
+        return;
+
+    printPath(parent, parent[j]);
+
+    dijkstraRoute.push_back(stadiumToTeam(vertices[j].vertex));
+    //dijkstraRoute.push_back(stadiumToTeam(vertices[j].vertex) + "("+ (vertices[j].vertex) + ")");
+    qDebug() << vertices[j].vertex << "  ";
+}
+
+void graphAM::printSolution(int dist[], int parent[])
+{
+    for (int i = 1; i < vertexCount; i++)
+    {
+        dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex));
+        //dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex) + "(" + (vertices[startIndex].vertex) + ")");
+        qDebug() << vertices[startIndex].vertex << " -> " << vertices[i].vertex << dist[i] <<  vertices[startIndex].vertex << "  ";
+        printPath(parent, i);
+    }
+}
+
+void graphAM::print1to1(int dist[], int parent[], QString start, QString end)
+{
+    startIndex = getLocationOf(start);
+    int endIndex = getLocationOf(end);
+
+    for (int i = 1; i < vertexCount; i++)
+    {
+        if(i == endIndex)
+        {
+            dijkstraRoute.push_back(QString::number(dist[i]));
+            dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex));
+            //dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex) + "(" + (vertices[startIndex].vertex) + ")");
+            qDebug() << vertices[startIndex].vertex << " -> " << vertices[i].vertex << dist[i] <<  vertices[startIndex].vertex << "  ";
+            printPath(parent, i);
+        }
+    }
+}
+
+QString graphAM::teamToStadium(QString teamName)
+{
+    QString stadiumName;
+    QSqlQuery* query = new QSqlQuery();
+
+    query->prepare("SELECT STADIUM_NAME FROM MLB_Information WHERE TEAM_NAME = :teamName");
+
+    //binds values
+    query->bindValue(":teamName", teamName);
+
+    //executes query
+    if (query->exec()) {
+        qDebug() << "Stadium Name found";
+    } else {
+        qDebug() << "Stadium NOT found";
+    }
+
+    if(query->next())
+    {
+        stadiumName = query->value(0).toString();
+    }
+
+    return stadiumName;
+}
+
+QString graphAM::stadiumToTeam(QString stadiumName)
+{
+    QString teamName;
+    QSqlQuery* query = new QSqlQuery();
+
+    query->prepare("SELECT TEAM_NAME FROM MLB_Information WHERE STADIUM_NAME = :stadiumName");
+
+    //binds values
+    query->bindValue(":stadiumName", stadiumName);
+
+    //executes query
+    if (query->exec()) {
+        qDebug() << "Team Name found";
+    } else {
+        qDebug() << "Team name NOT found";
+    }
+
+    if(query->next())
+    {
+        teamName = query->value(0).toString();
+    }
+
+    return teamName;
 }
