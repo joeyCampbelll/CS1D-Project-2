@@ -19,9 +19,11 @@ public:
     explicit souvenirshop(QWidget *parent = nullptr);
     ~souvenirshop();
 
-    void updateSouvenirShopTableView(QString stadiumName);
+    void updateSouvenirShopTableView(QString team);
 
     void fillSelectStadiumBox();
+
+    void findStadiumName();
 
 private slots:
     void on_selectStadiumBox_currentIndexChanged(const QString &arg1);
@@ -33,8 +35,10 @@ private slots:
     void on_buyButton_clicked();
 
 
+    void on_undoButton_clicked();
+
 private:
-    QVector<QString> stadiumList;
+    QVector<QString> teamList;
     double currentTotal;
     double runningTotal;
     int quantity;
@@ -42,8 +46,11 @@ private:
     double price;
     QString priceStr;
     bool cellClicked;
+    QString teamName;
+    QString stadiumName;
     Ui::souvenirshop *ui;
 
+    QLabel *souvenirName;
     QWidget *container;
     QVBoxLayout *vBoxLayout;
 };

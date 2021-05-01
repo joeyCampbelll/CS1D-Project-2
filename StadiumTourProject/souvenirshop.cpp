@@ -12,10 +12,13 @@ souvenirshop::souvenirshop(QWidget *parent) :
     currentTotal = 0;
     runningTotal = 0;
 
-    stadiumList.push_back("Dodger Stadium");
-    stadiumList.push_back("Minute Maid Park");
-    stadiumList.push_back("Great American Ball Park");
-    stadiumList.push_back("Target Field");
+    teamList.push_back("Oakland Athletics");
+    teamList.push_back("Chicago White Sox");
+    teamList.push_back("Colorado Rockies");
+    teamList.push_back("New York Mets");
+    teamList.push_back("Minnesota Twins");
+
+    teamName = teamList[0];
 
     ui->souvenirShopTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
@@ -39,20 +42,20 @@ souvenirshop::~souvenirshop()
 
 void souvenirshop::fillSelectStadiumBox()
 {
-    for(int i = 0; i < stadiumList.size(); i++)
+    for(int i = 0; i < teamList.size(); i++)
     {
-        ui->selectStadiumBox->addItem(stadiumList[i]);
+        ui->selectStadiumBox->addItem(teamList[i]);
+        qDebug() << "Name added";
     }
 }
 
-void souvenirshop::updateSouvenirShopTableView(QString stadiumName) {
-
+void souvenirshop::updateSouvenirShopTableView(QString team) {
      QSqlQueryModel* model=new QSqlQueryModel();
 
      QSqlQuery* qry=new QSqlQuery();
 
-     qry->prepare("SELECT SOUVENIR_NAME, SOUVENIR_PRICE FROM Souvenirs WHERE TEAM_NAME = (SELECT TEAM_NAME FROM MLB_Information WHERE STADIUM_NAME = :stadiumName)");
-     qry->bindValue(":stadiumName", stadiumName);
+     qry->prepare("SELECT SOUVENIR_NAME, SOUVENIR_PRICE FROM Souvenirs WHERE TEAM_NAME = :teamname");
+     qry->bindValue(":teamname", teamName);
 
      if(qry->exec())
      {
@@ -65,6 +68,8 @@ void souvenirshop::updateSouvenirShopTableView(QString stadiumName) {
 
 void souvenirshop::on_selectStadiumBox_currentIndexChanged(const QString &arg1)
 {
+
+    teamName = arg1;
     updateSouvenirShopTableView(arg1);
 }
 
@@ -112,17 +117,12 @@ void souvenirshop::on_buyButton_clicked()
             space2 = space2 + " ";
         }
 
-        QString stadiumName = ui->selectStadiumBox->currentText();
-
-        QLabel *souvenirName = new QLabel(stadiumName + "\n" + quantityStr + " x\t"+ tempSouvenir  +  space + "$" + space2 + currentTotalStr);
+        findStadiumName();
+        souvenirName = new QLabel(stadiumName + "-> " + teamName + "\n" + quantityStr + " x\t"+ tempSouvenir  +  space + "$" + space2 + currentTotalStr);
 
         ui->updateTotalPrice->setText("$" + QString::number(runningTotal));
 
         vBoxLayout->addWidget(souvenirName);
-
-        //ui->label_purchasedSouvAtCampus->setText("Souvenirs Purchased Here: " + QVariant(purchasedSouvAtCampus).toString());
-        //ui->label_subCostAtCampus->setText("Cost of Souvenirs Purchased Here: $" + QString::number(subCostAtCampus, 'f', 2));
-
     }
 
 
@@ -142,4 +142,30 @@ void souvenirshop::on_buyButton_clicked()
 void souvenirshop::on_finishButton_clicked()
 {
     this->close();
+}
+
+void souvenirshop::findStadiumName()
+{
+    QSqlQuery* qry=new QSqlQuery();
+    qDebug() << teamName;
+
+    qry->prepare("SELECT STADIUM_NAME FROM MLB_Information WHERE TEAM_NAME = :teamname");
+    qry->bindValue(":teamname", teamName);
+    qry->exec();
+
+    if(qry->next())
+    {
+        qry->first();
+        stadiumName = qry->value(0).toString();
+        qDebug() << stadiumName;
+        qDebug() << teamName;
+    }
+}
+
+void souvenirshop::on_undoButton_clicked()
+{
+//    vBoxLayout->removeWidget(souvenirName);
+//    vBoxLayout->;
+//    runningTotal -= currentTotal;
+//    ui->updateTotalPrice->setText("$" + QString::number(runningTotal));
 }
