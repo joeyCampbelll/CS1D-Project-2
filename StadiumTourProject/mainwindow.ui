@@ -1728,7 +1728,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -2011,7 +2011,7 @@
        <widget class="QPushButton" name="planTripButton_MiamiMarlins">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>70</x>
           <y>160</y>
           <width>131</width>
           <height>41</height>
@@ -2024,7 +2024,7 @@
        <widget class="QPushButton" name="startTripButton_MiamiMarlins">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>70</x>
           <y>230</y>
           <width>131</width>
           <height>41</height>
@@ -2037,9 +2037,9 @@
        <widget class="QTextBrowser" name="textBrowser_MiamiMarlins">
         <property name="geometry">
          <rect>
-          <x>300</x>
+          <x>260</x>
           <y>60</y>
-          <width>441</width>
+          <width>481</width>
           <height>341</height>
          </rect>
         </property>

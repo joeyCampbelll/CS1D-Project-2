@@ -142,6 +142,8 @@ private slots:
 
     void on_backButton_tripPlanner_clicked();
 
+    QString stadiumToTeam(QString stadiumName);
+
 private:
     Ui::MainWindow *ui;
 
@@ -201,6 +203,7 @@ private:
     //==========DIJKSTRAS=================
 
     graphAM* dijkstras;
+    graphAM* dijkstrasChooseTeams;
     QVector<QString> fastestRoute;
 
     //====================================
