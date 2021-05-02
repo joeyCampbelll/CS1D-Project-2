@@ -5,7 +5,7 @@
 #include "database.h"
 
 #include <QMessageBox>
-#include <QVBoxLayout>
+#include <QListWidget>
 
 namespace Ui {
 class souvenirshop;
@@ -48,11 +48,9 @@ private:
     bool cellClicked;
     QString teamName;
     QString stadiumName;
+    QVector<QString> souvenirNames;
+    QVector<double> souvenirPrices;
     Ui::souvenirshop *ui;
-
-    QLabel *souvenirName;
-    QWidget *container;
-    QVBoxLayout *vBoxLayout;
 };
 
 #endif // SOUVENIRSHOP_H

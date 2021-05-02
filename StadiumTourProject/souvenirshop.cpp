@@ -12,7 +12,7 @@ souvenirshop::souvenirshop(QWidget *parent) :
     currentTotal = 0;
     runningTotal = 0;
 
-    teamList.push_back("Oakland Athletics");
+    teamList.push_back("Boston Red Sox");
     teamList.push_back("Chicago White Sox");
     teamList.push_back("Colorado Rockies");
     teamList.push_back("New York Mets");
@@ -21,13 +21,6 @@ souvenirshop::souvenirshop(QWidget *parent) :
     teamName = teamList[0];
 
     ui->souvenirShopTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-    container = new QWidget;
-    vBoxLayout = new QVBoxLayout;
-
-    container->setLayout(vBoxLayout);
-
-    ui->purchasedArea->setWidget(container);
 
     ui->updateTotalPrice->setText("$0.00");
 
@@ -90,6 +83,8 @@ void souvenirshop::on_souvenirShopTableView_clicked(const QModelIndex &index)
 
 void souvenirshop::on_buyButton_clicked()
 {
+
+    currentTotal = 0;
     if (cellClicked && ui->quantitySpinBox->value() != 0)
     {
         int quantity =  ui->quantitySpinBox->value();
@@ -99,10 +94,14 @@ void souvenirshop::on_buyButton_clicked()
             currentTotal = currentTotal + price;
         }
 
+        souvenirPrices.push_back(currentTotal);
         runningTotal += currentTotal;
 
         QString quantityStr = QString::number(quantity);
         QString currentTotalStr = QString::number(currentTotal);
+
+        qDebug() << currentTotal;
+        qDebug() << currentTotalStr;
 
         QString space = "";
         QString space2 = "";
@@ -112,17 +111,12 @@ void souvenirshop::on_buyButton_clicked()
             space = space + " ";
         }
 
-        for (int i = 0; i < 8 - currentTotalStr.length(); i++)
-        {
-            space2 = space2 + " ";
-        }
-
         findStadiumName();
-        souvenirName = new QLabel(stadiumName + "-> " + teamName + "\n" + quantityStr + " x\t"+ tempSouvenir  +  space + "$" + space2 + currentTotalStr);
+        QString souvenirName = (stadiumName + "-> " + teamName + "\n" + quantityStr + " x\t"+ tempSouvenir  +  space + "\n\t\t\t--> $" + currentTotalStr);
 
+        souvenirNames.push_back(souvenirName);
+        ui->purchaseListWidget->addItem(souvenirName);
         ui->updateTotalPrice->setText("$" + QString::number(runningTotal));
-
-        vBoxLayout->addWidget(souvenirName);
     }
 
 
@@ -164,8 +158,24 @@ void souvenirshop::findStadiumName()
 
 void souvenirshop::on_undoButton_clicked()
 {
-//    vBoxLayout->removeWidget(souvenirName);
-//    vBoxLayout->;
-//    runningTotal -= currentTotal;
-//    ui->updateTotalPrice->setText("$" + QString::number(runningTotal));
+    if(souvenirNames.size() != 0)
+    {
+        for ( int a = 0; a < ui->purchaseListWidget->count()+1; a++ )
+        {
+            if ( ui->purchaseListWidget->item(a)->text() == souvenirNames.last() )
+            {
+                delete ui->purchaseListWidget->takeItem(a);
+                souvenirNames.removeLast();
+                runningTotal = runningTotal - souvenirPrices.last();
+                souvenirPrices.removeLast();
+                ui->updateTotalPrice->setText("$" + QString::number(runningTotal));
+            }
+        }
+    }
+
+    if(souvenirNames.size() == 0)
+    {
+        runningTotal = 0.00;
+        ui->updateTotalPrice->setText("$0.00");
+    }
 }
