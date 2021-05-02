@@ -270,6 +270,8 @@ QString MainWindow::stadiumToTeam(QString stadiumName)
     }
 
     return teamName;
+}
+
 void MainWindow::on_addButton_CTO_clicked()
 {
     if(CTOstartButtonClicked)//if start button is clicked the output widget is cleared and startbuttonClicked is set to false
