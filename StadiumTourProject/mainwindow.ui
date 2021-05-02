@@ -1728,7 +1728,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1743,6 +1743,101 @@
        <attribute name="title">
         <string>Choose Trip Order</string>
        </attribute>
+       <widget class="QTextBrowser" name="textBrowser_CTO">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>461</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="autoFormatting">
+         <set>QTextEdit::AutoNone</set>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="CTO_comboBox">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>281</width>
+          <height>41</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="addButton_CTO">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>10</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Add</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="startButton_CTO">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>370</y>
+          <width>101</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Start Trip</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="removeButton_CTO">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>10</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Remove</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="resetButton_CTO">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>10</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Reset</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="planTripButton_CTO">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>10</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Plan Trip</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="CustomTrip">
        <attribute name="title">
