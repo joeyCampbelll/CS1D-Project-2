@@ -6,6 +6,9 @@
 #include "database.h"
 #include "tablefilter.h"
 #include "souvenirshop.h"
+#include "graphal.h"
+#include "grapham.h"
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -112,6 +115,17 @@ private slots:
 
     void on_souvenirShopButton_clicked();
 
+    QString stadiumToTeam(QString stadiumName);
+    void on_startButton_CTO_clicked();
+
+    void on_addButton_CTO_clicked();
+
+    void on_removeButton_CTO_clicked();
+
+    void on_resetButton_CTO_clicked();
+
+    void on_planTripButton_CTO_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -156,6 +170,62 @@ private:
     QString tempRoofType;
     QString tempDistToCenterField;
     QString tempTypology;
+
+    //For marlins park dfs route
+    graphAL* marlinsParkDFS;
+
+    // ======= DFS/BFS/MST Related =======
+
+    QString selectedStadium;
+    graphAL* graphAdjList;
+    graphAM* graphAdjMatr;
+
+    // ===================================
+
+    //==========DIJKSTRAS=================
+
+    graphAM* dijkstras;
+    graphAM* dijkstrasChooseTeams;
+    QVector<QString> fastestRoute;
+
+    //====================================
+
+    //Vector to store input stadium/team names
+    QVector<QString> inputValues;
+
+    /**
+    * @brief vector for check box elements
+    */
+    QVector<QCheckBox*> checkBoxVector;
+
+    /**
+    * @brief vector for selected team names
+    */
+    QVector<QString> teamNamesVector;
+
+    /**
+    * @brief vector for all team names
+    */
+    QVector<QString> tempTeamNamesVector;
+
+    /**
+    * @brief name for current campus
+    */
+    QString startTeamName;
+
+    QVector<QString>customTeamNameList;
+
+    QVector<QString>allTeamsList;
+
+    int counter = 0;
+
+    //Total distance of trip
+    int totalDistance;
+    //Check if SSR start button has been clicked
+    bool SSRstartClicked = false;
+    //Check if Custom Trip start button has been clicked
+    bool CTOstartButtonClicked = false;
+
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant
