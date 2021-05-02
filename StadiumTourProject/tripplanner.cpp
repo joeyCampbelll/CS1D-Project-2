@@ -17,10 +17,19 @@ void MainWindow::fillStartTeam()
     else
         qDebug() << "start team combo box failed";
 
+    while(qry->next())//loads the combo box on the CTO page
+    {
+        allTeamsList.push_back(qry->value(0).toString());
+    }
+
     model->setQuery(*qry);
 
     ui->comboBox_startingTeam->setModel(model);
     ui->comboBox_startingTeamChooseTeams->setModel(model);
+    for(int i = 0; i <allTeamsList.size(); i++)
+    {
+        ui->CTO_comboBox->addItem(allTeamsList[i]);
+    }
 }
 
 void MainWindow::on_backButton_tripPlanner_clicked()
@@ -217,4 +226,115 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
 void MainWindow::on_startTripButton_MiamiMarlins_clicked()
 {
     //TO-DO connect trip planner with souvenir shop
+}
+
+void MainWindow::on_addButton_CTO_clicked()
+{
+    if(CTOstartButtonClicked)//if start button is clicked the output widget is cleared and startbuttonClicked is set to false
+        {
+            ui->textBrowser_CTO->clear();
+            CTOstartButtonClicked = false;
+        }
+
+        if(customTeamNameList.size() != allTeamsList.size())
+        {
+            customTeamNameList.push_back(ui->CTO_comboBox->currentText());//gets the school being removed
+            ui->textBrowser_CTO->append((QString::number(counter+1) + ". " + ui->CTO_comboBox->currentText()));//adds the last item added the customNameList to the List widget
+            qDebug() << ui->CTO_comboBox->currentText();
+            ui->CTO_comboBox->removeItem(ui->CTO_comboBox->currentIndex());//removes the school selected from the list
+            ui->planTripButton_CTO->show();
+            counter++;
+        }
+        else
+        {
+            QMessageBox::information(this, "Error", "Nothing to Add");
+        }
+
+}
+
+void MainWindow::on_startButton_CTO_clicked()
+{
+    //routes to souvenir
+    qDebug() << "Will Take you to souvenir page" << Qt::endl;
+}
+
+void MainWindow::on_removeButton_CTO_clicked()
+{
+    if(!customTeamNameList.empty())
+    {
+        ui->CTO_comboBox->addItem(customTeamNameList[customTeamNameList.size()-1]);
+        ui->CTO_comboBox->model()->sort(0);
+        customTeamNameList.pop_back();
+        ui->textBrowser_CTO->clear();
+        counter--;
+
+        if(customTeamNameList.empty())
+        {
+            ui->planTripButton_CTO->hide();
+        }
+
+        for(int i = 0; i<customTeamNameList.size(); i++)//outputs the order of school visited on tripPLan page
+        {
+
+            ui->textBrowser_CTO->append(QString::number(i+1) + ". " + customTeamNameList[i]);
+        }
+    }
+    else
+    {
+        QMessageBox::information(this, "Error", "Nothing to Remove");
+    }
+}
+
+void MainWindow::on_resetButton_CTO_clicked()
+{
+    ui->CTO_comboBox->clear();
+    for(int i = 0; i <allTeamsList.size(); i++)
+    {
+        ui->CTO_comboBox->addItem(allTeamsList[i]);
+    }
+
+    ui->textBrowser_CTO->clear();
+
+    ui->planTripButton_CTO->hide();
+
+    ui->addButton_CTO->show();
+
+    ui->startButton_CTO->hide();
+
+    ui->removeButton_CTO->show();
+
+    customTeamNameList.clear();
+
+    fastestRoute.clear();
+
+    counter = 0;
+}
+
+void MainWindow::on_planTripButton_CTO_clicked()
+{
+    double totalDistance;
+
+    counter = 0;
+
+    fastestRoute.clear();
+    //totalDistance = shortDistance(startingSchool, tempList.size());//Add dijkstras here
+    fastestRoute = customTeamNameList;
+
+    ui->textBrowser_CTO->clear();//clears the wigit each time before displaying the shortest distances
+
+    for(int i = 0; i<fastestRoute.size(); i++)//outputs the order of school visited on tripPLan page
+    {
+
+        ui->textBrowser_CTO->append(QString::number(i+1) + ". " + fastestRoute[i]);
+    }
+
+    customTeamNameList.clear();//clears the custom name list after the start button is clicked
+    ui->CTO_comboBox->clear();//clears the combo box and reloads it
+    fillStartTeam();
+    CTOstartButtonClicked  = true;//getting flag to true
+    ui->planTripButton_CTO->hide();
+    ui->addButton_CTO->hide();
+    ui->removeButton_CTO->hide();
+    ui->startButton_CTO->show();
+
 }
