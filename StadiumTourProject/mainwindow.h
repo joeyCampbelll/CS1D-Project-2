@@ -144,6 +144,9 @@ private slots:
     void on_backButton_tripPlanner_clicked();
 
     QString stadiumToTeam(QString stadiumName);
+
+    QString teamToStadium(QString teamName);
+
     void on_startButton_CTO_clicked();
 
     void on_addButton_CTO_clicked();
