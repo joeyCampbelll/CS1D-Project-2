@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFileSystemModel>
+#include <QCheckBox>
 #include "database.h"
 #include "tablefilter.h"
 #include "graphal.h"
@@ -102,6 +103,22 @@ private slots:
 
     void on_pushButton_cancelChanges_clicked();
 
+    void on_pushButton_SSRplanTrip_clicked();
+
+    void on_pushButton_SSRstartTrip_clicked();
+
+    void fillStartTeam();
+
+    void initializeList();
+
+    void CheckboxChanged();
+
+    void on_comboBox_startingTeamChooseTeams_activated();
+
+    void on_pushButton_generateRouteChooseTeams_clicked();
+
+    void on_comboBox_startingTeam_activated(const QString &startingTeam);
+
 
     void on_pushButton_resetTeamInfo_clicked();
 
@@ -118,6 +135,12 @@ private slots:
     void on_stadiumSelector_activated(const QString &arg1);
 
     void on_exitDfsBfsMstPage_clicked();
+
+    void on_planTripButton_MiamiMarlins_clicked();
+
+    void on_startTripButton_MiamiMarlins_clicked();
+
+    void on_backButton_tripPlanner_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -164,6 +187,9 @@ private:
     QString tempDistToCenterField;
     QString tempTypology;
 
+    //For marlins park dfs route
+    graphAL* marlinsParkDFS;
+
     // ======= DFS/BFS/MST Related =======
 
     QString selectedStadium;
@@ -171,6 +197,42 @@ private:
     graphAM* graphAdjMatr;
 
     // ===================================
+
+    //==========DIJKSTRAS=================
+
+    graphAM* dijkstras;
+    QVector<QString> fastestRoute;
+
+    //====================================
+
+    //Vector to store input stadium/team names
+    QVector<QString> inputValues;
+
+    /**
+    * @brief vector for check box elements
+    */
+    QVector<QCheckBox*> checkBoxVector;
+
+    /**
+    * @brief vector for selected team names
+    */
+    QVector<QString> teamNamesVector;
+
+    /**
+    * @brief vector for all team names
+    */
+    QVector<QString> tempTeamNamesVector;
+
+    /**
+    * @brief name for current campus
+    */
+    QString startTeamName;
+
+    //Total distance of trip
+    int totalDistance;
+    //Check if SSR start button has been clicked
+    bool SSRstartClicked = false;
+
 
     /**
     * @brief assigns myDb to predefined PROJECT_PATH constant

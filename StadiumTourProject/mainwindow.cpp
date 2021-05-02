@@ -97,7 +97,17 @@ void MainWindow::on_adminButton_clicked()
 
 void MainWindow::on_buildTripButton_clicked()
 {
-    //TODO - future build trip code
+    fillStartTeam();
+    initializeList();
+
+    ui->textBrowser_ChooseTeams->clear();
+    ui->textBrowser_MiamiMarlins->clear();
+    ui->textBrowser_SSR->clear();
+    ui->comboBox_endingTeam->setDisabled(true);
+    ui->pushButton_SSRstartTrip->hide();
+    ui->startTripButton_MiamiMarlins->hide();
+    ui->tabWidget_tripPlanner->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(11);
 }
 
 void MainWindow::on_pushButton_cancel_clicked()
@@ -133,4 +143,3 @@ void MainWindow::on_restoreTableButton_clicked()
     ui->mlbTableView->setModel(model);
     ui->mlbTableView->resizeColumnsToContents();
 }
-
