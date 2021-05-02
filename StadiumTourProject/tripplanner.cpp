@@ -26,6 +26,7 @@ void MainWindow::fillStartTeam()
 
     ui->comboBox_startingTeam->setModel(model);
     ui->comboBox_startingTeamChooseTeams->setModel(model);
+    ui->comboBox_individualStadium->setModel(model);
     for(int i = 0; i <allTeamsList.size(); i++)
     {
         ui->CTO_comboBox->addItem(allTeamsList[i]);
@@ -211,7 +212,9 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
         }
         else
         {
-            ui->textBrowser_ChooseTeams->append("Distance: " + fastestRoute.at(i));
+            //add distance to front of fastest Route
+            //ui->textBrowser_ChooseTeams->append("Distance: " + fastestRoute.at(i));
+            ui->textBrowser_ChooseTeams->append("Distance: NEEDED\n");
         }
     }
 
@@ -221,9 +224,10 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
 void MainWindow::on_planTripButton_MiamiMarlins_clicked()
 {
     teamNamesVector.clear();
+    ui->textBrowser_MiamiMarlins->clear();
 
     marlinsParkDFS = new graphAL();
-    marlinsParkDFS->depthFirstSearch("Marlins Park");
+    marlinsParkDFS->depthFirstSearch(teamToStadium(ui->comboBox_individualStadium->currentText()));
     QList<QString> temp = marlinsParkDFS->getRoute();
     ui->textBrowser_MiamiMarlins->append("DISTANCE: " + QString::number(marlinsParkDFS->getDistance()));
     ui->textBrowser_MiamiMarlins->append("\n");
@@ -270,6 +274,31 @@ QString MainWindow::stadiumToTeam(QString stadiumName)
     }
 
     return teamName;
+}
+
+QString MainWindow::teamToStadium(QString teamName)
+{
+    QString stadiumName;
+    QSqlQuery* query = new QSqlQuery();
+
+    query->prepare("SELECT STADIUM_NAME FROM MLB_Information WHERE TEAM_NAME = :teamName");
+
+    //binds values
+    query->bindValue(":teamName", teamName);
+
+    //executes query
+    if (query->exec()) {
+        qDebug() << "Stadium Name found";
+    } else {
+        qDebug() << "Stadium NOT found";
+    }
+
+    if(query->next())
+    {
+        stadiumName = query->value(0).toString();
+    }
+
+    return stadiumName;
 }
 
 void MainWindow::on_addButton_CTO_clicked()
