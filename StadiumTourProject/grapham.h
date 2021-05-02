@@ -54,7 +54,7 @@ public:
     QList<QString> getRoute();
     int getDistance();
 
-    QVector<QString> dijkstraAll(QString start);
+    QVector<QString> dijkstraAll(QVector<QString> selectedTeams);
     QVector<QString> dijkstra1to1(QString start, QString end);
     int minDistance(int dist[], bool sptSet[]);
     void printPath(int parent[], int j);

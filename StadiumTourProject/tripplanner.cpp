@@ -78,6 +78,7 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
     inputValues.push_back(ui->comboBox_endingTeam->currentText());
 
     dijkstras = new graphAM();
+    fastestRoute.clear();
     fastestRoute = dijkstras->dijkstra1to1(inputValues[0], inputValues[1]);
 
     for(int i = 0; i < fastestRoute.size(); i++)
@@ -161,7 +162,7 @@ void MainWindow::CheckboxChanged()
         }
     }
 
-    if(checkedCount == 11)
+    if(checkedCount == 29)
     {
         for(int i = 0; i < checkBoxVector.size(); i++)
         {
@@ -195,10 +196,23 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
 
     CheckboxChanged();
     //CALL DIJKSTRAS ALGO HERE
+    dijkstrasChooseTeams = new graphAM();
+    fastestRoute.clear();
+    fastestRoute = dijkstrasChooseTeams->dijkstraAll(teamNamesVector);
 
-    for(int i = 0; i < teamNamesVector.size(); i++)
+    //GET RID OF THIS AFTER IMPLEMENTING DIJKSTRAS
+//    fastestRoute = teamNamesVector;
+
+    for(int i = 0; i < fastestRoute.size(); i++)
     {
-        ui->textBrowser_ChooseTeams->append(QString::number(i + 1) + ". " + teamNamesVector.at(i));
+        if(i > 0)
+        {
+            ui->textBrowser_ChooseTeams->append(QString::number(i) + ". " + fastestRoute.at(i));
+        }
+        else
+        {
+            ui->textBrowser_ChooseTeams->append("Distance: " + fastestRoute.at(i));
+        }
     }
 
     ui->pushButton_startTripChooseTeams->show();
@@ -214,18 +228,48 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
     ui->textBrowser_MiamiMarlins->append("DISTANCE: " + QString::number(marlinsParkDFS->getDistance()));
     ui->textBrowser_MiamiMarlins->append("\n");
 
+    //convert stadium names to team names
+    for(int i = 0; i < temp.size(); i++)
+    {
+        teamNamesVector.push_back(stadiumToTeam(temp[i]));
+    }
+
     for(int i = 0; i < temp.length(); i++)
     {
         QString tempS = QString::number(i + 1) + ". ";
-        ui->textBrowser_MiamiMarlins->append(tempS + temp[i]);
+        ui->textBrowser_MiamiMarlins->append(tempS + temp[i] + "(" + teamNamesVector[i] + ")");
     }
     ui->startTripButton_MiamiMarlins->show();
-
 }
 
 void MainWindow::on_startTripButton_MiamiMarlins_clicked()
 {
     //TO-DO connect trip planner with souvenir shop
+}
+
+QString MainWindow::stadiumToTeam(QString stadiumName)
+{
+    QString teamName;
+    QSqlQuery* query = new QSqlQuery();
+
+    query->prepare("SELECT TEAM_NAME FROM MLB_Information WHERE STADIUM_NAME = :stadiumName");
+
+    //binds values
+    query->bindValue(":stadiumName", stadiumName);
+
+    //executes query
+    if (query->exec()) {
+        qDebug() << "Team Name found";
+    } else {
+        qDebug() << "Team name NOT found";
+    }
+
+    if(query->next())
+    {
+        teamName = query->value(0).toString();
+    }
+
+    return teamName;
 }
 
 void MainWindow::on_addButton_CTO_clicked()
