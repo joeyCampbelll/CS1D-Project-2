@@ -90,7 +90,7 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
         }
         else
         {
-            ui->textBrowser_SSR->append("Distance: " + fastestRoute.at(i) + '\n');
+            ui->textBrowser_SSR->append(fastestRoute.at(i) + '\n');
         }
     }
 
@@ -385,29 +385,49 @@ void MainWindow::on_resetButton_CTO_clicked()
 
 void MainWindow::on_planTripButton_CTO_clicked()
 {
-    double totalDistance;
-
     counter = 0;
-
     fastestRoute.clear();
-    //totalDistance = shortDistance(startingSchool, tempList.size());//Add dijkstras here
-    fastestRoute = customTeamNameList;
+    if(customTeamNameList.size() > 2)
+    {
+        chooseOrder = new graphAM();
+        fastestRoute = chooseOrder->dijkstraRecursive(customTeamNameList);
+    }
+    else if(customTeamNameList.size() == 2)
+    {
+        chooseOrder = new graphAM();
+        fastestRoute = chooseOrder->dijkstra1to1(customTeamNameList[0], customTeamNameList[1]);
+    }
+    else
+    {
+        fastestRoute = customTeamNameList;
+        fastestRoute.push_front("Distance: 0");
+    }
 
     ui->textBrowser_CTO->clear();//clears the wigit each time before displaying the shortest distances
 
     for(int i = 0; i<fastestRoute.size(); i++)//outputs the order of school visited on tripPLan page
     {
-
-        ui->textBrowser_CTO->append(QString::number(i+1) + ". " + fastestRoute[i]);
+        if(i > 0)
+        {
+            ui->textBrowser_CTO->append(QString::number(i) + ". " + fastestRoute[i] + "(" + teamToStadium(fastestRoute[i]) + ")");
+        }
+        else
+        {
+            ui->textBrowser_CTO->append(fastestRoute[i]);
+        }
     }
 
-    customTeamNameList.clear();//clears the custom name list after the start button is clicked
-    ui->CTO_comboBox->clear();//clears the combo box and reloads it
+    customTeamNameList.clear(); //clears the custom name list after the start button is clicked
+    ui->CTO_comboBox->clear();  //clears the combo box and reloads it
     fillStartTeam();
-    CTOstartButtonClicked  = true;//getting flag to true
+    CTOstartButtonClicked  = true; //getting flag to true
     ui->planTripButton_CTO->hide();
     ui->addButton_CTO->hide();
     ui->removeButton_CTO->hide();
     ui->startButton_CTO->show();
+
+    //Clear first element (distance) from fastestRoute vector so that it is a pure
+    //list of team names that is ready to be passed to the souvenir shop
+    fastestRoute.pop_front();
 
 }

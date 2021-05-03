@@ -1,6 +1,7 @@
 #ifndef GRAPHAM_H
 #define GRAPHAM_H
 #include <QVariant>
+#include <algorithm>
 #include "database.h"
 
 enum vertexTag
@@ -56,6 +57,7 @@ public:
 
     QVector<QString> dijkstraAll(QVector<QString> selectedTeams);
     QVector<QString> dijkstra1to1(QString start, QString end);
+    QVector<QString> dijkstraRecursive(QVector<QString> selectedTeams);
     int minDistance(int dist[], bool sptSet[]);
     void printPath(int parent[], int j);
     void printSolution(int dist[], int parent[]);
@@ -80,7 +82,6 @@ private:
 
     QList<QString> routeAM;
     QVector<QString> dijkstraRoute;
-
 };
 
 #endif // GRAPHAM_H
