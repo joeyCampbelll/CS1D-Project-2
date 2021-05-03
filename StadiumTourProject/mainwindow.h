@@ -8,6 +8,7 @@
 #include "tablefilter.h"
 #include "graphal.h"
 #include "grapham.h"
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -142,6 +143,20 @@ private slots:
 
     void on_backButton_tripPlanner_clicked();
 
+    QString stadiumToTeam(QString stadiumName);
+
+    QString teamToStadium(QString teamName);
+
+    void on_startButton_CTO_clicked();
+
+    void on_addButton_CTO_clicked();
+
+    void on_removeButton_CTO_clicked();
+
+    void on_resetButton_CTO_clicked();
+
+    void on_planTripButton_CTO_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -201,6 +216,7 @@ private:
     //==========DIJKSTRAS=================
 
     graphAM* dijkstras;
+    graphAM* dijkstrasChooseTeams;
     QVector<QString> fastestRoute;
 
     //====================================
@@ -228,10 +244,18 @@ private:
     */
     QString startTeamName;
 
+    QVector<QString>customTeamNameList;
+
+    QVector<QString>allTeamsList;
+
+    int counter = 0;
+
     //Total distance of trip
     int totalDistance;
     //Check if SSR start button has been clicked
     bool SSRstartClicked = false;
+    //Check if Custom Trip start button has been clicked
+    bool CTOstartButtonClicked = false;
 
 
     /**

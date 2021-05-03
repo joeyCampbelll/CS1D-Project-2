@@ -250,9 +250,13 @@ int graphAM::getDistance()
 }
 
 //-----------------Dijkastras-----------------//
-QVector<QString> graphAM::dijkstraAll(QString start)
+QVector<QString> graphAM::dijkstraAll(QVector<QString> selectedTeams)
 {
-    start = teamToStadium(start);
+    //convert selected teams to stadiums
+    for(int i = 0; i < selectedTeams.size(); i++)
+    {
+        selectedTeams[i] = teamToStadium(selectedTeams[i]);
+    }
     dijkstraRoute.clear();
     int dist[vertexCount];
     bool sptSet[vertexCount];
@@ -265,7 +269,7 @@ QVector<QString> graphAM::dijkstraAll(QString start)
         sptSet[i] = false;
     }
 
-    startIndex = getLocationOf(start);
+    startIndex = getLocationOf(selectedTeams[0]);
 
     dist[startIndex] = 0;
 
@@ -363,6 +367,8 @@ void graphAM::printPath(int parent[], int j)
 
 void graphAM::printSolution(int dist[], int parent[])
 {
+    //Use push front to add distance to front of vector
+    //dijkstraRoute.push_back(QString::number(dist[selectedTeams.size() - 1]));
     for (int i = 1; i < vertexCount; i++)
     {
         dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex));
