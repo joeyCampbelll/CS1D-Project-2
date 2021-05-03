@@ -217,6 +217,7 @@ private:
 
     graphAM* dijkstras;
     graphAM* dijkstrasChooseTeams;
+    graphAM* chooseOrder;
     QVector<QString> fastestRoute;
 
     //====================================
