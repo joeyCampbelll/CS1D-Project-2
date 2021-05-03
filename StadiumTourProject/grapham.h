@@ -63,6 +63,9 @@ public:
     QString teamToStadium(QString teamName);
     QString stadiumToTeam(QString stadiumName);
 
+    void primMST();
+    void printMST(int parent[]);
+
 
 private:
     int vertexCount;

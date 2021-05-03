@@ -170,7 +170,6 @@ int graphAM::getLocationOf(QString vertex)
 {
     for (int i = 0; i < vertexCount; i++)
     {
-        qDebug() << "HERE: " << vertices[i].vertex << Qt::endl;
         if (vertex == vertices[i].vertex)
         {
             return i;
@@ -445,4 +444,62 @@ QString graphAM::stadiumToTeam(QString stadiumName)
     }
 
     return teamName;
+}
+
+void graphAM::primMST()
+{
+    int parent[vertexCount];
+    int key[vertexCount];
+    bool mstSet[vertexCount];
+
+    for (int i = 0; i < vertexCount; i++)
+    {
+        key[i] = infinity;
+        mstSet[i] = false;
+    }
+
+    key[0] = 0;
+    parent[0] = -1;
+
+    for (int i = 0; i < vertexCount - 1; i++)
+    {
+        int u = minDistance(key, mstSet);
+        mstSet[u] = true;
+
+        for (int v = 0; v < vertexCount; v++)
+        {
+            if (adjMatrix[u][v] && mstSet[v] == false && adjMatrix[u][v] < key[v])
+            {
+                parent[v] = u;
+                key[v] = adjMatrix[u][v];
+            }
+        }
+    }
+
+    printMST(parent);
+}
+
+void graphAM::printMST(int parent[])
+{
+//    ===== THIS CODE PRINTS TO THE CONSOLE =====
+//    int totalDistance = 0;
+
+//    for (int i = 1; i < vertexCount; i++)
+//    {
+//        totalDistance += adjMatrix[i][parent[i]];
+//        QString s = vertices[parent[i]].vertex + " - " + vertices[i].vertex;
+//        qDebug() << s << " -> " << adjMatrix[i][parent[i]] << Qt::endl;
+//    }
+
+//    qDebug() << "\nTotal Distance: " << totalDistance;
+//    =============================================
+
+    int totalDistance = 0;
+    for (int i = 1; i < vertexCount; i++)
+    {
+        totalDistance += adjMatrix[i][parent[i]];
+        QString s = vertices[parent[i]].vertex + " - " + vertices[i].vertex;
+        routeAM += s + " (" + QString::number(adjMatrix[i][parent[i]]) + ")";
+    }
+    travelDistance = totalDistance;
 }
