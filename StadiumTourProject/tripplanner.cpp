@@ -244,7 +244,7 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
     for(int i = 0; i < temp.length(); i++)
     {
         QString tempS = QString::number(i + 1) + ". ";
-        ui->textBrowser_MiamiMarlins->append(tempS + temp[i] + "(" + teamNamesVector[i] + ")");
+        ui->textBrowser_MiamiMarlins->append(tempS + temp[i] + " (" + teamNamesVector[i] + ")");
     }
     ui->startTripButton_MiamiMarlins->show();
 }
