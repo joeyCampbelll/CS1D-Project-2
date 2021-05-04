@@ -27,6 +27,7 @@ void MainWindow::fillStartTeam()
     ui->comboBox_startingTeam->setModel(model);
     ui->comboBox_startingTeamChooseTeams->setModel(model);
     ui->comboBox_individualStadium->setModel(model);
+    ui->CTO_comboBox->clear();
     for(int i = 0; i <allTeamsList.size(); i++)
     {
         ui->CTO_comboBox->addItem(allTeamsList[i]);
@@ -75,6 +76,8 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
     inputValues.clear();
     ui->textBrowser_SSR->clear();
     SSRstartClicked = true;
+    qDebug() << "First: " << ui->comboBox_startingTeam->currentText() << Qt::endl;
+    qDebug() << "Second: " << ui->comboBox_endingTeam->currentText() << Qt::endl;
     inputValues.push_back(ui->comboBox_startingTeam->currentText());
     inputValues.push_back(ui->comboBox_endingTeam->currentText());
 
@@ -304,31 +307,28 @@ QString MainWindow::teamToStadium(QString teamName)
 void MainWindow::on_addButton_CTO_clicked()
 {
     if(CTOstartButtonClicked)//if start button is clicked the output widget is cleared and startbuttonClicked is set to false
-        {
-            ui->textBrowser_CTO->clear();
-            CTOstartButtonClicked = false;
-        }
+    {
+        ui->textBrowser_CTO->clear();
+        CTOstartButtonClicked = false;
+    }
 
-        if(customTeamNameList.size() != allTeamsList.size())
-        {
-            customTeamNameList.push_back(ui->CTO_comboBox->currentText());//gets the school being removed
-            ui->textBrowser_CTO->append((QString::number(counter+1) + ". " + ui->CTO_comboBox->currentText()));//adds the last item added the customNameList to the List widget
-            qDebug() << ui->CTO_comboBox->currentText();
-            ui->CTO_comboBox->removeItem(ui->CTO_comboBox->currentIndex());//removes the school selected from the list
-            ui->planTripButton_CTO->show();
-            counter++;
-        }
-        else
-        {
-            QMessageBox::information(this, "Error", "Nothing to Add");
-        }
-
+    if(customTeamNameList.size() != allTeamsList.size())
+    {
+        customTeamNameList.push_back(ui->CTO_comboBox->currentText());//gets the school being removed
+        ui->textBrowser_CTO->append((QString::number(counter+1) + ". " + ui->CTO_comboBox->currentText()));//adds the last item added the customNameList to the List widget
+        ui->CTO_comboBox->removeItem(ui->CTO_comboBox->currentIndex());//removes the school selected from the list
+        ui->planTripButton_CTO->show();
+        counter++;
+    }
+    else
+    {
+        QMessageBox::information(this, "Error", "Nothing to Add");
+    }
 }
 
 void MainWindow::on_startButton_CTO_clicked()
 {
     //routes to souvenir
-    qDebug() << "Will Take you to souvenir page" << Qt::endl;
 }
 
 void MainWindow::on_removeButton_CTO_clicked()
@@ -418,8 +418,8 @@ void MainWindow::on_planTripButton_CTO_clicked()
     }
 
     customTeamNameList.clear(); //clears the custom name list after the start button is clicked
-    ui->CTO_comboBox->clear();  //clears the combo box and reloads it
-    fillStartTeam();
+    //ui->CTO_comboBox->clear();  //clears the combo box and reloads it
+    //fillStartTeam();
     CTOstartButtonClicked  = true; //getting flag to true
     ui->planTripButton_CTO->hide();
     ui->addButton_CTO->hide();
