@@ -2,6 +2,7 @@
 #define GRAPHAM_H
 #include <QVariant>
 #include <algorithm>
+#include <QVectorIterator>
 #include "database.h"
 
 enum vertexTag
@@ -56,7 +57,7 @@ public:
     QList<QString> getRoute();
     int getDistance();
 
-    QVector<QString> dijkstraAll(QVector<QString> selectedTeams);
+    QVector<QString> dijkstraCustomRecursive(QString startTeam, QVector<QString> selectedTeams);
     QVector<QString> dijkstra1to1(QString start, QString end);
     QVector<QString> dijkstraRecursive(QVector<QString> selectedTeams);
     int minDistance(int dist[], bool sptSet[]);
@@ -81,6 +82,10 @@ private:
     int startIndex;
     int endIndex;
     int infinity = 99999;
+
+    //Used for DijkstrasCustomRecursive function
+    QString startingStadium;
+    QString endingStadium;
 
     QList<QString> routeAM;
     QVector<QString> dijkstraRoute;
