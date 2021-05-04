@@ -25,8 +25,6 @@ public:
 
     T getShortestTrip()
     {
-//        QQueue< Item<T > > tempQ = _queue;
-//        return _queue.dequeue();
         return _queue.front()._value;
     }
 
@@ -39,6 +37,16 @@ public:
     int count()
     {
         return _queue.count();
+    }
+
+    void printQueue()
+    {
+        QQueue< Item<T > > tempQ = _queue;
+        while (tempQ.count() > 0)
+        {
+            qDebug() << "Priority:  " << tempQ.front()._priority << "  Value:  " << tempQ.front()._value;
+            tempQ.dequeue();
+        }
     }
 
 private:

@@ -200,8 +200,53 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
     CheckboxChanged();
     //CALL DIJKSTRAS ALGO HERE
     dijkstrasChooseTeams = new graphAM();
-    fastestRoute.clear();
-    fastestRoute = dijkstrasChooseTeams->dijkstraAll(teamNamesVector);
+
+    priorityQueue<QVector<QString>> *incidentTeams;
+    // for every team in their selected teams
+
+    if(teamNamesVector.size() > 2)
+    {
+        for (int i = 0; i < teamNamesVector.size(); i++)
+        {
+            incidentTeams = new priorityQueue<QVector<QString>>;
+            QString currentTeam = teamNamesVector[i];
+
+            if (i != teamNamesVector.size() - 1)
+            {
+//                qDebug() << teamNamesVector.size() << " i: " << i << " j: " << i + 1;
+                for (int j = i + 1; j < teamNamesVector.size(); j++)
+                {
+                    QString nextTeam = teamNamesVector[j];
+                    dijkstrasChooseTeams->dijkstra1to1(currentTeam, nextTeam);
+                    QVector<QString> tempRoute = dijkstrasChooseTeams->getNonDistanceVector();
+                    int tempPriority = dijkstrasChooseTeams->getDistance();
+
+                    incidentTeams->enqueue(tempPriority, tempRoute);
+                }
+            }
+            else
+            {
+                dijkstrasChooseTeams->dijkstra1to1(currentTeam, teamNamesVector[i]);
+                QVector<QString> tempRoute = dijkstrasChooseTeams->getNonDistanceVector();
+                int tempPriority = dijkstrasChooseTeams->getDistance();
+
+                incidentTeams->enqueue(tempPriority, tempRoute);
+            }
+            qDebug() << incidentTeams->count();
+            incidentTeams->printQueue();
+            qDebug() << Qt::endl;
+//            qDebug() << incidentTeams->getShortestTrip();
+
+        }
+    }
+    else if (teamNamesVector.size() == 2)
+    {
+        fastestRoute = dijkstrasChooseTeams->dijkstra1to1(teamNamesVector[0], teamNamesVector[1]);
+        qDebug() << fastestRoute;
+    }
+
+//    fastestRoute.clear();
+//    fastestRoute = dijkstrasChooseTeams->dijkstraAll(teamNamesVector);
 
 
 //    QVector<QString> a{"a", "a"};
