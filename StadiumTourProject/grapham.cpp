@@ -339,18 +339,13 @@ QVector<QString> graphAM::dijkstra1to1(QString start, QString end)
 
     print1to1(dist, parent, start, end);
 
-    nonDistanceVector = dijkstraRoute;
+//     NOT GOING TO APPEND THE DISTANCE ONTO THE LIST, USE GET DISTANCE INSTEAD
+//    dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
+//    QVector<QString> temp = dijkstraRoute;
 
-    dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
-    QVector<QString> temp = dijkstraRoute;
-
-    return temp;
+    return dijkstraRoute;
 }
 
-QVector<QString> graphAM::getNonDistanceVector()
-{
-    return nonDistanceVector;
-}
 
 QVector<QString> graphAM::dijkstraRecursive(QVector<QString> selectedTeams)
 {

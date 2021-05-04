@@ -196,54 +196,88 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
     teamNamesVector.clear();
     startTeamName = ui->comboBox_startingTeamChooseTeams->currentText();
     teamNamesVector.push_back(startTeamName);
-
     CheckboxChanged();
-    //CALL DIJKSTRAS ALGO HERE
     dijkstrasChooseTeams = new graphAM();
 
+
+
     priorityQueue<QVector<QString>> *incidentTeams;
-    // for every team in their selected teams
 
-    if(teamNamesVector.size() > 2)
+    QVector<QString> orderedRoute;
+    QMap<QString, bool> isVisited;
+
+    // fill isVisited map
+    for (int i = 0; i < teamNamesVector.size(); i++)
     {
-        for (int i = 0; i < teamNamesVector.size(); i++)
+        isVisited[teamNamesVector[i]] = false;
+    }
+
+
+    QString currentTeam = teamNamesVector[0];
+
+    for (int i = 0; i < teamNamesVector.size() - 1; i++)
+    {
+        incidentTeams = new priorityQueue<QVector<QString>>;
+        isVisited[currentTeam] = true;
+
+        for (int j = 0; j < teamNamesVector.size(); j++)
         {
-            incidentTeams = new priorityQueue<QVector<QString>>;
-            QString currentTeam = teamNamesVector[i];
-
-            if (i != teamNamesVector.size() - 1)
+            QString compareTeam = teamNamesVector[j];
+            if (isVisited[compareTeam] != true)
             {
-//                qDebug() << teamNamesVector.size() << " i: " << i << " j: " << i + 1;
-                for (int j = i + 1; j < teamNamesVector.size(); j++)
-                {
-                    QString nextTeam = teamNamesVector[j];
-                    dijkstrasChooseTeams->dijkstra1to1(currentTeam, nextTeam);
-                    QVector<QString> tempRoute = dijkstrasChooseTeams->getNonDistanceVector();
-                    int tempPriority = dijkstrasChooseTeams->getDistance();
-
-                    incidentTeams->enqueue(tempPriority, tempRoute);
-                }
-            }
-            else
-            {
-                dijkstrasChooseTeams->dijkstra1to1(currentTeam, teamNamesVector[i]);
-                QVector<QString> tempRoute = dijkstrasChooseTeams->getNonDistanceVector();
+                QVector<QString> tempRoute = dijkstrasChooseTeams->dijkstra1to1(currentTeam, compareTeam);
                 int tempPriority = dijkstrasChooseTeams->getDistance();
-
                 incidentTeams->enqueue(tempPriority, tempRoute);
             }
-            qDebug() << incidentTeams->count();
-            incidentTeams->printQueue();
-            qDebug() << Qt::endl;
+        }
+        qDebug() << incidentTeams->getShortestTrip();
+        QVector<QString> tempVec = incidentTeams->getShortestTrip();
+        currentTeam = tempVec[tempVec.size() - 1];
+    }
+
+
+//    if(teamNamesVector.size() > 2)
+//    {
+//        for (int i = 0; i < teamNamesVector.size(); i++)
+//        {
+//            incidentTeams = new priorityQueue<QVector<QString>>;
+
+//            if (i != teamNamesVector.size() - 1)
+//            {
+////              qDebug() << teamNamesVector.size() << " i: " << i << " j: " << i + 1;
+//                for (int j = i + 1; j < teamNamesVector.size(); j++)
+//                {
+//                    QString nextTeam = teamNamesVector[j];
+//                    dijkstrasChooseTeams->dijkstra1to1(currentTeam, nextTeam);
+//                    QVector<QString> tempRoute = dijkstrasChooseTeams->getNonDistanceVector();
+//                    int tempPriority = dijkstrasChooseTeams->getDistance();
+//                    incidentTeams->enqueue(tempPriority, tempRoute);
+//                }
+//            }
+//            else
+//            {
+//                dijkstrasChooseTeams->dijkstra1to1(currentTeam, teamNamesVector[i-1]);
+//                QVector<QString> tempRoute = dijkstrasChooseTeams->getNonDistanceVector();
+//                int tempPriority = dijkstrasChooseTeams->getDistance();
+
+//                incidentTeams->enqueue(tempPriority, tempRoute);
+//            }
+
+//            QVector<QString> tempVec = incidentTeams->getShortestTrip();
+//            currentTeam = tempVec[tempVec.size() - 1];
+//            qDebug() << tempVec;
+//            qDebug() << incidentTeams->count();
+//            incidentTeams->printQueue();
+//            qDebug() << Qt::endl;
 //            qDebug() << incidentTeams->getShortestTrip();
 
-        }
-    }
-    else if (teamNamesVector.size() == 2)
-    {
-        fastestRoute = dijkstrasChooseTeams->dijkstra1to1(teamNamesVector[0], teamNamesVector[1]);
-        qDebug() << fastestRoute;
-    }
+//        }
+//    }
+//    else if (teamNamesVector.size() == 2)
+//    {
+//        fastestRoute = dijkstrasChooseTeams->dijkstra1to1(teamNamesVector[0], teamNamesVector[1]);
+//        qDebug() << fastestRoute;
+//    }
 
 //    fastestRoute.clear();
 //    fastestRoute = dijkstrasChooseTeams->dijkstraAll(teamNamesVector);
