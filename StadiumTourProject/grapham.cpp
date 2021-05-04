@@ -353,6 +353,8 @@ QVector<QString> graphAM::dijkstraRecursive(QVector<QString> selectedTeams)
 
     QString start = teamToStadium(selectedTeams[0]);
     QString end = teamToStadium(selectedTeams[1]);
+
+    qDebug() << selectedTeams << Qt::endl;
     int dist[vertexCount];
     bool sptSet[vertexCount];
     int parent[vertexCount];
@@ -392,7 +394,10 @@ QVector<QString> graphAM::dijkstraRecursive(QVector<QString> selectedTeams)
     {
         dijkstraRecursive(selectedTeams);
     }
-    dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
+    if(selectedTeams.size() == 1)
+    {
+        dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
+    }
     temp = dijkstraRoute;
 
     return temp;
@@ -448,7 +453,7 @@ void graphAM::printSolution(int dist[], int parent[])
     {
         dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex));
         //dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex) + "(" + (vertices[startIndex].vertex) + ")");
-        qDebug() << vertices[startIndex].vertex << " -> " << vertices[i].vertex << dist[i] <<  vertices[startIndex].vertex << "  ";
+        //qDebug() << vertices[startIndex].vertex << " -> " << vertices[i].vertex << dist[i] <<  vertices[startIndex].vertex << "  ";
         printPath(parent, i);
     }
 }
@@ -457,10 +462,11 @@ void graphAM::print1to1(int dist[], int parent[], QString start, QString end)
 {
     startIndex = getLocationOf(start);
     int endIndex = getLocationOf(end);
+    //qDebug() << "Here: " << endIndex;
     bool found = false;
     QString searchKey;
 
-    for (int i = 1; i < vertexCount; i++)
+    for (int i = 0; i < vertexCount; i++)
     {
         if(i == endIndex)
         {
@@ -497,11 +503,7 @@ QString graphAM::teamToStadium(QString teamName)
     query->bindValue(":teamName", teamName);
 
     //executes query
-    if (query->exec()) {
-        qDebug() << "Stadium Name found";
-    } else {
-        qDebug() << "Stadium NOT found";
-    }
+    query->exec();
 
     if(query->next())
     {
@@ -522,11 +524,7 @@ QString graphAM::stadiumToTeam(QString stadiumName)
     query->bindValue(":stadiumName", stadiumName);
 
     //executes query
-    if (query->exec()) {
-        qDebug() << "Team Name found";
-    } else {
-        qDebug() << "Team name NOT found";
-    }
+    query->exec();
 
     if(query->next())
     {
