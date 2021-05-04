@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "priorityqueue.h"
 #include <QTextBrowser>
 
 void MainWindow::fillStartTeam()
@@ -152,9 +153,7 @@ void MainWindow::initializeList()
 
 void MainWindow::CheckboxChanged()
 {
-    qDebug() << "Signal caught";
-
-    int checkedCount = 0;
+   int checkedCount = 0;
 
     for(int i = 0; i < checkBoxVector.size(); i++)
     {
@@ -204,22 +203,34 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
     fastestRoute.clear();
     fastestRoute = dijkstrasChooseTeams->dijkstraAll(teamNamesVector);
 
-    //GET RID OF THIS AFTER IMPLEMENTING DIJKSTRAS
+
+//    QVector<QString> a{"a", "a"};
+//    QVector<QString> b{"b", "b"};
+//    QVector<QString> c{"c", "c"};
+
+//    priorityQueue<QVector<QString>> test;
+//    test.enqueue(10, a);
+//    test.enqueue(1, b);
+//    test.enqueue(5, c);
+
+//    qDebug() << test.getShortestTrip();
+
+// ========= TEMP CODE ==========
 //    fastestRoute = teamNamesVector;
 
-    for(int i = 0; i < fastestRoute.size(); i++)
-    {
-        if(i > 0)
-        {
-            ui->textBrowser_ChooseTeams->append(QString::number(i) + ". " + fastestRoute.at(i));
-        }
-        else
-        {
-            //add distance to front of fastest Route
-            //ui->textBrowser_ChooseTeams->append("Distance: " + fastestRoute.at(i));
-            ui->textBrowser_ChooseTeams->append("Distance: NEEDED\n");
-        }
-    }
+//    for(int i = 0; i < fastestRoute.size(); i++)
+//    {
+//        if(i > 0)
+//        {
+//            ui->textBrowser_ChooseTeams->append(QString::number(i) + ". " + fastestRoute.at(i));
+//        }
+//        else
+//        {
+//            //add distance to front of fastest Route
+//            //ui->textBrowser_ChooseTeams->append("Distance: " + fastestRoute.at(i));
+//            ui->textBrowser_ChooseTeams->append("Distance: NEEDED\n");
+//        }
+//    }
 
     ui->pushButton_startTripChooseTeams->show();
 }
