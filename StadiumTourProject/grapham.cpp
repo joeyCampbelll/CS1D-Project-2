@@ -570,29 +570,29 @@ void graphAM::primMST()
 void graphAM::printMST(int parent[])
 {
 //    ===== THIS CODE PRINTS TO THE CONSOLE =====
+//    int totalDistance = 0;
+
+//    for (int i = 1; i < vertexCount; i++)
+//    {
+//        qDebug() << parent[i];
+//    }
+
+//    for (int i = 1; i < vertexCount - 1; i++)
+//    {
+//        totalDistance += adjMatrix[i][parent[i]];
+//        QString s = vertices[parent[i]].vertex + " - " + vertices[i].vertex;
+//        qDebug() << s << " -> " << adjMatrix[i][parent[i]] << Qt::endl;
+//    }
+
+//    qDebug() << "\nTotal Distance: " << totalDistance;
+//    =============================================
+
     int totalDistance = 0;
-
-    for (int i = 1; i < vertexCount; i++)
-    {
-        qDebug() << parent[i];
-    }
-
     for (int i = 1; i < vertexCount - 1; i++)
     {
         totalDistance += adjMatrix[i][parent[i]];
         QString s = vertices[parent[i]].vertex + " - " + vertices[i].vertex;
-        qDebug() << s << " -> " << adjMatrix[i][parent[i]] << Qt::endl;
+        routeAM += s + " (" + QString::number(adjMatrix[i][parent[i]]) + ")";
     }
-
-    qDebug() << "\nTotal Distance: " << totalDistance;
-//    =============================================
-
-//    int totalDistance = 0;
-//    for (int i = 1; i < vertexCount; i++)
-//    {
-//        totalDistance += adjMatrix[i][parent[i]];
-//        QString s = vertices[parent[i]].vertex + " - " + vertices[i].vertex;
-//        routeAM += s + " (" + QString::number(adjMatrix[i][parent[i]]) + ")";
-//    }
-//    travelDistance = totalDistance;
+    travelDistance = totalDistance;
 }
