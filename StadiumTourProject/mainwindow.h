@@ -5,6 +5,7 @@
 #include <QFileSystemModel>
 #include <QCheckBox>
 #include "database.h"
+#include "souvenirshop.h"
 #include "tablefilter.h"
 #include "graphal.h"
 #include "grapham.h"
@@ -156,6 +157,8 @@ private slots:
     void on_resetButton_CTO_clicked();
 
     void on_planTripButton_CTO_clicked();
+
+    void on_pushButton_startTripChooseTeams_clicked();
 
 private:
     Ui::MainWindow *ui;

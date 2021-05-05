@@ -1,7 +1,7 @@
 #include "souvenirshop.h"
 #include "ui_souvenirshop.h"
 
-souvenirshop::souvenirshop(QWidget *parent) :
+souvenirshop::souvenirshop(QVector<QString> selectedTeamNames, QWidget *parent):
     QWidget(parent),
     ui(new Ui::souvenirshop)
 {
@@ -12,11 +12,7 @@ souvenirshop::souvenirshop(QWidget *parent) :
     currentTotal = 0;
     runningTotal = 0;
 
-    teamList.push_back("Boston Red Sox");
-    teamList.push_back("Chicago White Sox");
-    teamList.push_back("Colorado Rockies");
-    teamList.push_back("New York Mets");
-    teamList.push_back("Minnesota Twins");
+    teamList = selectedTeamNames;
 
     teamName = teamList[0];
 
@@ -135,7 +131,9 @@ void souvenirshop::on_buyButton_clicked()
 
 void souvenirshop::on_finishButton_clicked()
 {
+    auto* mainwindow  = new MainWindow();
     this->close();
+    mainwindow -> show();
 }
 
 void souvenirshop::findStadiumName()
