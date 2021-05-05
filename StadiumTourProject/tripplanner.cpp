@@ -85,21 +85,16 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
     dijkstras = new graphAM();
     fastestRoute.clear();
     fastestRoute = dijkstras->dijkstra1to1(inputValues[0], inputValues[1]);
+    ui->textBrowser_SSR->setAlignment(Qt::AlignCenter);
+    ui->textBrowser_SSR->append("Distance: " + QString::number(dijkstras->getDistance()) + "\n");
+    ui->textBrowser_SSR->setAlignment(Qt::AlignLeft);
 
     for(int i = 0; i < fastestRoute.size(); i++)
     {
-        if(i > 0)
-        {
-            ui->textBrowser_SSR->append(QString::number(i) + ". " + fastestRoute.at(i) + '\n');
-        }
-        else
-        {
-            ui->textBrowser_SSR->append(fastestRoute.at(i) + '\n');
-        }
+        ui->textBrowser_SSR->append(QString::number(i+1) + ". " + fastestRoute.at(i) + '\n');
     }
 
     ui->textBrowser_SSR->selectAll();
-    ui->textBrowser_SSR->setAlignment(Qt::AlignCenter);
     ui->pushButton_SSRstartTrip->show();
 }
 
@@ -248,7 +243,8 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
     ui->textBrowser_ChooseTeams->setAlignment(Qt::AlignLeft);
     for(int i = 0; i < finalTrip.size(); i++)
     {
-        ui->textBrowser_ChooseTeams->append(QString::number(i+1) + ". " + finalTrip[i]);
+        QString stadiumName = dijkstrasChooseTeams->teamToStadium(finalTrip[i]);
+        ui->textBrowser_ChooseTeams->append(QString::number(i+1) + ". " + finalTrip[i] + "\n    (" + stadiumName + ")\n");
     }
 
     ui->pushButton_startTripChooseTeams->show();
@@ -435,11 +431,11 @@ void MainWindow::on_planTripButton_CTO_clicked()
 
     ui->textBrowser_CTO->clear();//clears the wigit each time before displaying the shortest distances
 
-    for(int i = 0; i<fastestRoute.size(); i++)//outputs the order of school visited on tripPLan page
+    for(int i = 0; i < fastestRoute.size(); i++)//outputs the order of school visited on tripPLan page
     {
         if(i > 0)
         {
-            ui->textBrowser_CTO->append(QString::number(i) + ". " + fastestRoute[i] + "(" + teamToStadium(fastestRoute[i]) + ")");
+            ui->textBrowser_CTO->append(QString::number(i) + ". " + fastestRoute[i] + " (" + teamToStadium(fastestRoute[i]) + ")");
         }
         else
         {
