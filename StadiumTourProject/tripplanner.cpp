@@ -5,6 +5,7 @@
 
 void MainWindow::fillStartTeam()
 {
+    allTeamsList.clear();
     QSqlQueryModel* model=new QSqlQueryModel();
 
     QSqlQuery* qry = new QSqlQuery();
