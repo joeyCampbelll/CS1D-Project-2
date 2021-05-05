@@ -178,11 +178,6 @@ int graphAM::getLocationOf(QString vertex)
     }
 }
 
-QString graphAM::getNameOf(int index)
-{
-    return vertices[index].vertex;
-}
-
 Vertex graphAM::findClosestVertex(Vertex vertex)
 {
     int indexToCompare;
@@ -595,41 +590,4 @@ void graphAM::printMST(int parent[])
         routeAM += s + " (" + QString::number(adjMatrix[i][parent[i]]) + ")";
     }
     travelDistance = totalDistance;
-}
-
-QString graphAM::findClosestSelected(QString startStadiumName, QVector<QString> selectedTeams)
-{
-    int startIndex;
-    QString searchName;
-    bool found = false;
-    int lowestWeight = infinity;
-    QString lowestWeightName;
-
-    startIndex = getLocationOf(startName);
-
-    for(int i = 0; i < vertexCount; i++)
-    {
-        searchName = getNameOf(i);
-
-        for(int f = 0; f < selectedTeams.size(); f++)
-        {
-            if(searchName == selectedTeams[f])
-            {
-                found = true;
-            }
-        }
-
-        if(found)
-        {
-            for(int j = 0; j < vertices[startIndex].edges.size(); j++)
-            {
-                if(vertices[startIndex].edges.at(j).end == searchName && vertices[startIndex].edges.at(j).weight < lowestWeight)
-                {
-                    lowestWeight = vertices[startIndex].edges.at(j).weight;
-                    lowestWeightName = vertices[startIndex].edges.at(j).end;
-                }
-            }
-        }
-    }
-    return lowestWeightName;
 }

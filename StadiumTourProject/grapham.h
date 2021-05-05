@@ -46,7 +46,6 @@ public:
     void breadthFirstHelper(QString start);
 
     int getLocationOf(QString vertex);
-    QString getNameOf(int index);
     Vertex findClosestVertex(Vertex vertex);
     int getWeightBetween(Vertex vertex1, Vertex vertex2);
     int unvisitedSiblings(Vertex vertex);
@@ -65,7 +64,6 @@ public:
     void print1to1(int dist[], int parent[], QString start, QString end);
     QString teamToStadium(QString teamName);
     QString stadiumToTeam(QString stadiumName);
-    QString findClosestSelected(QString startStadiumName, QVector<QString> selectedTeams);
 
     void primMST();
     void printMST(int parent[]);
