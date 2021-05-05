@@ -77,6 +77,12 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
     inputValues.clear();
     ui->textBrowser_SSR->clear();
     SSRstartClicked = true;
+
+    if (ui->comboBox_endingTeam->currentText() == "")
+    {
+        return;
+    }
+
     qDebug() << "First: " << ui->comboBox_startingTeam->currentText() << Qt::endl;
     qDebug() << "Second: " << ui->comboBox_endingTeam->currentText() << Qt::endl;
     inputValues.push_back(ui->comboBox_startingTeam->currentText());
@@ -91,7 +97,8 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
 
     for(int i = 0; i < fastestRoute.size(); i++)
     {
-        ui->textBrowser_SSR->append(QString::number(i+1) + ". " + fastestRoute.at(i) + '\n');
+        QString stadiumName = dijkstras->teamToStadium(fastestRoute[i]);
+        ui->textBrowser_SSR->append(QString::number(i+1) + ". " + fastestRoute.at(i) + '\n' + "  (" + stadiumName + ")\n");
     }
 
     ui->textBrowser_SSR->selectAll();
@@ -268,8 +275,13 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
     marlinsParkDFS = new graphAL();
     marlinsParkDFS->depthFirstSearch(teamToStadium(ui->comboBox_individualStadium->currentText()));
     QList<QString> temp = marlinsParkDFS->getRoute();
-    ui->textBrowser_MiamiMarlins->append("DISTANCE: " + QString::number(marlinsParkDFS->getDistance()));
+    ui->textBrowser_MiamiMarlins->setAlignment(Qt::AlignCenter);
+    ui->textBrowser_MiamiMarlins->setFontPointSize(12);
+
+    ui->textBrowser_MiamiMarlins->append("Distance: " + QString::number(marlinsParkDFS->getDistance()));
     ui->textBrowser_MiamiMarlins->append("\n");
+
+    ui->textBrowser_MiamiMarlins->setAlignment(Qt::AlignLeft);
 
     //convert stadium names to team names
     for(int i = 0; i < temp.size(); i++)
