@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include "database.h"
-
+#include "mainwindow.h"
 #include <QMessageBox>
 #include <QListWidget>
 
@@ -16,7 +16,7 @@ class souvenirshop : public QWidget
     Q_OBJECT
 
 public:
-    explicit souvenirshop(QWidget *parent = nullptr);
+    explicit souvenirshop(QVector<QString> selectedTeamNames, QWidget *parent = nullptr);
     ~souvenirshop();
 
     void updateSouvenirShopTableView(QString team);
