@@ -3,6 +3,7 @@
 graphAM::graphAM()
 {
     loadGraphFromDB();
+    travelDistance = 0;
 }
 
 void graphAM::loadGraphFromDB()
@@ -170,7 +171,6 @@ int graphAM::getLocationOf(QString vertex)
 {
     for (int i = 0; i < vertexCount; i++)
     {
-        qDebug() << "HERE: " << vertices[i].vertex << Qt::endl;
         if (vertex == vertices[i].vertex)
         {
             return i;
@@ -253,12 +253,14 @@ int graphAM::getDistance()
 //-----------------Dijkastras-----------------//
 QVector<QString> graphAM::dijkstraAll(QVector<QString> selectedTeams)
 {
+    dijkstraRoute.clear();
+    travelDistance = 0;
+
     //convert selected teams to stadiums
     for(int i = 0; i < selectedTeams.size(); i++)
     {
         selectedTeams[i] = teamToStadium(selectedTeams[i]);
     }
-    dijkstraRoute.clear();
     int dist[vertexCount];
     bool sptSet[vertexCount];
     int parent[vertexCount];
@@ -293,14 +295,18 @@ QVector<QString> graphAM::dijkstraAll(QVector<QString> selectedTeams)
 
     printSolution(dist, parent);
     QVector<QString> temp = dijkstraRoute;
+
     return temp;
 }
 
 QVector<QString> graphAM::dijkstra1to1(QString start, QString end)
 {
+    dijkstraRoute.clear();
+    travelDistance = 0;
+
     start = teamToStadium(start);
     end = teamToStadium(end);
-    dijkstraRoute.clear();
+
     int dist[vertexCount];
     bool sptSet[vertexCount];
     int parent[vertexCount];
@@ -334,7 +340,66 @@ QVector<QString> graphAM::dijkstra1to1(QString start, QString end)
     }
 
     print1to1(dist, parent, start, end);
+
+    dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
     QVector<QString> temp = dijkstraRoute;
+
+    return temp;
+}
+
+QVector<QString> graphAM::dijkstraRecursive(QVector<QString> selectedTeams)
+{
+    QVector<QString> temp;
+
+    QString start = teamToStadium(selectedTeams[0]);
+    QString end = teamToStadium(selectedTeams[1]);
+
+    qDebug() << selectedTeams << Qt::endl;
+    int dist[vertexCount];
+    bool sptSet[vertexCount];
+    int parent[vertexCount];
+
+    for (int i = 0; i < vertexCount; i++)
+    {
+        parent[i] = -1;
+        dist[i] = infinity;
+        sptSet[i] = false;
+    }
+
+    startIndex = getLocationOf(start);
+
+    dist[startIndex] = 0;
+
+    for (int i = 0; i < vertexCount - 1; i++)
+    {
+        int u = minDistance(dist, sptSet);
+
+        sptSet[u] = true;
+
+        for (int v = 0; v < vertexCount; v++)
+        {
+            if (!sptSet[v] && adjMatrix[u][v] &&
+                dist[u] + adjMatrix[u][v] < dist[v])
+            {
+                parent[v] = u;
+                dist[v] = dist[u] + adjMatrix[u][v];
+            }
+        }
+    }
+
+    print1to1(dist, parent, start, end);
+    selectedTeams.pop_front();
+
+    if(selectedTeams.size() > 1)
+    {
+        dijkstraRecursive(selectedTeams);
+    }
+    if(selectedTeams.size() == 1)
+    {
+        dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
+    }
+    temp = dijkstraRoute;
+
     return temp;
 }
 
@@ -356,14 +421,28 @@ int graphAM::minDistance(int dist[], bool sptSet[])
 
 void graphAM::printPath(int parent[], int j)
 {
+    bool found = false;
+    QString searchKey;
+
     if (parent[j] == - 1)
         return;
 
     printPath(parent, parent[j]);
 
-    dijkstraRoute.push_back(stadiumToTeam(vertices[j].vertex));
-    //dijkstraRoute.push_back(stadiumToTeam(vertices[j].vertex) + "("+ (vertices[j].vertex) + ")");
-    qDebug() << vertices[j].vertex << "  ";
+    searchKey = stadiumToTeam(vertices[j].vertex);
+
+    for(int i = 0; i < dijkstraRoute.size(); i++)
+    {
+        if(dijkstraRoute[i] == searchKey)
+        {
+            found = true;
+        }
+    }
+
+    if(!(found))
+    {
+        dijkstraRoute.push_back(stadiumToTeam(vertices[j].vertex));
+    }
 }
 
 void graphAM::printSolution(int dist[], int parent[])
@@ -374,7 +453,7 @@ void graphAM::printSolution(int dist[], int parent[])
     {
         dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex));
         //dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex) + "(" + (vertices[startIndex].vertex) + ")");
-        qDebug() << vertices[startIndex].vertex << " -> " << vertices[i].vertex << dist[i] <<  vertices[startIndex].vertex << "  ";
+        //qDebug() << vertices[startIndex].vertex << " -> " << vertices[i].vertex << dist[i] <<  vertices[startIndex].vertex << "  ";
         printPath(parent, i);
     }
 }
@@ -383,15 +462,31 @@ void graphAM::print1to1(int dist[], int parent[], QString start, QString end)
 {
     startIndex = getLocationOf(start);
     int endIndex = getLocationOf(end);
+    //qDebug() << "Here: " << endIndex;
+    bool found = false;
+    QString searchKey;
 
-    for (int i = 1; i < vertexCount; i++)
+    for (int i = 0; i < vertexCount; i++)
     {
         if(i == endIndex)
         {
-            dijkstraRoute.push_back(QString::number(dist[i]));
-            dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex));
-            //dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex) + "(" + (vertices[startIndex].vertex) + ")");
-            qDebug() << vertices[startIndex].vertex << " -> " << vertices[i].vertex << dist[i] <<  vertices[startIndex].vertex << "  ";
+            travelDistance += dist[i];
+
+            searchKey = stadiumToTeam(vertices[startIndex].vertex);
+
+            for(int j = 0; j < dijkstraRoute.size(); j++)
+            {
+                if(dijkstraRoute[j] == searchKey)
+                {
+                    found = true;
+                }
+            }
+
+            if(!(found))
+            {
+                dijkstraRoute.push_back(stadiumToTeam(vertices[startIndex].vertex));
+            }
+
             printPath(parent, i);
         }
     }
@@ -408,11 +503,7 @@ QString graphAM::teamToStadium(QString teamName)
     query->bindValue(":teamName", teamName);
 
     //executes query
-    if (query->exec()) {
-        qDebug() << "Stadium Name found";
-    } else {
-        qDebug() << "Stadium NOT found";
-    }
+    query->exec();
 
     if(query->next())
     {
@@ -433,11 +524,7 @@ QString graphAM::stadiumToTeam(QString stadiumName)
     query->bindValue(":stadiumName", stadiumName);
 
     //executes query
-    if (query->exec()) {
-        qDebug() << "Team Name found";
-    } else {
-        qDebug() << "Team name NOT found";
-    }
+    query->exec();
 
     if(query->next())
     {
@@ -445,4 +532,62 @@ QString graphAM::stadiumToTeam(QString stadiumName)
     }
 
     return teamName;
+}
+
+void graphAM::primMST()
+{
+    int parent[vertexCount];
+    int key[vertexCount];
+    bool mstSet[vertexCount];
+
+    for (int i = 0; i < vertexCount; i++)
+    {
+        key[i] = infinity;
+        mstSet[i] = false;
+    }
+
+    key[0] = 0;
+    parent[0] = -1;
+
+    for (int i = 0; i < vertexCount - 1; i++)
+    {
+        int u = minDistance(key, mstSet);
+        mstSet[u] = true;
+
+        for (int v = 0; v < vertexCount; v++)
+        {
+            if (adjMatrix[u][v] && mstSet[v] == false && adjMatrix[u][v] < key[v])
+            {
+                parent[v] = u;
+                key[v] = adjMatrix[u][v];
+            }
+        }
+    }
+
+    printMST(parent);
+}
+
+void graphAM::printMST(int parent[])
+{
+//    ===== THIS CODE PRINTS TO THE CONSOLE =====
+//    int totalDistance = 0;
+
+//    for (int i = 1; i < vertexCount; i++)
+//    {
+//        totalDistance += adjMatrix[i][parent[i]];
+//        QString s = vertices[parent[i]].vertex + " - " + vertices[i].vertex;
+//        qDebug() << s << " -> " << adjMatrix[i][parent[i]] << Qt::endl;
+//    }
+
+//    qDebug() << "\nTotal Distance: " << totalDistance;
+//    =============================================
+
+    int totalDistance = 0;
+    for (int i = 1; i < vertexCount; i++)
+    {
+        totalDistance += adjMatrix[i][parent[i]];
+        QString s = vertices[parent[i]].vertex + " - " + vertices[i].vertex;
+        routeAM += s + " (" + QString::number(adjMatrix[i][parent[i]]) + ")";
+    }
+    travelDistance = totalDistance;
 }

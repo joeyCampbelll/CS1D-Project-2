@@ -26,6 +26,21 @@ void MainWindow::on_dfsBfsButton_clicked()
 
 void MainWindow::on_generateMST_clicked()
 {
+    ui->displayRoute->clear();
+    ui->displayRoute->setFontPointSize(10);
+    graphAdjMatr = new graphAM();
+    graphAdjMatr->primMST();
+
+    QList<QString> temp = graphAdjMatr->getRoute();
+    ui->displayRoute->append("DISTANCE: " + QString::number(graphAdjMatr->getDistance()));
+    ui->displayRoute->append("\n");
+
+    for(int i = 0; i < temp.length(); i++)
+    {
+        ui->displayRoute->append(temp[i]);
+        ui->displayRoute->append("\n");
+    }
+    ui->displayRoute->setFontPointSize(12);
 
 }
 

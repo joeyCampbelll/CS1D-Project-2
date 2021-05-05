@@ -26,6 +26,8 @@ void MainWindow::fillStartTeam()
 
     ui->comboBox_startingTeam->setModel(model);
     ui->comboBox_startingTeamChooseTeams->setModel(model);
+    ui->comboBox_individualStadium->setModel(model);
+    ui->CTO_comboBox->clear();
     for(int i = 0; i <allTeamsList.size(); i++)
     {
         ui->CTO_comboBox->addItem(allTeamsList[i]);
@@ -74,6 +76,8 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
     inputValues.clear();
     ui->textBrowser_SSR->clear();
     SSRstartClicked = true;
+    qDebug() << "First: " << ui->comboBox_startingTeam->currentText() << Qt::endl;
+    qDebug() << "Second: " << ui->comboBox_endingTeam->currentText() << Qt::endl;
     inputValues.push_back(ui->comboBox_startingTeam->currentText());
     inputValues.push_back(ui->comboBox_endingTeam->currentText());
 
@@ -89,7 +93,7 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
         }
         else
         {
-            ui->textBrowser_SSR->append("Distance: " + fastestRoute.at(i) + '\n');
+            ui->textBrowser_SSR->append(fastestRoute.at(i) + '\n');
         }
     }
 
@@ -211,7 +215,9 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
         }
         else
         {
-            ui->textBrowser_ChooseTeams->append("Distance: " + fastestRoute.at(i));
+            //add distance to front of fastest Route
+            //ui->textBrowser_ChooseTeams->append("Distance: " + fastestRoute.at(i));
+            ui->textBrowser_ChooseTeams->append("Distance: NEEDED\n");
         }
     }
 
@@ -221,9 +227,10 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
 void MainWindow::on_planTripButton_MiamiMarlins_clicked()
 {
     teamNamesVector.clear();
+    ui->textBrowser_MiamiMarlins->clear();
 
     marlinsParkDFS = new graphAL();
-    marlinsParkDFS->depthFirstSearch("Marlins Park");
+    marlinsParkDFS->depthFirstSearch(teamToStadium(ui->comboBox_individualStadium->currentText()));
     QList<QString> temp = marlinsParkDFS->getRoute();
     ui->textBrowser_MiamiMarlins->append("DISTANCE: " + QString::number(marlinsParkDFS->getDistance()));
     ui->textBrowser_MiamiMarlins->append("\n");
@@ -237,7 +244,7 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
     for(int i = 0; i < temp.length(); i++)
     {
         QString tempS = QString::number(i + 1) + ". ";
-        ui->textBrowser_MiamiMarlins->append(tempS + temp[i] + "(" + teamNamesVector[i] + ")");
+        ui->textBrowser_MiamiMarlins->append(tempS + temp[i] + " (" + teamNamesVector[i] + ")");
     }
     ui->startTripButton_MiamiMarlins->show();
 }
@@ -272,34 +279,56 @@ QString MainWindow::stadiumToTeam(QString stadiumName)
     return teamName;
 }
 
+QString MainWindow::teamToStadium(QString teamName)
+{
+    QString stadiumName;
+    QSqlQuery* query = new QSqlQuery();
+
+    query->prepare("SELECT STADIUM_NAME FROM MLB_Information WHERE TEAM_NAME = :teamName");
+
+    //binds values
+    query->bindValue(":teamName", teamName);
+
+    //executes query
+    if (query->exec()) {
+        qDebug() << "Stadium Name found";
+    } else {
+        qDebug() << "Stadium NOT found";
+    }
+
+    if(query->next())
+    {
+        stadiumName = query->value(0).toString();
+    }
+
+    return stadiumName;
+}
+
 void MainWindow::on_addButton_CTO_clicked()
 {
     if(CTOstartButtonClicked)//if start button is clicked the output widget is cleared and startbuttonClicked is set to false
-        {
-            ui->textBrowser_CTO->clear();
-            CTOstartButtonClicked = false;
-        }
+    {
+        ui->textBrowser_CTO->clear();
+        CTOstartButtonClicked = false;
+    }
 
-        if(customTeamNameList.size() != allTeamsList.size())
-        {
-            customTeamNameList.push_back(ui->CTO_comboBox->currentText());//gets the school being removed
-            ui->textBrowser_CTO->append((QString::number(counter+1) + ". " + ui->CTO_comboBox->currentText()));//adds the last item added the customNameList to the List widget
-            qDebug() << ui->CTO_comboBox->currentText();
-            ui->CTO_comboBox->removeItem(ui->CTO_comboBox->currentIndex());//removes the school selected from the list
-            ui->planTripButton_CTO->show();
-            counter++;
-        }
-        else
-        {
-            QMessageBox::information(this, "Error", "Nothing to Add");
-        }
-
+    if(customTeamNameList.size() != allTeamsList.size())
+    {
+        customTeamNameList.push_back(ui->CTO_comboBox->currentText());//gets the school being removed
+        ui->textBrowser_CTO->append((QString::number(counter+1) + ". " + ui->CTO_comboBox->currentText()));//adds the last item added the customNameList to the List widget
+        ui->CTO_comboBox->removeItem(ui->CTO_comboBox->currentIndex());//removes the school selected from the list
+        ui->planTripButton_CTO->show();
+        counter++;
+    }
+    else
+    {
+        QMessageBox::information(this, "Error", "Nothing to Add");
+    }
 }
 
 void MainWindow::on_startButton_CTO_clicked()
 {
     //routes to souvenir
-    qDebug() << "Will Take you to souvenir page" << Qt::endl;
 }
 
 void MainWindow::on_removeButton_CTO_clicked()
@@ -356,29 +385,49 @@ void MainWindow::on_resetButton_CTO_clicked()
 
 void MainWindow::on_planTripButton_CTO_clicked()
 {
-    double totalDistance;
-
     counter = 0;
-
     fastestRoute.clear();
-    //totalDistance = shortDistance(startingSchool, tempList.size());//Add dijkstras here
-    fastestRoute = customTeamNameList;
+    if(customTeamNameList.size() > 2)
+    {
+        chooseOrder = new graphAM();
+        fastestRoute = chooseOrder->dijkstraRecursive(customTeamNameList);
+    }
+    else if(customTeamNameList.size() == 2)
+    {
+        chooseOrder = new graphAM();
+        fastestRoute = chooseOrder->dijkstra1to1(customTeamNameList[0], customTeamNameList[1]);
+    }
+    else
+    {
+        fastestRoute = customTeamNameList;
+        fastestRoute.push_front("Distance: 0");
+    }
 
     ui->textBrowser_CTO->clear();//clears the wigit each time before displaying the shortest distances
 
     for(int i = 0; i<fastestRoute.size(); i++)//outputs the order of school visited on tripPLan page
     {
-
-        ui->textBrowser_CTO->append(QString::number(i+1) + ". " + fastestRoute[i]);
+        if(i > 0)
+        {
+            ui->textBrowser_CTO->append(QString::number(i) + ". " + fastestRoute[i] + "(" + teamToStadium(fastestRoute[i]) + ")");
+        }
+        else
+        {
+            ui->textBrowser_CTO->append(fastestRoute[i]);
+        }
     }
 
-    customTeamNameList.clear();//clears the custom name list after the start button is clicked
-    ui->CTO_comboBox->clear();//clears the combo box and reloads it
-    fillStartTeam();
-    CTOstartButtonClicked  = true;//getting flag to true
+    customTeamNameList.clear(); //clears the custom name list after the start button is clicked
+    //ui->CTO_comboBox->clear();  //clears the combo box and reloads it
+    //fillStartTeam();
+    CTOstartButtonClicked  = true; //getting flag to true
     ui->planTripButton_CTO->hide();
     ui->addButton_CTO->hide();
     ui->removeButton_CTO->hide();
     ui->startButton_CTO->show();
+
+    //Clear first element (distance) from fastestRoute vector so that it is a pure
+    //list of team names that is ready to be passed to the souvenir shop
+    fastestRoute.pop_front();
 
 }
