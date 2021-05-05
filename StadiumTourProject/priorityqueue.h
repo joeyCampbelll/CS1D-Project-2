@@ -12,39 +12,44 @@ public:
 
     void enqueue(int priority,T value)
     {
-        Item<T> item(priority,value);
-        for(int i = 0 ; i < _queue.count() ; ++i ) {
-            const Item<T>& otherItem = _queue[i];
-            if( priority < otherItem._priority )  {
-                _queue.insert(i,item);
+        Item<T> item(priority, value);
+        for(int i = 0 ; i < queue.count() ; ++i ) {
+            const Item<T>& otherItem = queue[i];
+            if( priority < otherItem.priority )  {
+                queue.insert(i,item);
                 return;
             }
         }
-        _queue.append(item);
+        queue.append(item);
     }
 
     T getShortestTrip()
     {
-        return _queue.front()._value;
+        return queue.front().value;
+    }
+
+    int getLowestPriority()
+    {
+        return queue.front().priority;
     }
 
     T dequeue()
     {
-        const Item<T>& item = _queue.dequeue();
-        return item._value;
+        const Item<T>& item = queue.dequeue();
+        return item.value;
     }
 
     int count()
     {
-        return _queue.count();
+        return queue.count();
     }
 
     void printQueue()
     {
-        QQueue< Item<T > > tempQ = _queue;
+        QQueue< Item<T > > tempQ = queue;
         while (tempQ.count() > 0)
         {
-            qDebug() << "Priority:  " << tempQ.front()._priority << "  Value:  " << tempQ.front()._value;
+            qDebug() << "Priority:  " << tempQ.front().priority << "  Value:  " << tempQ.front().value;
             tempQ.dequeue();
         }
     }
@@ -54,16 +59,16 @@ private:
     template<class C>
     struct Item
     {
-        int _priority;
-        C _value;
+        int priority;
+        C value;
 
         Item(int priority, C value)
         {
-            _priority = priority;
-            _value = value;
+            this->priority = priority;
+            this->value = value;
         }
     };
 
-    QQueue< Item<T > > _queue;
+    QQueue< Item<T > > queue;
 };
 #endif // PRIORITYQUEUE_H
