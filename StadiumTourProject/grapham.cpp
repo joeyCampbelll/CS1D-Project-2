@@ -256,53 +256,53 @@ int graphAM::getDistance()
 }
 
 //-----------------Dijkastras-----------------//
-//QVector<QString> graphAM::dijkstraCustomRecursive(QVector<QString> selectedTeams)
-//{
-//    dijkstraRoute.clear();
-//    travelDistance = 0;
+QVector<QString> graphAM::dijkstraAll(QVector<QString> selectedTeams)
+{
+    dijkstraRoute.clear();
+    travelDistance = 0;
 
-//    //convert selected teams to stadiums
-//    for(int i = 0; i < selectedTeams.size(); i++)
-//    {
-//        selectedTeams[i] = teamToStadium(selectedTeams[i]);
-//    }
-//    int dist[vertexCount];
-//    bool sptSet[vertexCount];
-//    int parent[vertexCount];
+    //convert selected teams to stadiums
+    for(int i = 0; i < selectedTeams.size(); i++)
+    {
+        selectedTeams[i] = teamToStadium(selectedTeams[i]);
+    }
+    int dist[vertexCount];
+    bool sptSet[vertexCount];
+    int parent[vertexCount];
 
-//    for (int i = 0; i < vertexCount; i++)
-//    {
-//        parent[i] = -1;
-//        dist[i] = infinity;
-//        sptSet[i] = false;
-//    }
+    for (int i = 0; i < vertexCount; i++)
+    {
+        parent[i] = -1;
+        dist[i] = infinity;
+        sptSet[i] = false;
+    }
 
-//    startIndex = getLocationOf(selectedTeams[0]);
+    startIndex = getLocationOf(selectedTeams[0]);
 
-//    dist[startIndex] = 0;
+    dist[startIndex] = 0;
 
-//    for (int i = 0; i < vertexCount - 1; i++)
-//    {
-//        int u = minDistance(dist, sptSet);
+    for (int i = 0; i < vertexCount - 1; i++)
+    {
+        int u = minDistance(dist, sptSet);
 
-//        sptSet[u] = true;
+        sptSet[u] = true;
 
-//        for (int v = 0; v < vertexCount; v++)
-//        {
-//            if (!sptSet[v] && adjMatrix[u][v] &&
-//                dist[u] + adjMatrix[u][v] < dist[v])
-//            {
-//                parent[v] = u;
-//                dist[v] = dist[u] + adjMatrix[u][v];
-//            }
-//        }
-//    }
+        for (int v = 0; v < vertexCount; v++)
+        {
+            if (!sptSet[v] && adjMatrix[u][v] &&
+                dist[u] + adjMatrix[u][v] < dist[v])
+            {
+                parent[v] = u;
+                dist[v] = dist[u] + adjMatrix[u][v];
+            }
+        }
+    }
 
-//    printSolution(dist, parent);
-//    QVector<QString> temp = dijkstraRoute;
+    printSolution(dist, parent);
+    QVector<QString> temp = dijkstraRoute;
 
-//    return temp;
-//}
+    return temp;
+}
 
 QVector<QString> graphAM::dijkstra1to1(QString start, QString end)
 {
@@ -348,69 +348,6 @@ QVector<QString> graphAM::dijkstra1to1(QString start, QString end)
 
     dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
     QVector<QString> temp = dijkstraRoute;
-
-    return temp;
-}
-
-QVector<QString> graphAM::dijkstraCustomRecursive(QString startTeam, QVector<QString> selectedTeams)
-{
-    QVector<QString> temp;
-
-    startingStadium = teamToStadium(startTeam);
-    endingStadium = findClosestSelected(startingStadium, selectedTeams);
-
-    int dist[vertexCount];
-    bool sptSet[vertexCount];
-    int parent[vertexCount];
-
-    for (int i = 0; i < vertexCount; i++)
-    {
-        parent[i] = -1;
-        dist[i] = infinity;
-        sptSet[i] = false;
-    }
-
-    startIndex = getLocationOf(startingStadium);
-
-    dist[startIndex] = 0;
-
-    for (int i = 0; i < vertexCount - 1; i++)
-    {
-        int u = minDistance(dist, sptSet);
-
-        sptSet[u] = true;
-
-        for (int v = 0; v < vertexCount; v++)
-        {
-            if (!sptSet[v] && adjMatrix[u][v] &&
-                dist[u] + adjMatrix[u][v] < dist[v])
-            {
-                parent[v] = u;
-                dist[v] = dist[u] + adjMatrix[u][v];
-            }
-        }
-    }
-
-    print1to1(dist, parent, startingStadium, endingStadium);
-
-    //Search for and remove starting team from vector
-    for(int j = 0; j < selectedTeams.size(); j++)
-    {
-        if(selectedTeams.at(j) == stadiumToTeam(startingStadium))
-        {
-            selectedTeams.remove(j);
-        }
-    }
-
-    if(selectedTeams.size() > 1)
-    {
-        dijkstraCustomRecursive(endingStadium, selectedTeams);
-    }
-    if(selectedTeams.size() == 1)
-    {
-        dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
-    }
-    temp = dijkstraRoute;
 
     return temp;
 }
@@ -668,7 +605,7 @@ QString graphAM::findClosestSelected(QString startStadiumName, QVector<QString> 
     int lowestWeight = infinity;
     QString lowestWeightName;
 
-    startIndex = getLocationOf(startStadiumName);
+    startIndex = getLocationOf(startName);
 
     for(int i = 0; i < vertexCount; i++)
     {
