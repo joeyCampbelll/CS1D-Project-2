@@ -156,17 +156,24 @@ void souvenirshop::findStadiumName()
 
 void souvenirshop::on_undoButton_clicked()
 {
+    bool isFound = false;
+    int a = 0;
     if(souvenirNames.size() != 0)
     {
-        for ( int a = 0; a < ui->purchaseListWidget->count()+1; a++ )
+        while ( a < ui->purchaseListWidget->count()+1 && !isFound )
         {
             if ( ui->purchaseListWidget->item(a)->text() == souvenirNames.last() )
             {
+                qDebug() << souvenirNames.last();
                 delete ui->purchaseListWidget->takeItem(a);
                 souvenirNames.removeLast();
                 runningTotal = runningTotal - souvenirPrices.last();
                 souvenirPrices.removeLast();
                 ui->updateTotalPrice->setText("$" + QString::number(runningTotal));
+                isFound = true;
+            }
+            else {
+                a++;
             }
         }
     }
