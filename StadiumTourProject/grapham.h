@@ -68,6 +68,7 @@ public:
     void primMST();
     void printMST(int parent[]);
 
+    QVector<QString> getNonDistanceVector();
 
 private:
     int vertexCount;
@@ -82,6 +83,7 @@ private:
 
     QList<QString> routeAM;
     QVector<QString> dijkstraRoute;
+    QVector<QString> nonDistanceVector;
 };
 
 #endif // GRAPHAM_H

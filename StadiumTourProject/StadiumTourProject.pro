@@ -27,6 +27,7 @@ HEADERS += \
     graphal.h \
     grapham.h \
     mainwindow.h \
+    priorityqueue.h \
     souvenirshop.h \
     tablefilter.h
 

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "priorityqueue.h"
 #include <QTextBrowser>
 
 void MainWindow::fillStartTeam()
@@ -84,21 +85,16 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
     dijkstras = new graphAM();
     fastestRoute.clear();
     fastestRoute = dijkstras->dijkstra1to1(inputValues[0], inputValues[1]);
+    ui->textBrowser_SSR->setAlignment(Qt::AlignCenter);
+    ui->textBrowser_SSR->append("Distance: " + QString::number(dijkstras->getDistance()) + "\n");
+    ui->textBrowser_SSR->setAlignment(Qt::AlignLeft);
 
     for(int i = 0; i < fastestRoute.size(); i++)
     {
-        if(i > 0)
-        {
-            ui->textBrowser_SSR->append(QString::number(i) + ". " + fastestRoute.at(i) + '\n');
-        }
-        else
-        {
-            ui->textBrowser_SSR->append(fastestRoute.at(i) + '\n');
-        }
+        ui->textBrowser_SSR->append(QString::number(i+1) + ". " + fastestRoute.at(i) + '\n');
     }
 
     ui->textBrowser_SSR->selectAll();
-    ui->textBrowser_SSR->setAlignment(Qt::AlignCenter);
     ui->pushButton_SSRstartTrip->show();
 }
 
@@ -155,9 +151,7 @@ void MainWindow::initializeList()
 
 void MainWindow::CheckboxChanged()
 {
-    qDebug() << "Signal caught";
-
-    int checkedCount = 0;
+   int checkedCount = 0;
 
     for(int i = 0; i < checkBoxVector.size(); i++)
     {
@@ -200,28 +194,60 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
     teamNamesVector.clear();
     startTeamName = ui->comboBox_startingTeamChooseTeams->currentText();
     teamNamesVector.push_back(startTeamName);
-
     CheckboxChanged();
-    //CALL DIJKSTRAS ALGO HERE
     dijkstrasChooseTeams = new graphAM();
-    fastestRoute.clear();
-    fastestRoute = dijkstrasChooseTeams->dijkstraAll(teamNamesVector);
 
-    //GET RID OF THIS AFTER IMPLEMENTING DIJKSTRAS
-//    fastestRoute = teamNamesVector;
-
-    for(int i = 0; i < fastestRoute.size(); i++)
+    priorityQueue<QVector<QString>> *incidentTeams;
+    QMap<QString, bool> isVisited;
+    QList<QString> finalTrip;
+    QString lastTeam;
+    // fill isVisited map
+    for (int i = 0; i < teamNamesVector.size(); i++)
     {
-        if(i > 0)
+        isVisited[teamNamesVector[i]] = false;
+    }
+
+    int tripDistance = 0;
+
+    QString currentTeam = teamNamesVector[0];
+
+    for (int i = 0; i < teamNamesVector.size() - 1; i++)
+    {
+        incidentTeams = new priorityQueue<QVector<QString>>;
+        isVisited[currentTeam] = true;
+
+        for (int j = 0; j < teamNamesVector.size(); j++)
         {
-            ui->textBrowser_ChooseTeams->append(QString::number(i) + ". " + fastestRoute.at(i));
+            QString compareTeam = teamNamesVector[j];
+            if (isVisited[compareTeam] != true)
+            {
+                QVector<QString> tempRoute = dijkstrasChooseTeams->dijkstra1to1(currentTeam, compareTeam);
+                int tempPriority = dijkstrasChooseTeams->getDistance();
+                incidentTeams->enqueue(tempPriority, tempRoute);
+            }
         }
-        else
+//        qDebug() << incidentTeams->getShortestTrip() << "    " << incidentTeams->getLowestPriority();
+        QVector<QString> tempVec = incidentTeams->getShortestTrip();
+        tripDistance += incidentTeams->getLowestPriority();
+
+        for (int k = 0; k < tempVec.size() - 1; k++)
         {
-            //add distance to front of fastest Route
-            //ui->textBrowser_ChooseTeams->append("Distance: " + fastestRoute.at(i));
-            ui->textBrowser_ChooseTeams->append("Distance: NEEDED\n");
+            finalTrip.push_back(tempVec[k]);
         }
+        currentTeam = tempVec[tempVec.size() - 1];
+        lastTeam = tempVec[tempVec.size() - 1];
+    }
+
+    finalTrip.push_back(lastTeam);
+
+    ui->textBrowser_ChooseTeams->setAlignment(Qt::AlignCenter);
+    ui->textBrowser_ChooseTeams->setFontPointSize(12);
+    ui->textBrowser_ChooseTeams->append("Distance: " + QString::number(tripDistance) + "\n");
+    ui->textBrowser_ChooseTeams->setAlignment(Qt::AlignLeft);
+    for(int i = 0; i < finalTrip.size(); i++)
+    {
+        QString stadiumName = dijkstrasChooseTeams->teamToStadium(finalTrip[i]);
+        ui->textBrowser_ChooseTeams->append(QString::number(i+1) + ". " + finalTrip[i] + "\n    (" + stadiumName + ")\n");
     }
 
     ui->pushButton_startTripChooseTeams->show();
@@ -420,11 +446,11 @@ void MainWindow::on_planTripButton_CTO_clicked()
 
     ui->textBrowser_CTO->clear();//clears the wigit each time before displaying the shortest distances
 
-    for(int i = 0; i<fastestRoute.size(); i++)//outputs the order of school visited on tripPLan page
+    for(int i = 0; i < fastestRoute.size(); i++)//outputs the order of school visited on tripPLan page
     {
         if(i > 0)
         {
-            ui->textBrowser_CTO->append(QString::number(i) + ". " + fastestRoute[i] + "(" + teamToStadium(fastestRoute[i]) + ")");
+            ui->textBrowser_CTO->append(QString::number(i) + ". " + fastestRoute[i] + " (" + teamToStadium(fastestRoute[i]) + ")");
         }
         else
         {

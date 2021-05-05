@@ -303,10 +303,8 @@ QVector<QString> graphAM::dijkstra1to1(QString start, QString end)
 {
     dijkstraRoute.clear();
     travelDistance = 0;
-
     start = teamToStadium(start);
     end = teamToStadium(end);
-
     int dist[vertexCount];
     bool sptSet[vertexCount];
     int parent[vertexCount];
@@ -341,11 +339,13 @@ QVector<QString> graphAM::dijkstra1to1(QString start, QString end)
 
     print1to1(dist, parent, start, end);
 
-    dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
-    QVector<QString> temp = dijkstraRoute;
+//     NOT GOING TO APPEND THE DISTANCE ONTO THE LIST, USE GET DISTANCE INSTEAD
+//    dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
+//    QVector<QString> temp = dijkstraRoute;
 
-    return temp;
+    return dijkstraRoute;
 }
+
 
 QVector<QString> graphAM::dijkstraRecursive(QVector<QString> selectedTeams)
 {
