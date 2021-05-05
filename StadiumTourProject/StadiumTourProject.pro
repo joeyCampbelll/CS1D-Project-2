@@ -17,6 +17,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     souveniredit.cpp \
+    souvenirshop.cpp \
     tablefilter.cpp \
     teamedit.cpp \
     tripplanner.cpp
@@ -27,10 +28,12 @@ HEADERS += \
     grapham.h \
     mainwindow.h \
     priorityqueue.h \
+    souvenirshop.h \
     tablefilter.h
 
 FORMS += \
     mainwindow.ui \
+    souvenirshop.ui \
     tablefilter.ui
 
 # Default rules for deployment.

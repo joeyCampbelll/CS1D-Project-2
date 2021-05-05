@@ -100,7 +100,10 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
 
 void MainWindow::on_pushButton_SSRstartTrip_clicked()
 {
-    //TO-DO connect with souvenir shop
+    qDebug() << inputValues;
+    auto* souvenir  = new souvenirshop(inputValues);
+    hide();
+    souvenir -> show();
 }
 
 void MainWindow::initializeList()
@@ -250,6 +253,13 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
     ui->pushButton_startTripChooseTeams->show();
 }
 
+void MainWindow::on_pushButton_startTripChooseTeams_clicked()
+{
+    auto* souvenir = new souvenirshop(teamNamesVector);
+    hide();
+    souvenir -> show();
+}
+
 void MainWindow::on_planTripButton_MiamiMarlins_clicked()
 {
     teamNamesVector.clear();
@@ -277,7 +287,9 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
 
 void MainWindow::on_startTripButton_MiamiMarlins_clicked()
 {
-    //TO-DO connect trip planner with souvenir shop
+    auto* souvenir  = new souvenirshop(teamNamesVector);
+    hide();
+    souvenir -> show();
 }
 
 QString MainWindow::stadiumToTeam(QString stadiumName)
@@ -354,7 +366,10 @@ void MainWindow::on_addButton_CTO_clicked()
 
 void MainWindow::on_startButton_CTO_clicked()
 {
-    //routes to souvenir
+    //qDebug() << customTeamNameList;
+    auto* souvenir  = new souvenirshop(customTeamNameList);
+    hide();
+    souvenir -> show();
 }
 
 void MainWindow::on_removeButton_CTO_clicked()
@@ -443,7 +458,7 @@ void MainWindow::on_planTripButton_CTO_clicked()
         }
     }
 
-    customTeamNameList.clear(); //clears the custom name list after the start button is clicked
+    //customTeamNameList.clear(); //clears the custom name list after the start button is clicked
     //ui->CTO_comboBox->clear();  //clears the combo box and reloads it
     //fillStartTeam();
     CTOstartButtonClicked  = true; //getting flag to true
