@@ -29,7 +29,7 @@ void MainWindow::fillStartTeam()
     ui->comboBox_startingTeamChooseTeams->setModel(model);
     ui->comboBox_individualStadium->setModel(model);
     ui->CTO_comboBox->clear();
-    for(int i = 0; i <allTeamsList.size(); i++)
+    for(int i = 0; i < allTeamsList.size(); i++)
     {
         ui->CTO_comboBox->addItem(allTeamsList[i]);
     }
@@ -386,6 +386,7 @@ void MainWindow::on_startButton_CTO_clicked()
 
 void MainWindow::on_removeButton_CTO_clicked()
 {
+
     if(!customTeamNameList.empty())
     {
         ui->CTO_comboBox->addItem(customTeamNameList[customTeamNameList.size()-1]);
@@ -414,7 +415,7 @@ void MainWindow::on_removeButton_CTO_clicked()
 void MainWindow::on_resetButton_CTO_clicked()
 {
     ui->CTO_comboBox->clear();
-    for(int i = 0; i <allTeamsList.size(); i++)
+    for(int i = 0; i < allTeamsList.size(); i++)
     {
         ui->CTO_comboBox->addItem(allTeamsList[i]);
     }

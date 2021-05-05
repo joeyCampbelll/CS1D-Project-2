@@ -99,7 +99,6 @@ void MainWindow::on_buildTripButton_clicked()
 {
     fillStartTeam();
     initializeList();
-
     ui->textBrowser_ChooseTeams->clear();
     ui->textBrowser_MiamiMarlins->clear();
     ui->textBrowser_SSR->clear();
