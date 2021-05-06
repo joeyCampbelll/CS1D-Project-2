@@ -83,6 +83,15 @@ void MainWindow::showAllMLB()
 
 void MainWindow::on_tableButton_clicked()
 {
+    QSqlQuery* qry = new QSqlQuery();
+    int totalCapacity = 0;
+    qry->prepare("SELECT SEATING_CAPACITY FROM MLB_Information");
+    qry->exec();
+    while(qry->next())
+        totalCapacity += qry->value(0).toInt();
+
+    ui->totalSeatsLabel->setText("Total Seats: " + QString::number(totalCapacity));
+
     ui->stackedWidget->setCurrentIndex(1);
     this->filter = new tablefilter();
     this->filter->setTableView(ui->mlbTableView);

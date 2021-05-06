@@ -202,11 +202,7 @@ void Database::addNewDistance(QStringList list) {
     query->bindValue(":Distance", list.at(2));
 
     //executes query
-    if (query->exec()) {
-        qDebug() << "Query was executed";
-    } else {
-        qDebug() << "Query was not executed";
-    }
+    query->exec();
 }
 
 void Database::removeTeam(const QString &stadiumName, const QString &teamName)
