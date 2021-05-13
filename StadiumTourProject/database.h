@@ -10,11 +10,6 @@
 #include "QSqlQuery"
 #include "QDebug"
 
-//ryans path - "C:/Users/ryans/OneDrive/Documents/GitHub/CS1D-Project-2/StadiumTourProject/"
-//joeys path - "C:/Source/Qt/CS1D-Project-2/StadiumTourProject/"
-
-//static const QString PROJECT_PATH = "C:/Users/ryans/OneDrive/Documents/1D-Project-2/StadiumTourProject/";
-
 static const QString PROJECT_PATH = QDir::currentPath();
 
 class Database
@@ -46,9 +41,30 @@ public:
      */
     bool souvenirExists(const QString &souvenirName, const QString &teamName);
 
+    /**
+     * @brief Method to edit souvenir
+     * @param souvenirName
+     * @param teamName
+     * @param price
+     * @param newSouvenirName
+     */
     void editSouvenir(const QString &souvenirName, const QString &teamName, const QString &price, const QString &newSouvenirName);
+
+    /**
+     * @brief Method to delete souvenir
+     * @param souvenirName
+     * @param teamName
+     */
     void deleteSouvenir(const QString &souvenirName, const QString &teamName);
+
+    /**
+     * @brief Method to add souvenir
+     * @param souvenirName
+     * @param teamName
+     * @param price
+     */
     void addSouvenir(const QString &souvenirName, const QString &teamName, const QString &price);
+
     /**
     * @brief Method to parse a CSV file
     *
@@ -109,7 +125,7 @@ public:
 
 private:
     /**
-    * @brief declaree database object
+    * @brief declare database object
     */
     QSqlDatabase myDB;
 };
