@@ -1,0 +1,475 @@
+\hypertarget{classgraph_a_m}{}\doxysection{graph\+AM Class Reference}
+\label{classgraph_a_m}\index{graphAM@{graphAM}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgraph_a_m_a1e0d189363f6a3710a43802397ac8e82}\label{classgraph_a_m_a1e0d189363f6a3710a43802397ac8e82}} 
+\mbox{\hyperlink{classgraph_a_m_a1e0d189363f6a3710a43802397ac8e82}{graph\+AM}} ()
+\begin{DoxyCompactList}\small\item\em adjacency matrix constructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_m_a6b74935831ac24792154da7a740d20f1}{load\+Graph\+From\+DB}} ()
+\begin{DoxyCompactList}\small\item\em loads graph from database \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_m_a88ad109b265401c773efe4eb61a61abf}{add\+Edge}} (QString city1, QString city2, int weight)
+\begin{DoxyCompactList}\small\item\em adds edge to graph \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_m_aae1c1020646c72cdcf0a2b326a2b948a}{breadth\+First\+Search}} (QString start)
+\begin{DoxyCompactList}\small\item\em performs BFS \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_m_ad58708c9e4409c011fb5400d047ef51b}{breadth\+First\+Helper}} (QString start)
+\begin{DoxyCompactList}\small\item\em assists \mbox{\hyperlink{classgraph_a_m_aae1c1020646c72cdcf0a2b326a2b948a}{breadth\+First\+Search()}} function \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgraph_a_m_a29f499d55ffa619def971353fdf9938a}{get\+Location\+Of}} (QString vertex)
+\begin{DoxyCompactList}\small\item\em gets location of current vertex \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_vertex}{Vertex}} \mbox{\hyperlink{classgraph_a_m_a7ca32d3934ae86955e9fea5b1cf74161}{find\+Closest\+Vertex}} (\mbox{\hyperlink{struct_vertex}{Vertex}} vertex)
+\begin{DoxyCompactList}\small\item\em finds closest vertex \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgraph_a_m_ac37b4974fb334a2bffc1ccfdeab3bc85}{get\+Weight\+Between}} (\mbox{\hyperlink{struct_vertex}{Vertex}} vertex1, \mbox{\hyperlink{struct_vertex}{Vertex}} vertex2)
+\begin{DoxyCompactList}\small\item\em gets weight between two vertices \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgraph_a_m_a62c3628972b0adf330894f9c1405c45b}{unvisited\+Siblings}} (\mbox{\hyperlink{struct_vertex}{Vertex}} vertex)
+\begin{DoxyCompactList}\small\item\em gets number of all unvisited siblings \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_m_a0b6743dc46c852a181f680451a477a97}{print\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em prints graph \end{DoxyCompactList}\item 
+QList$<$ QString $>$ \mbox{\hyperlink{classgraph_a_m_a171f137356d37ac4ecabeffd2b0e397f}{get\+Route}} ()
+\begin{DoxyCompactList}\small\item\em gets route \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgraph_a_m_a153134abcadd3c3cd02425d36dc762d5}{get\+Distance}} ()
+\begin{DoxyCompactList}\small\item\em gets distance \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{classgraph_a_m_a76f522195471401b7060314d4f8c58b4}{dijkstra\+All}} (QVector$<$ QString $>$ selected\+Teams)
+\begin{DoxyCompactList}\small\item\em dijkstra algorithm for custom trip \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{classgraph_a_m_a3fa1037caa8300fc9e2359c595e6de9a}{dijkstra1to1}} (QString start, QString end)
+\begin{DoxyCompactList}\small\item\em dijkstra algorithm for 1 to 1 trip \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{classgraph_a_m_a544bd5885b1ec02270ea09acdb5dc4a6}{dijkstra\+Recursive}} (QVector$<$ QString $>$ selected\+Teams)
+\begin{DoxyCompactList}\small\item\em dijkstra algorithm for ordered trip \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgraph_a_m_a0925a46fc01f4afe547a7a98a738b521}{min\+Distance}} (int dist\mbox{[}$\,$\mbox{]}, bool spt\+Set\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em finds minimum distance in set \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_m_ad57e86ec1ea76e31f19239d69030386b}{print\+Path}} (int parent\mbox{[}$\,$\mbox{]}, int j)
+\begin{DoxyCompactList}\small\item\em prints path \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_m_ac03849b818e2f67d10ba874decc5ddc3}{print\+Solution}} (int dist\mbox{[}$\,$\mbox{]}, int parent\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em prints final solution \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_m_abcb638b31a710c6fdb0916d2cba2337c}{print1to1}} (int dist\mbox{[}$\,$\mbox{]}, int parent\mbox{[}$\,$\mbox{]}, QString start, QString end)
+\begin{DoxyCompactList}\small\item\em prints final 1 to 1 solution \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{classgraph_a_m_ad60f85709fd56e939eb85cb17db41825}{team\+To\+Stadium}} (QString team\+Name)
+\begin{DoxyCompactList}\small\item\em converts team to stadium \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{classgraph_a_m_ade3c2b218d7de00bbed04badcdb3ad2f}{stadium\+To\+Team}} (QString stadium\+Name)
+\begin{DoxyCompactList}\small\item\em converts stadium to team \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_m_a05b4177e434c3621ff23bc01727a1ec8}{prim\+MST}} ()
+\begin{DoxyCompactList}\small\item\em performs MST \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_m_a7ee543fbe3e7613fea913d2559df5761}{print\+MST}} (int parent\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em prints MST \end{DoxyCompactList}\item 
+QVector$<$ QString $>$ \mbox{\hyperlink{classgraph_a_m_aabf090f69b1f334dc6fb2c83142adc91}{get\+Non\+Distance\+Vector}} ()
+\begin{DoxyCompactList}\small\item\em gets distance vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgraph_a_m_a88ad109b265401c773efe4eb61a61abf}\label{classgraph_a_m_a88ad109b265401c773efe4eb61a61abf}} 
+\index{graphAM@{graphAM}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void graph\+AM\+::add\+Edge (\begin{DoxyParamCaption}\item[{QString}]{city1,  }\item[{QString}]{city2,  }\item[{int}]{weight }\end{DoxyParamCaption})}
+
+
+
+adds edge to graph 
+
+Adds edge to graph with given vertices and edge weight
+
+
+\begin{DoxyParams}{Parameters}
+{\em vert1} & \\
+\hline
+{\em vert2} & \\
+\hline
+{\em weight} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraph_a_m_ad58708c9e4409c011fb5400d047ef51b}\label{classgraph_a_m_ad58708c9e4409c011fb5400d047ef51b}} 
+\index{graphAM@{graphAM}!breadthFirstHelper@{breadthFirstHelper}}
+\index{breadthFirstHelper@{breadthFirstHelper}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{breadthFirstHelper()}{breadthFirstHelper()}}
+{\footnotesize\ttfamily void graph\+AM\+::breadth\+First\+Helper (\begin{DoxyParamCaption}\item[{QString}]{start }\end{DoxyParamCaption})}
+
+
+
+assists \mbox{\hyperlink{classgraph_a_m_aae1c1020646c72cdcf0a2b326a2b948a}{breadth\+First\+Search()}} function 
+
+Assists \mbox{\hyperlink{classgraph_a_m_aae1c1020646c72cdcf0a2b326a2b948a}{breadth\+First\+Search()}} function in performing the BFS
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraph_a_m_aae1c1020646c72cdcf0a2b326a2b948a}\label{classgraph_a_m_aae1c1020646c72cdcf0a2b326a2b948a}} 
+\index{graphAM@{graphAM}!breadthFirstSearch@{breadthFirstSearch}}
+\index{breadthFirstSearch@{breadthFirstSearch}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{breadthFirstSearch()}{breadthFirstSearch()}}
+{\footnotesize\ttfamily void graph\+AM\+::breadth\+First\+Search (\begin{DoxyParamCaption}\item[{QString}]{start }\end{DoxyParamCaption})}
+
+
+
+performs BFS 
+
+Performs a BFS starting at passed in starting node
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraph_a_m_a3fa1037caa8300fc9e2359c595e6de9a}\label{classgraph_a_m_a3fa1037caa8300fc9e2359c595e6de9a}} 
+\index{graphAM@{graphAM}!dijkstra1to1@{dijkstra1to1}}
+\index{dijkstra1to1@{dijkstra1to1}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{dijkstra1to1()}{dijkstra1to1()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ graph\+AM\+::dijkstra1to1 (\begin{DoxyParamCaption}\item[{QString}]{start,  }\item[{QString}]{end }\end{DoxyParamCaption})}
+
+
+
+dijkstra algorithm for 1 to 1 trip 
+
+dijkstra algorithm for 1 to 1 trip
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected\+Teams} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list of ordered team names 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_a76f522195471401b7060314d4f8c58b4}\label{classgraph_a_m_a76f522195471401b7060314d4f8c58b4}} 
+\index{graphAM@{graphAM}!dijkstraAll@{dijkstraAll}}
+\index{dijkstraAll@{dijkstraAll}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{dijkstraAll()}{dijkstraAll()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ graph\+AM\+::dijkstra\+All (\begin{DoxyParamCaption}\item[{QVector$<$ QString $>$}]{selected\+Teams }\end{DoxyParamCaption})}
+
+
+
+dijkstra algorithm for custom trip 
+
+dijkstra algorithm for custom trip
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected\+Teams} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list of ordered team names 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_a544bd5885b1ec02270ea09acdb5dc4a6}\label{classgraph_a_m_a544bd5885b1ec02270ea09acdb5dc4a6}} 
+\index{graphAM@{graphAM}!dijkstraRecursive@{dijkstraRecursive}}
+\index{dijkstraRecursive@{dijkstraRecursive}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{dijkstraRecursive()}{dijkstraRecursive()}}
+{\footnotesize\ttfamily QVector$<$ QString $>$ graph\+AM\+::dijkstra\+Recursive (\begin{DoxyParamCaption}\item[{QVector$<$ QString $>$}]{selected\+Teams }\end{DoxyParamCaption})}
+
+
+
+dijkstra algorithm for ordered trip 
+
+dijkstra algorithm for ordered trip
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected\+Teams} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list of ordered team names 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_a7ca32d3934ae86955e9fea5b1cf74161}\label{classgraph_a_m_a7ca32d3934ae86955e9fea5b1cf74161}} 
+\index{graphAM@{graphAM}!findClosestVertex@{findClosestVertex}}
+\index{findClosestVertex@{findClosestVertex}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{findClosestVertex()}{findClosestVertex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertex}{Vertex}} graph\+AM\+::find\+Closest\+Vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertex}{Vertex}}}]{vertex }\end{DoxyParamCaption})}
+
+
+
+finds closest vertex 
+
+Funds closest unvisted vertex to current vertex
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+closest vertex 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_a153134abcadd3c3cd02425d36dc762d5}\label{classgraph_a_m_a153134abcadd3c3cd02425d36dc762d5}} 
+\index{graphAM@{graphAM}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily int graph\+AM\+::get\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+gets distance 
+
+gets distance from adjacency matrix
+
+\begin{DoxyReturn}{Returns}
+distacne 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_a29f499d55ffa619def971353fdf9938a}\label{classgraph_a_m_a29f499d55ffa619def971353fdf9938a}} 
+\index{graphAM@{graphAM}!getLocationOf@{getLocationOf}}
+\index{getLocationOf@{getLocationOf}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{getLocationOf()}{getLocationOf()}}
+{\footnotesize\ttfamily int graph\+AM\+::get\+Location\+Of (\begin{DoxyParamCaption}\item[{QString}]{vertex }\end{DoxyParamCaption})}
+
+
+
+gets location of current vertex 
+
+Gets index location of current vertex
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+index of current vertex 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_aabf090f69b1f334dc6fb2c83142adc91}\label{classgraph_a_m_aabf090f69b1f334dc6fb2c83142adc91}} 
+\index{graphAM@{graphAM}!getNonDistanceVector@{getNonDistanceVector}}
+\index{getNonDistanceVector@{getNonDistanceVector}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{getNonDistanceVector()}{getNonDistanceVector()}}
+{\footnotesize\ttfamily QVector$<$QString$>$ graph\+AM\+::get\+Non\+Distance\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+gets distance vector 
+
+gets distance vector
+
+\begin{DoxyReturn}{Returns}
+vector of team names 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_a171f137356d37ac4ecabeffd2b0e397f}\label{classgraph_a_m_a171f137356d37ac4ecabeffd2b0e397f}} 
+\index{graphAM@{graphAM}!getRoute@{getRoute}}
+\index{getRoute@{getRoute}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{getRoute()}{getRoute()}}
+{\footnotesize\ttfamily QList$<$ QString $>$ graph\+AM\+::get\+Route (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+gets route 
+
+gets route from adjacency matrix
+
+\begin{DoxyReturn}{Returns}
+route 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_ac37b4974fb334a2bffc1ccfdeab3bc85}\label{classgraph_a_m_ac37b4974fb334a2bffc1ccfdeab3bc85}} 
+\index{graphAM@{graphAM}!getWeightBetween@{getWeightBetween}}
+\index{getWeightBetween@{getWeightBetween}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{getWeightBetween()}{getWeightBetween()}}
+{\footnotesize\ttfamily int graph\+AM\+::get\+Weight\+Between (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertex}{Vertex}}}]{vertex1,  }\item[{\mbox{\hyperlink{struct_vertex}{Vertex}}}]{vertex2 }\end{DoxyParamCaption})}
+
+
+
+gets weight between two vertices 
+
+Gets weight between two vertices passed in as parameters
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex1} & \\
+\hline
+{\em vertex2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+weight between two vertices 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_a6b74935831ac24792154da7a740d20f1}\label{classgraph_a_m_a6b74935831ac24792154da7a740d20f1}} 
+\index{graphAM@{graphAM}!loadGraphFromDB@{loadGraphFromDB}}
+\index{loadGraphFromDB@{loadGraphFromDB}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{loadGraphFromDB()}{loadGraphFromDB()}}
+{\footnotesize\ttfamily void graph\+AM\+::load\+Graph\+From\+DB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+loads graph from database 
+
+takes information from database and loads it into adjacency matrix \mbox{\Hypertarget{classgraph_a_m_a0925a46fc01f4afe547a7a98a738b521}\label{classgraph_a_m_a0925a46fc01f4afe547a7a98a738b521}} 
+\index{graphAM@{graphAM}!minDistance@{minDistance}}
+\index{minDistance@{minDistance}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{minDistance()}{minDistance()}}
+{\footnotesize\ttfamily int graph\+AM\+::min\+Distance (\begin{DoxyParamCaption}\item[{int}]{dist\mbox{[}$\,$\mbox{]},  }\item[{bool}]{spt\+Set\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+finds minimum distance in set 
+
+finds minimum distance in set
+
+
+\begin{DoxyParams}{Parameters}
+{\em dist\mbox{[}$\,$\mbox{]}} & \\
+\hline
+{\em spt\+Set\mbox{[}$\,$\mbox{]}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+minimum distance in set 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_a05b4177e434c3621ff23bc01727a1ec8}\label{classgraph_a_m_a05b4177e434c3621ff23bc01727a1ec8}} 
+\index{graphAM@{graphAM}!primMST@{primMST}}
+\index{primMST@{primMST}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{primMST()}{primMST()}}
+{\footnotesize\ttfamily void graph\+AM\+::prim\+MST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+performs MST 
+
+performs MST using prims algorithm \mbox{\Hypertarget{classgraph_a_m_abcb638b31a710c6fdb0916d2cba2337c}\label{classgraph_a_m_abcb638b31a710c6fdb0916d2cba2337c}} 
+\index{graphAM@{graphAM}!print1to1@{print1to1}}
+\index{print1to1@{print1to1}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{print1to1()}{print1to1()}}
+{\footnotesize\ttfamily void graph\+AM\+::print1to1 (\begin{DoxyParamCaption}\item[{int}]{dist\mbox{[}$\,$\mbox{]},  }\item[{int}]{parent\mbox{[}$\,$\mbox{]},  }\item[{QString}]{start,  }\item[{QString}]{end }\end{DoxyParamCaption})}
+
+
+
+prints final 1 to 1 solution 
+
+prints final 1 to 1 dijkstra solution
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\mbox{[}$\,$\mbox{]}} & \\
+\hline
+{\em dist\mbox{[}$\,$\mbox{]}} & \\
+\hline
+{\em start} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraph_a_m_a0b6743dc46c852a181f680451a477a97}\label{classgraph_a_m_a0b6743dc46c852a181f680451a477a97}} 
+\index{graphAM@{graphAM}!printGraph@{printGraph}}
+\index{printGraph@{printGraph}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{printGraph()}{printGraph()}}
+{\footnotesize\ttfamily void graph\+AM\+::print\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints graph 
+
+prints out adjacency matrix \mbox{\Hypertarget{classgraph_a_m_a7ee543fbe3e7613fea913d2559df5761}\label{classgraph_a_m_a7ee543fbe3e7613fea913d2559df5761}} 
+\index{graphAM@{graphAM}!printMST@{printMST}}
+\index{printMST@{printMST}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{printMST()}{printMST()}}
+{\footnotesize\ttfamily void graph\+AM\+::print\+MST (\begin{DoxyParamCaption}\item[{int}]{parent\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+prints MST 
+
+prints final MST route
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\mbox{[}$\,$\mbox{]}} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraph_a_m_ad57e86ec1ea76e31f19239d69030386b}\label{classgraph_a_m_ad57e86ec1ea76e31f19239d69030386b}} 
+\index{graphAM@{graphAM}!printPath@{printPath}}
+\index{printPath@{printPath}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{printPath()}{printPath()}}
+{\footnotesize\ttfamily void graph\+AM\+::print\+Path (\begin{DoxyParamCaption}\item[{int}]{parent\mbox{[}$\,$\mbox{]},  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+prints path 
+
+prints dijkstra path
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\mbox{[}$\,$\mbox{]}} & \\
+\hline
+{\em j} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraph_a_m_ac03849b818e2f67d10ba874decc5ddc3}\label{classgraph_a_m_ac03849b818e2f67d10ba874decc5ddc3}} 
+\index{graphAM@{graphAM}!printSolution@{printSolution}}
+\index{printSolution@{printSolution}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{printSolution()}{printSolution()}}
+{\footnotesize\ttfamily void graph\+AM\+::print\+Solution (\begin{DoxyParamCaption}\item[{int}]{dist\mbox{[}$\,$\mbox{]},  }\item[{int}]{parent\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+prints final solution 
+
+prints final dijkstra solution
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\mbox{[}$\,$\mbox{]}} & \\
+\hline
+{\em dist\mbox{[}$\,$\mbox{]}} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraph_a_m_ade3c2b218d7de00bbed04badcdb3ad2f}\label{classgraph_a_m_ade3c2b218d7de00bbed04badcdb3ad2f}} 
+\index{graphAM@{graphAM}!stadiumToTeam@{stadiumToTeam}}
+\index{stadiumToTeam@{stadiumToTeam}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{stadiumToTeam()}{stadiumToTeam()}}
+{\footnotesize\ttfamily QString graph\+AM\+::stadium\+To\+Team (\begin{DoxyParamCaption}\item[{QString}]{stadium\+Name }\end{DoxyParamCaption})}
+
+
+
+converts stadium to team 
+
+converts stadium name to team name
+
+
+\begin{DoxyParams}{Parameters}
+{\em stadium\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+team name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_ad60f85709fd56e939eb85cb17db41825}\label{classgraph_a_m_ad60f85709fd56e939eb85cb17db41825}} 
+\index{graphAM@{graphAM}!teamToStadium@{teamToStadium}}
+\index{teamToStadium@{teamToStadium}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{teamToStadium()}{teamToStadium()}}
+{\footnotesize\ttfamily QString graph\+AM\+::team\+To\+Stadium (\begin{DoxyParamCaption}\item[{QString}]{team\+Name }\end{DoxyParamCaption})}
+
+
+
+converts team to stadium 
+
+converts team name to stadium name
+
+
+\begin{DoxyParams}{Parameters}
+{\em team\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+stadium name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_m_a62c3628972b0adf330894f9c1405c45b}\label{classgraph_a_m_a62c3628972b0adf330894f9c1405c45b}} 
+\index{graphAM@{graphAM}!unvisitedSiblings@{unvisitedSiblings}}
+\index{unvisitedSiblings@{unvisitedSiblings}!graphAM@{graphAM}}
+\doxysubsubsection{\texorpdfstring{unvisitedSiblings()}{unvisitedSiblings()}}
+{\footnotesize\ttfamily int graph\+AM\+::unvisited\+Siblings (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertex}{Vertex}}}]{vertex }\end{DoxyParamCaption})}
+
+
+
+gets number of all unvisited siblings 
+
+Gets number of all unvisted siblings from current vertex
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of unvisited siblings 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/ryans/\+Documents/\+CS1\+D-\/\+Project-\/2/\+Stadium\+Tour\+Project/grapham.\+h\item 
+C\+:/\+Users/ryans/\+Documents/\+CS1\+D-\/\+Project-\/2/\+Stadium\+Tour\+Project/grapham.\+cpp\end{DoxyCompactItemize}
