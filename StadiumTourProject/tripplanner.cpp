@@ -273,28 +273,75 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
     teamNamesVector.clear();
     ui->textBrowser_MiamiMarlins->clear();
 
-    marlinsParkDFS = new graphAL();
-    marlinsParkDFS->depthFirstSearch(teamToStadium(ui->comboBox_individualStadium->currentText()));
-    QList<QString> temp = marlinsParkDFS->getRoute();
+    startTeamName = ui->comboBox_individualStadium->currentText();
+    teamNamesVector.push_back(startTeamName);
+
+    QSqlQuery *query = new QSqlQuery();
+    query->prepare("SELECT DISTINCT TEAM_NAME FROM MLB_Information");
+    query->exec();
+    while(query->next())
+    {
+        if(query->value(0).toString() != startTeamName)
+        {
+            teamNamesVector.push_back(query->value(0).toString());
+        }
+    }
+
+    dijkstrasChooseTeams = new graphAM();
+
+    priorityQueue<QVector<QString>> *incidentTeams;
+    QMap<QString, bool> isVisited;
+    QList<QString> finalTrip;
+    QString lastTeam;
+    // fill isVisited map
+    for (int i = 0; i < teamNamesVector.size(); i++)
+    {
+        isVisited[teamNamesVector[i]] = false;
+    }
+
+    int tripDistance = 0;
+
+    QString currentTeam = teamNamesVector[0];
+
+    for (int i = 0; i < teamNamesVector.size() - 1; i++)
+    {
+        incidentTeams = new priorityQueue<QVector<QString>>;
+        isVisited[currentTeam] = true;
+
+        for (int j = 0; j < teamNamesVector.size(); j++)
+        {
+            QString compareTeam = teamNamesVector[j];
+            if (isVisited[compareTeam] != true)
+            {
+                QVector<QString> tempRoute = dijkstrasChooseTeams->dijkstra1to1(currentTeam, compareTeam);
+                int tempPriority = dijkstrasChooseTeams->getDistance();
+                incidentTeams->enqueue(tempPriority, tempRoute);
+            }
+        }
+//        qDebug() << incidentTeams->getShortestTrip() << "    " << incidentTeams->getLowestPriority();
+        QVector<QString> tempVec = incidentTeams->getShortestTrip();
+        tripDistance += incidentTeams->getLowestPriority();
+
+        for (int k = 0; k < tempVec.size() - 1; k++)
+        {
+            finalTrip.push_back(tempVec[k]);
+        }
+        currentTeam = tempVec[tempVec.size() - 1];
+        lastTeam = tempVec[tempVec.size() - 1];
+    }
+
+    finalTrip.push_back(lastTeam);
+
     ui->textBrowser_MiamiMarlins->setAlignment(Qt::AlignCenter);
     ui->textBrowser_MiamiMarlins->setFontPointSize(12);
-
-    ui->textBrowser_MiamiMarlins->append("Distance: " + QString::number(marlinsParkDFS->getDistance()));
-    ui->textBrowser_MiamiMarlins->append("\n");
-
+    ui->textBrowser_MiamiMarlins->append("Distance: " + QString::number(tripDistance) + "\n");
     ui->textBrowser_MiamiMarlins->setAlignment(Qt::AlignLeft);
-
-    //convert stadium names to team names
-    for(int i = 0; i < temp.size(); i++)
+    for(int i = 0; i < finalTrip.size(); i++)
     {
-        teamNamesVector.push_back(stadiumToTeam(temp[i]));
+        QString stadiumName = dijkstrasChooseTeams->teamToStadium(finalTrip[i]);
+        ui->textBrowser_MiamiMarlins->append(QString::number(i+1) + ". " + finalTrip[i] + "\n    (" + stadiumName + ")\n");
     }
 
-    for(int i = 0; i < temp.length(); i++)
-    {
-        QString tempS = QString::number(i + 1) + ". ";
-        ui->textBrowser_MiamiMarlins->append(tempS + temp[i] + " (" + teamNamesVector[i] + ")");
-    }
     ui->startTripButton_MiamiMarlins->show();
 }
 
