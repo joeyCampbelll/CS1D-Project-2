@@ -33,6 +33,7 @@ public:
     void fillTeamComboBox();
     void fillSouvenirComboBox();
     void updateSouvenirTableView();
+    void tripPlannerBack();
 
 private slots:
 

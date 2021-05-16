@@ -63,6 +63,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::tripPlannerBack()
+{
+    on_buildTripButton_clicked();
+}
+
 void MainWindow::showAllMLB()
 {
     QSqlQueryModel* model = new QSqlQueryModel();

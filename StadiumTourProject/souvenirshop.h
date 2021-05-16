@@ -16,10 +16,10 @@ class souvenirshop : public QWidget
     Q_OBJECT
 
 public:
-    explicit souvenirshop(QVector<QString> selectedTeamNames, QWidget *parent = nullptr);
+    explicit souvenirshop(QVector<QString> selectedTeamNames, int distance, QWidget *parent = nullptr);
     ~souvenirshop();
 
-    void updateSouvenirShopTableView(QString team);
+    void updateSouvenirShopTableView();
 
     void fillSelectStadiumBox();
 
@@ -37,6 +37,8 @@ private slots:
 
     void on_undoButton_clicked();
 
+    void on_backButton_clicked();
+
 private:
     QVector<QString> teamList;
     double currentTotal;
@@ -46,6 +48,7 @@ private:
     double price;
     QString priceStr;
     bool cellClicked;
+    int distance;
     QString teamName;
     QString stadiumName;
     QVector<QString> souvenirNames;
