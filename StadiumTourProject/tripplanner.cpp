@@ -104,12 +104,13 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
 
     ui->textBrowser_SSR->selectAll();
     ui->pushButton_SSRstartTrip->show();
+    totalDistance = dijkstras->getDistance();
 }
 
 void MainWindow::on_pushButton_SSRstartTrip_clicked()
 {
     qDebug() << inputValues;
-    auto* souvenir  = new souvenirshop(inputValues);
+    auto* souvenir  = new souvenirshop(inputValues, totalDistance);
     hide();
     souvenir -> show();
 }
@@ -258,12 +259,13 @@ void MainWindow::on_pushButton_generateRouteChooseTeams_clicked()
         ui->textBrowser_ChooseTeams->append(QString::number(i+1) + ". " + finalTrip[i] + "\n    (" + stadiumName + ")\n");
     }
 
+    totalDistance = tripDistance;
     ui->pushButton_startTripChooseTeams->show();
 }
 
 void MainWindow::on_pushButton_startTripChooseTeams_clicked()
 {
-    auto* souvenir = new souvenirshop(teamNamesVector);
+    auto* souvenir = new souvenirshop(teamNamesVector, totalDistance);
     hide();
     souvenir -> show();
 }
@@ -300,7 +302,6 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
     }
 
     int tripDistance = 0;
-
     QString currentTeam = teamNamesVector[0];
 
     for (int i = 0; i < teamNamesVector.size() - 1; i++)
@@ -344,10 +345,9 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
 
     ui->startTripButton_MiamiMarlins->show();
 }
-
 void MainWindow::on_startTripButton_MiamiMarlins_clicked()
 {
-    auto* souvenir  = new souvenirshop(teamNamesVector);
+    auto* souvenir  = new souvenirshop(teamNamesVector, totalDistance);
     hide();
     souvenir -> show();
 }
@@ -427,7 +427,7 @@ void MainWindow::on_addButton_CTO_clicked()
 void MainWindow::on_startButton_CTO_clicked()
 {
     //qDebug() << customTeamNameList;
-    auto* souvenir  = new souvenirshop(customTeamNameList);
+    auto* souvenir  = new souvenirshop(customTeamNameList, totalDistance);
     hide();
     souvenir -> show();
 }
@@ -527,6 +527,7 @@ void MainWindow::on_planTripButton_CTO_clicked()
     ui->addButton_CTO->hide();
     ui->removeButton_CTO->hide();
     ui->startButton_CTO->show();
+    totalDistance = chooseOrder->getDistance();
 
     //Clear first element (distance) from fastestRoute vector so that it is a pure
     //list of team names that is ready to be passed to the souvenir shop

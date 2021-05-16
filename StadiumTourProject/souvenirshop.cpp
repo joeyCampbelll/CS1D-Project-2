@@ -1,7 +1,9 @@
 #include "souvenirshop.h"
 #include "ui_souvenirshop.h"
 
-souvenirshop::souvenirshop(QVector<QString> selectedTeamNames, QWidget *parent):
+souvenirshop::souvenirshop(QVector<QString> selectedTeamNames,
+                           int distance,
+                           QWidget *parent):
     QWidget(parent),
     ui(new Ui::souvenirshop)
 {
@@ -11,6 +13,9 @@ souvenirshop::souvenirshop(QVector<QString> selectedTeamNames, QWidget *parent):
 
     currentTotal = 0;
     runningTotal = 0;
+    this->distance = distance;
+    ui->updateDistance->setText(QString::number(distance));
+
 
     teamList = selectedTeamNames;
 
@@ -38,7 +43,7 @@ void souvenirshop::fillSelectStadiumBox()
     }
 }
 
-void souvenirshop::updateSouvenirShopTableView(QString team) {
+void souvenirshop::updateSouvenirShopTableView() {
      QSqlQueryModel* model=new QSqlQueryModel();
 
      QSqlQuery* qry=new QSqlQuery();
@@ -59,7 +64,7 @@ void souvenirshop::on_selectStadiumBox_currentIndexChanged(const QString &arg1)
 {
 
     teamName = arg1;
-    updateSouvenirShopTableView(arg1);
+    updateSouvenirShopTableView();
 }
 
 void souvenirshop::on_souvenirShopTableView_clicked(const QModelIndex &index)
@@ -185,3 +190,11 @@ void souvenirshop::on_undoButton_clicked()
     }
 }
 
+
+void souvenirshop::on_backButton_clicked()
+{
+    auto* mainwindow  = new MainWindow();
+    this->close();
+    mainwindow -> show();
+    mainwindow -> tripPlannerBack();
+}

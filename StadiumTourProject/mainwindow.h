@@ -66,6 +66,7 @@ public:
     *
     */
     void updateSouvenirTableView();
+    void tripPlannerBack();
 
 private slots:
 

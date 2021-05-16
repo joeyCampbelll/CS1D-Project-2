@@ -25,7 +25,7 @@ public:
     * @param selectedTeamNames
     * @param *parent
     */
-    explicit souvenirshop(QVector<QString> selectedTeamNames, QWidget *parent = nullptr);
+    explicit souvenirshop(QVector<QString> selectedTeamNames, int distance, QWidget *parent = nullptr);
 
     /**
     * @brief souvenir shop destructor
@@ -40,7 +40,7 @@ public:
     *
     * @param team
     */
-    void updateSouvenirShopTableView(QString team);
+    void updateSouvenirShopTableView();
 
     /**
     * @brief fills stadium combo box
@@ -90,6 +90,8 @@ private slots:
     */
     void on_undoButton_clicked();
 
+    void on_backButton_clicked();
+
 private:
     /**
     * @brief vector to hold team names
@@ -130,6 +132,11 @@ private:
     * @brief checks if souvenir table cell was clicked
     */
     bool cellClicked;
+
+    /**
+     * @brief mileage for trip
+     */
+    int distance;
 
     /**
     * @brief team name
