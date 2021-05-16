@@ -40,7 +40,7 @@ public:
     *
     * @param team
     */
-    void void updateSouvenirShopTableView();
+    void updateSouvenirShopTableView();
 
     /**
     * @brief fills stadium combo box
