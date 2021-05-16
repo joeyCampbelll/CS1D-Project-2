@@ -5,6 +5,7 @@
 
 void MainWindow::fillStartTeam()
 {
+    allTeamsList.clear();
     QSqlQueryModel* model=new QSqlQueryModel();
 
     QSqlQuery* qry = new QSqlQuery();
@@ -29,7 +30,7 @@ void MainWindow::fillStartTeam()
     ui->comboBox_startingTeamChooseTeams->setModel(model);
     ui->comboBox_individualStadium->setModel(model);
     ui->CTO_comboBox->clear();
-    for(int i = 0; i <allTeamsList.size(); i++)
+    for(int i = 0; i < allTeamsList.size(); i++)
     {
         ui->CTO_comboBox->addItem(allTeamsList[i]);
     }
@@ -77,6 +78,12 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
     inputValues.clear();
     ui->textBrowser_SSR->clear();
     SSRstartClicked = true;
+
+    if (ui->comboBox_endingTeam->currentText() == "")
+    {
+        return;
+    }
+
     qDebug() << "First: " << ui->comboBox_startingTeam->currentText() << Qt::endl;
     qDebug() << "Second: " << ui->comboBox_endingTeam->currentText() << Qt::endl;
     inputValues.push_back(ui->comboBox_startingTeam->currentText());
@@ -91,7 +98,8 @@ void MainWindow::on_pushButton_SSRplanTrip_clicked()
 
     for(int i = 0; i < fastestRoute.size(); i++)
     {
-        ui->textBrowser_SSR->append(QString::number(i+1) + ". " + fastestRoute.at(i) + '\n');
+        QString stadiumName = dijkstras->teamToStadium(fastestRoute[i]);
+        ui->textBrowser_SSR->append(QString::number(i+1) + ". " + fastestRoute.at(i) + '\n' + "  (" + stadiumName + ")\n");
     }
 
     ui->textBrowser_SSR->selectAll();
@@ -267,28 +275,76 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
     teamNamesVector.clear();
     ui->textBrowser_MiamiMarlins->clear();
 
-    marlinsParkDFS = new graphAL();
-    marlinsParkDFS->depthFirstSearch(teamToStadium(ui->comboBox_individualStadium->currentText()));
-    QList<QString> temp = marlinsParkDFS->getRoute();
-    ui->textBrowser_MiamiMarlins->append("DISTANCE: " + QString::number(marlinsParkDFS->getDistance()));
-    ui->textBrowser_MiamiMarlins->append("\n");
+    startTeamName = ui->comboBox_individualStadium->currentText();
+    teamNamesVector.push_back(startTeamName);
 
-    //convert stadium names to team names
-    for(int i = 0; i < temp.size(); i++)
+    QSqlQuery *query = new QSqlQuery();
+    query->prepare("SELECT DISTINCT TEAM_NAME FROM MLB_Information");
+    query->exec();
+    while(query->next())
     {
-        teamNamesVector.push_back(stadiumToTeam(temp[i]));
+        if(query->value(0).toString() != startTeamName)
+        {
+            teamNamesVector.push_back(query->value(0).toString());
+        }
     }
 
-    for(int i = 0; i < temp.length(); i++)
+    dijkstrasChooseTeams = new graphAM();
+
+    priorityQueue<QVector<QString>> *incidentTeams;
+    QMap<QString, bool> isVisited;
+    QList<QString> finalTrip;
+    QString lastTeam;
+    // fill isVisited map
+    for (int i = 0; i < teamNamesVector.size(); i++)
     {
-        QString tempS = QString::number(i + 1) + ". ";
-        ui->textBrowser_MiamiMarlins->append(tempS + temp[i] + " (" + teamNamesVector[i] + ")");
+        isVisited[teamNamesVector[i]] = false;
     }
 
-    totalDistance = marlinsParkDFS->getDistance();
+    int tripDistance = 0;
+    QString currentTeam = teamNamesVector[0];
+
+    for (int i = 0; i < teamNamesVector.size() - 1; i++)
+    {
+        incidentTeams = new priorityQueue<QVector<QString>>;
+        isVisited[currentTeam] = true;
+
+        for (int j = 0; j < teamNamesVector.size(); j++)
+        {
+            QString compareTeam = teamNamesVector[j];
+            if (isVisited[compareTeam] != true)
+            {
+                QVector<QString> tempRoute = dijkstrasChooseTeams->dijkstra1to1(currentTeam, compareTeam);
+                int tempPriority = dijkstrasChooseTeams->getDistance();
+                incidentTeams->enqueue(tempPriority, tempRoute);
+            }
+        }
+//        qDebug() << incidentTeams->getShortestTrip() << "    " << incidentTeams->getLowestPriority();
+        QVector<QString> tempVec = incidentTeams->getShortestTrip();
+        tripDistance += incidentTeams->getLowestPriority();
+
+        for (int k = 0; k < tempVec.size() - 1; k++)
+        {
+            finalTrip.push_back(tempVec[k]);
+        }
+        currentTeam = tempVec[tempVec.size() - 1];
+        lastTeam = tempVec[tempVec.size() - 1];
+    }
+
+    finalTrip.push_back(lastTeam);
+
+    ui->textBrowser_MiamiMarlins->setAlignment(Qt::AlignCenter);
+    ui->textBrowser_MiamiMarlins->setFontPointSize(12);
+    ui->textBrowser_MiamiMarlins->append("Distance: " + QString::number(tripDistance) + "\n");
+    ui->textBrowser_MiamiMarlins->setAlignment(Qt::AlignLeft);
+    for(int i = 0; i < finalTrip.size(); i++)
+    {
+        QString stadiumName = dijkstrasChooseTeams->teamToStadium(finalTrip[i]);
+        ui->textBrowser_MiamiMarlins->append(QString::number(i+1) + ". " + finalTrip[i] + "\n    (" + stadiumName + ")\n");
+    }
+
     ui->startTripButton_MiamiMarlins->show();
 }
-
 void MainWindow::on_startTripButton_MiamiMarlins_clicked()
 {
     auto* souvenir  = new souvenirshop(teamNamesVector, totalDistance);
@@ -378,6 +434,7 @@ void MainWindow::on_startButton_CTO_clicked()
 
 void MainWindow::on_removeButton_CTO_clicked()
 {
+
     if(!customTeamNameList.empty())
     {
         ui->CTO_comboBox->addItem(customTeamNameList[customTeamNameList.size()-1]);
@@ -406,7 +463,7 @@ void MainWindow::on_removeButton_CTO_clicked()
 void MainWindow::on_resetButton_CTO_clicked()
 {
     ui->CTO_comboBox->clear();
-    for(int i = 0; i <allTeamsList.size(); i++)
+    for(int i = 0; i < allTeamsList.size(); i++)
     {
         ui->CTO_comboBox->addItem(allTeamsList[i]);
     }

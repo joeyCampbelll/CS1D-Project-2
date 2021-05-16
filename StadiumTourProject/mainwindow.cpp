@@ -88,6 +88,15 @@ void MainWindow::showAllMLB()
 
 void MainWindow::on_tableButton_clicked()
 {
+    QSqlQuery* qry = new QSqlQuery();
+    int totalCapacity = 0;
+    qry->prepare("SELECT SEATING_CAPACITY FROM MLB_Information");
+    qry->exec();
+    while(qry->next())
+        totalCapacity += qry->value(0).toInt();
+
+    ui->totalSeatsLabel->setText("Total Seats: " + QString::number(totalCapacity));
+
     ui->stackedWidget->setCurrentIndex(1);
     this->filter = new tablefilter();
     this->filter->setTableView(ui->mlbTableView);
@@ -104,7 +113,6 @@ void MainWindow::on_buildTripButton_clicked()
 {
     fillStartTeam();
     initializeList();
-
     ui->textBrowser_ChooseTeams->clear();
     ui->textBrowser_MiamiMarlins->clear();
     ui->textBrowser_SSR->clear();

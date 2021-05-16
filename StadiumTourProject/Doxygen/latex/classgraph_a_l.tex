@@ -1,0 +1,181 @@
+\hypertarget{classgraph_a_l}{}\doxysection{graph\+AL Class Reference}
+\label{classgraph_a_l}\index{graphAL@{graphAL}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgraph_a_l_a99ba1bce4de3d26e29c6c9caa12757c5}\label{classgraph_a_l_a99ba1bce4de3d26e29c6c9caa12757c5}} 
+\mbox{\hyperlink{classgraph_a_l_a99ba1bce4de3d26e29c6c9caa12757c5}{graph\+AL}} ()
+\begin{DoxyCompactList}\small\item\em Adjacency List cosntructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_l_af75fa6bbe9714c962742b5290b4fe7ed}{load\+Graph\+From\+DB}} ()
+\begin{DoxyCompactList}\small\item\em loads graph from database \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_l_aa11f59b72d7da192fa1c4e99bebdd5be}{add\+Edge}} (QString vert1, QString vert2, int weight)
+\begin{DoxyCompactList}\small\item\em adds edge to graph \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_l_a29837996aeefdc99ced474e10699835c}{print\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em prints graph \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_edge_a_l}{Edge\+AL}} \mbox{\hyperlink{classgraph_a_l_aed509b15cb6cb26795785b466251c830}{build\+Node}} (QString vertex, int weight)
+\begin{DoxyCompactList}\small\item\em creates graph node \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_l_a76b07ecd638bae2885c9f99d48200941}{sort\+Incident\+Vertices}} ()
+\begin{DoxyCompactList}\small\item\em sorts incident vertices \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_l_adcc225414cc92113844c698f86068770}{depth\+First\+Search}} (QString start)
+\begin{DoxyCompactList}\small\item\em performs DFS \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgraph_a_l_aed60dbe0faca42d6f86db0dc3cd08415}{depth\+First\+Helper}} (QString current\+Vertex)
+\begin{DoxyCompactList}\small\item\em assists \mbox{\hyperlink{classgraph_a_l_adcc225414cc92113844c698f86068770}{depth\+First\+Search()}} function \end{DoxyCompactList}\item 
+QList$<$ QString $>$ \mbox{\hyperlink{classgraph_a_l_ad16ff5e43587ee7cdb28f985811b2510}{get\+Route}} ()
+\begin{DoxyCompactList}\small\item\em gets route for DFS \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgraph_a_l_a5fae4db01f853a69a5713e616abb95d8}{get\+Distance}} ()
+\begin{DoxyCompactList}\small\item\em gets distance for DFS \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgraph_a_l_aa28362186dfc25d67c3ce55df5dbfbf7}\label{classgraph_a_l_aa28362186dfc25d67c3ce55df5dbfbf7}} 
+QString \mbox{\hyperlink{classgraph_a_l_aa28362186dfc25d67c3ce55df5dbfbf7}{dfs\+Route}}
+\begin{DoxyCompactList}\small\item\em holds route for DFS \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgraph_a_l_a452f987833233dbed1192604ca473bb2}\label{classgraph_a_l_a452f987833233dbed1192604ca473bb2}} 
+int \mbox{\hyperlink{classgraph_a_l_a452f987833233dbed1192604ca473bb2}{travel\+Distance}}
+\begin{DoxyCompactList}\small\item\em Holds travel distance for DFS. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgraph_a_l_aa11f59b72d7da192fa1c4e99bebdd5be}\label{classgraph_a_l_aa11f59b72d7da192fa1c4e99bebdd5be}} 
+\index{graphAL@{graphAL}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!graphAL@{graphAL}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void graph\+AL\+::add\+Edge (\begin{DoxyParamCaption}\item[{QString}]{vert1,  }\item[{QString}]{vert2,  }\item[{int}]{weight }\end{DoxyParamCaption})}
+
+
+
+adds edge to graph 
+
+Adds edge to graph with given vertices and edge weight
+
+
+\begin{DoxyParams}{Parameters}
+{\em vert1} & \\
+\hline
+{\em vert2} & \\
+\hline
+{\em weight} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraph_a_l_aed509b15cb6cb26795785b466251c830}\label{classgraph_a_l_aed509b15cb6cb26795785b466251c830}} 
+\index{graphAL@{graphAL}!buildNode@{buildNode}}
+\index{buildNode@{buildNode}!graphAL@{graphAL}}
+\doxysubsubsection{\texorpdfstring{buildNode()}{buildNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_edge_a_l}{Edge\+AL}} graph\+AL\+::build\+Node (\begin{DoxyParamCaption}\item[{QString}]{vertex,  }\item[{int}]{weight }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+creates graph node 
+
+Creates a node for the adjacency list
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex} & \\
+\hline
+{\em weight} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+newly created node for graph 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_l_aed60dbe0faca42d6f86db0dc3cd08415}\label{classgraph_a_l_aed60dbe0faca42d6f86db0dc3cd08415}} 
+\index{graphAL@{graphAL}!depthFirstHelper@{depthFirstHelper}}
+\index{depthFirstHelper@{depthFirstHelper}!graphAL@{graphAL}}
+\doxysubsubsection{\texorpdfstring{depthFirstHelper()}{depthFirstHelper()}}
+{\footnotesize\ttfamily void graph\+AL\+::depth\+First\+Helper (\begin{DoxyParamCaption}\item[{QString}]{current\+Vertex }\end{DoxyParamCaption})}
+
+
+
+assists \mbox{\hyperlink{classgraph_a_l_adcc225414cc92113844c698f86068770}{depth\+First\+Search()}} function 
+
+Assists \mbox{\hyperlink{classgraph_a_l_adcc225414cc92113844c698f86068770}{depth\+First\+Search()}} function in performing the DFS
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Vertex} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraph_a_l_adcc225414cc92113844c698f86068770}\label{classgraph_a_l_adcc225414cc92113844c698f86068770}} 
+\index{graphAL@{graphAL}!depthFirstSearch@{depthFirstSearch}}
+\index{depthFirstSearch@{depthFirstSearch}!graphAL@{graphAL}}
+\doxysubsubsection{\texorpdfstring{depthFirstSearch()}{depthFirstSearch()}}
+{\footnotesize\ttfamily void graph\+AL\+::depth\+First\+Search (\begin{DoxyParamCaption}\item[{QString}]{start }\end{DoxyParamCaption})}
+
+
+
+performs DFS 
+
+Performs a DFS starting at passed in starting node
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgraph_a_l_a5fae4db01f853a69a5713e616abb95d8}\label{classgraph_a_l_a5fae4db01f853a69a5713e616abb95d8}} 
+\index{graphAL@{graphAL}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!graphAL@{graphAL}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily int graph\+AL\+::get\+Distance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+gets distance for DFS 
+
+Gets distance for DFS
+
+\begin{DoxyReturn}{Returns}
+distance for DFS 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_l_ad16ff5e43587ee7cdb28f985811b2510}\label{classgraph_a_l_ad16ff5e43587ee7cdb28f985811b2510}} 
+\index{graphAL@{graphAL}!getRoute@{getRoute}}
+\index{getRoute@{getRoute}!graphAL@{graphAL}}
+\doxysubsubsection{\texorpdfstring{getRoute()}{getRoute()}}
+{\footnotesize\ttfamily QList$<$ QString $>$ graph\+AL\+::get\+Route (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+gets route for DFS 
+
+Gets route for DFS
+
+\begin{DoxyReturn}{Returns}
+route for DFS 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgraph_a_l_af75fa6bbe9714c962742b5290b4fe7ed}\label{classgraph_a_l_af75fa6bbe9714c962742b5290b4fe7ed}} 
+\index{graphAL@{graphAL}!loadGraphFromDB@{loadGraphFromDB}}
+\index{loadGraphFromDB@{loadGraphFromDB}!graphAL@{graphAL}}
+\doxysubsubsection{\texorpdfstring{loadGraphFromDB()}{loadGraphFromDB()}}
+{\footnotesize\ttfamily void graph\+AL\+::load\+Graph\+From\+DB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+loads graph from database 
+
+takes information from database and loads it into adjacency list \mbox{\Hypertarget{classgraph_a_l_a29837996aeefdc99ced474e10699835c}\label{classgraph_a_l_a29837996aeefdc99ced474e10699835c}} 
+\index{graphAL@{graphAL}!printGraph@{printGraph}}
+\index{printGraph@{printGraph}!graphAL@{graphAL}}
+\doxysubsubsection{\texorpdfstring{printGraph()}{printGraph()}}
+{\footnotesize\ttfamily void graph\+AL\+::print\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints graph 
+
+prints out adjacency list \mbox{\Hypertarget{classgraph_a_l_a76b07ecd638bae2885c9f99d48200941}\label{classgraph_a_l_a76b07ecd638bae2885c9f99d48200941}} 
+\index{graphAL@{graphAL}!sortIncidentVertices@{sortIncidentVertices}}
+\index{sortIncidentVertices@{sortIncidentVertices}!graphAL@{graphAL}}
+\doxysubsubsection{\texorpdfstring{sortIncidentVertices()}{sortIncidentVertices()}}
+{\footnotesize\ttfamily void graph\+AL\+::sort\+Incident\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+sorts incident vertices 
+
+sorts incident vertices by distance 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/ryans/\+Documents/\+CS1\+D-\/\+Project-\/2/\+Stadium\+Tour\+Project/graphal.\+h\item 
+C\+:/\+Users/ryans/\+Documents/\+CS1\+D-\/\+Project-\/2/\+Stadium\+Tour\+Project/graphal.\+cpp\end{DoxyCompactItemize}

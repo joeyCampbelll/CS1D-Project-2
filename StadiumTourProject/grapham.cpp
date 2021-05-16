@@ -574,6 +574,11 @@ void graphAM::printMST(int parent[])
 
 //    for (int i = 1; i < vertexCount; i++)
 //    {
+//        qDebug() << parent[i];
+//    }
+
+//    for (int i = 1; i < vertexCount - 1; i++)
+//    {
 //        totalDistance += adjMatrix[i][parent[i]];
 //        QString s = vertices[parent[i]].vertex + " - " + vertices[i].vertex;
 //        qDebug() << s << " -> " << adjMatrix[i][parent[i]] << Qt::endl;
@@ -583,7 +588,7 @@ void graphAM::printMST(int parent[])
 //    =============================================
 
     int totalDistance = 0;
-    for (int i = 1; i < vertexCount; i++)
+    for (int i = 1; i < vertexCount - 1; i++)
     {
         totalDistance += adjMatrix[i][parent[i]];
         QString s = vertices[parent[i]].vertex + " - " + vertices[i].vertex;
