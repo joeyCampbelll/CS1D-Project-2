@@ -297,8 +297,8 @@ void MainWindow::on_pushButton_saveChanges_clicked()
     tempDistToCenterField = ui->lineEdit_distanceToCenterField->text();
     tempTypology = ui->lineEdit_typology->text();
 
-    if(tempStadiumName != "" || tempLocation != "" || tempLeague != "" || tempPlayingSurface != ""
-       || tempRoofType != "" || tempDistToCenterField != "" || tempTypology != "")
+    if(tempStadiumName == "" || tempLocation == "" || tempLeague == "" || tempPlayingSurface == ""
+       || tempRoofType == "" || tempDistToCenterField == "" || tempTypology == "")
     {
         QMessageBox::information(this, "Error", "Please fill out all fields");
     }
