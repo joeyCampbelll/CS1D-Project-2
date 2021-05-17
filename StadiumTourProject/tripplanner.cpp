@@ -504,21 +504,20 @@ void MainWindow::on_planTripButton_CTO_clicked()
     else
     {
         fastestRoute = customTeamNameList;
-        fastestRoute.push_front("Distance: 0");
+        fastestRoute.push_front("DISTANCE: 0");
     }
 
-    ui->textBrowser_CTO->clear();//clears the wigit each time before displaying the shortest distances
-
-    for(int i = 0; i < fastestRoute.size(); i++)//outputs the order of school visited on tripPLan page
+    if(customTeamNameList.size() > 1)
     {
-        if(i > 0)
+        ui->textBrowser_CTO->clear();//clears the wigit each time before displaying the shortest distances
+
+        ui->textBrowser_CTO->append("DISTANCE: " + QString::number(chooseOrder->getDistance()) + "\n");
+
+        for(int i = 0; i < fastestRoute.size(); i++)//outputs the order of school visited on tripPLan page
         {
-            ui->textBrowser_CTO->append(QString::number(i) + ". " + fastestRoute[i] + " (" + teamToStadium(fastestRoute[i]) + ")");
+            ui->textBrowser_CTO->append(QString::number(i + 1) + ". " + fastestRoute[i] + " (" + teamToStadium(fastestRoute[i]) + ")");
         }
-        else
-        {
-            ui->textBrowser_CTO->append(fastestRoute[i]);
-        }
+        totalDistance = chooseOrder->getDistance();
     }
 
     //customTeamNameList.clear(); //clears the custom name list after the start button is clicked
@@ -529,10 +528,5 @@ void MainWindow::on_planTripButton_CTO_clicked()
     ui->addButton_CTO->hide();
     ui->removeButton_CTO->hide();
     ui->startButton_CTO->show();
-    totalDistance = chooseOrder->getDistance();
-
-    //Clear first element (distance) from fastestRoute vector so that it is a pure
-    //list of team names that is ready to be passed to the souvenir shop
-    fastestRoute.pop_front();
 
 }

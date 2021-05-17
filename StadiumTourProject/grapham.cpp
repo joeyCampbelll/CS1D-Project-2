@@ -394,10 +394,10 @@ QVector<QString> graphAM::dijkstraRecursive(QVector<QString> selectedTeams)
     {
         dijkstraRecursive(selectedTeams);
     }
-    if(selectedTeams.size() == 1)
-    {
-        dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
-    }
+//    if(selectedTeams.size() == 1)
+//    {
+//        dijkstraRoute.push_front("Distance: " + (QString::number(travelDistance)));
+//    }
     temp = dijkstraRoute;
 
     return temp;

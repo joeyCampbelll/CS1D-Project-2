@@ -16,6 +16,8 @@ tablefilter::tablefilter(QWidget *parent) :
     this->qry->prepare("SELECT TEAM_NAME FROM MLB_Information");
     this->qry->exec();
 
+    ui->individualTeamEntry->clear();
+
     ui->individualTeamEntry->addItem("NONE");
 
     while (qry->next())
@@ -170,6 +172,7 @@ void tablefilter::applyFilters()
 
 void tablefilter::resetFilters()
 {
+    ui->individualTeamEntry->clear();
     ui->sortByEntry->setCurrentIndex(10);
     ui->onlyShowEntry->setCurrentIndex(15);
     ui->individualTeamEntry->setCurrentIndex(0);
