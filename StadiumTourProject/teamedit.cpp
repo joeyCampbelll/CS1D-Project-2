@@ -297,11 +297,19 @@ void MainWindow::on_pushButton_saveChanges_clicked()
     tempDistToCenterField = ui->lineEdit_distanceToCenterField->text();
     tempTypology = ui->lineEdit_typology->text();
 
-    myDb.updateStadiumInfo(tempTeamName, tempStadiumName, tempLocation, tempLeague,
-                           tempSeatingCapacity, tempDateOpened, tempPlayingSurface,
-                           tempRoofType, tempDistToCenterField, tempTypology);
-    showAllMLB();
-    ui->stackedWidget->setCurrentIndex(3);
+    if(tempStadiumName != "" || tempLocation != "" || tempLeague != "" || tempPlayingSurface != ""
+       || tempRoofType != "" || tempDistToCenterField != "" || tempTypology != "")
+    {
+        QMessageBox::information(this, "Error", "Please fill out all fields");
+    }
+    else
+    {
+        myDb.updateStadiumInfo(tempTeamName, tempStadiumName, tempLocation, tempLeague,
+                               tempSeatingCapacity, tempDateOpened, tempPlayingSurface,
+                               tempRoofType, tempDistToCenterField, tempTypology);
+        showAllMLB();
+        ui->stackedWidget->setCurrentIndex(3);
+    }
 }
 
 void MainWindow::on_pushButton_cancelChanges_clicked()
