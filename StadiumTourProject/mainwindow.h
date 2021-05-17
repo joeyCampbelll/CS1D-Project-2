@@ -36,7 +36,6 @@ public:
     * @brief Class Method to update and show MLB info
     *
     * updates query for entire MLB info chart and sets ui Model
-    *
     */
     void showAllMLB();
 

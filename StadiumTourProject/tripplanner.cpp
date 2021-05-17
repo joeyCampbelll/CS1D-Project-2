@@ -343,8 +343,10 @@ void MainWindow::on_planTripButton_MiamiMarlins_clicked()
         ui->textBrowser_MiamiMarlins->append(QString::number(i+1) + ". " + finalTrip[i] + "\n    (" + stadiumName + ")\n");
     }
 
+    totalDistance = tripDistance;
     ui->startTripButton_MiamiMarlins->show();
 }
+
 void MainWindow::on_startTripButton_MiamiMarlins_clicked()
 {
     auto* souvenir  = new souvenirshop(teamNamesVector, totalDistance);
