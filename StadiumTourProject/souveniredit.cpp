@@ -57,6 +57,7 @@ void MainWindow::on_addSouvenirButton_clicked()
     QString souvenirName = ui->selectSouvenirBox->currentText();
     ui->stackedWidget->setCurrentIndex(8);
     ui->updateTeamLabel_3->setText(teamName);
+    ui->enterPriceSpinBox_3->setValue(0.00);
 }
 
 void MainWindow::on_editSouvenirButton_clicked()
@@ -67,6 +68,7 @@ void MainWindow::on_editSouvenirButton_clicked()
     ui->updateTeamLabel->setText(teamName);
     originalName = souvenirName;
     ui->enterNameBox->setText(souvenirName);
+    ui->enterPriceSpinBox->setValue(0.00);
 }
 
 
